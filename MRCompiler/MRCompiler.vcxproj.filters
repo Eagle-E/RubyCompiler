@@ -19,6 +19,9 @@
     <Filter Include="Generated Files">
       <UniqueIdentifier>{e515fcaf-7b35-4067-aa0d-890af52bc8f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Test Files">
+      <UniqueIdentifier>{acafed29-5795-43e8-ae99-ad8efb530927}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="lexer.l">
@@ -29,10 +32,19 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tokens.h">
+    <ClInclude Include="lexer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="lexer.h">
+    <ClInclude Include="parser.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArgParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CompileTask.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InvalidCommandLineArguments.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -43,5 +55,40 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="parser.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ArgParser.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CompileTask.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InvalidCommandLineArguments.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="parser.test\parseme_test1.err">
+      <Filter>Test Files</Filter>
+    </None>
+    <None Include="parser.test\parseme_test1.rb">
+      <Filter>Test Files</Filter>
+    </None>
+    <None Include="parser.test\parseme_test2.err">
+      <Filter>Test Files</Filter>
+    </None>
+    <None Include="parser.test\parseme_test2.rb">
+      <Filter>Test Files</Filter>
+    </None>
+    <None Include="parser.test\parseme_test3.err">
+      <Filter>Test Files</Filter>
+    </None>
+    <None Include="parser.test\parseme_test3.rb">
+      <Filter>Test Files</Filter>
+    </None>
+    <None Include="parser.test\README">
+      <Filter>Test Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

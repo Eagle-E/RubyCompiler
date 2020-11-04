@@ -54,14 +54,55 @@ extern int yydebug;
     YYEOF = 0,                     /* "end of file"  */
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
-    NUM = 258                      /* NUM  */
+    SEMICOLON = 258,               /* SEMICOLON  */
+    COMMA = 259,                   /* COMMA  */
+    LPAREN = 260,                  /* LPAREN  */
+    RPAREN = 261,                  /* RPAREN  */
+    INTEGER = 262,                 /* INTEGER  */
+    IDENTIFIER = 263,              /* IDENTIFIER  */
+    BOOLEAN = 264,                 /* BOOLEAN  */
+    UNDEF = 265,                   /* UNDEF  */
+    DEF = 266,                     /* DEF  */
+    END = 267,                     /* END  */
+    RETURN = 268,                  /* RETURN  */
+    IF = 269,                      /* IF  */
+    THEN = 270,                    /* THEN  */
+    ELSIF = 271,                   /* ELSIF  */
+    ELSE = 272,                    /* ELSE  */
+    UNLESS = 273,                  /* UNLESS  */
+    WHILE = 274,                   /* WHILE  */
+    DO = 275,                      /* DO  */
+    UNTIL = 276,                   /* UNTIL  */
+    CASE = 277,                    /* CASE  */
+    WHEN = 278,                    /* WHEN  */
+    ASSIGN = 279,                  /* ASSIGN  */
+    PLUSASSIGN = 280,              /* PLUSASSIGN  */
+    MINUSASSIGN = 281,             /* MINUSASSIGN  */
+    MULASSIGN = 282,               /* MULASSIGN  */
+    DIVASSIGN = 283,               /* DIVASSIGN  */
+    ANDASSIGN = 284,               /* ANDASSIGN  */
+    ORASSIGN = 285,                /* ORASSIGN  */
+    PLUS = 286,                    /* PLUS  */
+    MINUS = 287,                   /* MINUS  */
+    MUL = 288,                     /* MUL  */
+    DIV = 289,                     /* DIV  */
+    GT = 290,                      /* GT  */
+    GE = 291,                      /* GE  */
+    LT = 292,                      /* LT  */
+    LE = 293,                      /* LE  */
+    EQ = 294,                      /* EQ  */
+    NE = 295,                      /* NE  */
+    AND = 296,                     /* AND  */
+    OR = 297,                      /* OR  */
+    NOT = 298,                     /* NOT  */
+    EOL = 299                      /* EOL  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef  double  YYSTYPE;
+typedef int YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif

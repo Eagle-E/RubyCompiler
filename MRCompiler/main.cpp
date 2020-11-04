@@ -1,6 +1,12 @@
-#include <stdio.h>
-#include "tokens.h"
+#include <iostream>
 #include "lexer.h"
+#include "parser.h"
+#include "ArgParser.h"
+#include <exception>
+
+using std::cout;	using std::endl;
+using std::cin;
+using std::exception;
 
 //Array with tokens such that index = tokenid - 250
 const char *tokens[] = {
@@ -12,21 +18,59 @@ const char *tokens[] = {
 	"GE", "LT", "LE", "EQ", "NE", "AND", "OR", "NOT", "BOOLEAN"
 }; 
 
+/*
+	The main function
+
+	Command line structure: MRCompiler inputFile.rb
+*/
 int main(int argc, char* argv[])
 {
+	CompileTask compilerTask;
+
+	// parse aguments to get the task to be done
+	try
+	{
+		compilerTask = ArgParser::parseArgs(argc, argv);
+	}
+	catch (exception& e)
+	{
+		cout << e.what() << endl;
+	}
+
+	// do task
+	if (compilerTask.inputType() == InputType::STDIN)
+	{
+		// keep reading lines until Ctrl+c
+		string line;
+
+		while (true)
+		{
+			//std::getline(cin, line);
+			//cout << "\t>>> " << line << endl;
+
+			cout << "#" << yyparse()  << "#" << endl;
+		}
+	}
+	else if (compilerTask.inputType() == InputType::FILE)
+	{
+		// TODO: read code from input file and do stuff
+	}
+
+	return 0;
+}
+
+
+/*
 	int tokenid;
-  
+
 	// If we de not explicitly bind yyin to a file, stdin is assumed.
 	while (tokenid=yylex())
 	{
-		// Token codes start from 250 
-		printf(" %s", tokens[tokenid-250]);
+		// Token codes start from 250
+		cout << " " << tokens[tokenid - 250];
 
 		// Append value
-		if ( (tokenid == IDENTIFIER) || (tokenid == INTEGER) || (tokenid == BOOLEAN) ) 
-			printf("=\"%s\"", yytext);
+		if ( (tokenid == IDENTIFIER) || (tokenid == INTEGER) || (tokenid == BOOLEAN) )
+			printf("=\"%s\"\n", yytext);
 	}
-	
-	printf("\n");
-	return 0;
-}
+*/

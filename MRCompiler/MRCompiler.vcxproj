@@ -160,27 +160,43 @@
     </CustomBuild>
     <CustomBuild Include="parser.y">
       <FileType>Document</FileType>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">win_bison -o %(Filename).cpp %(Identity)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">win_bison -o %(Filename).cpp %(Identity) --defines=%(Filename).h</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Generating syntax parser</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename).cpp; %(Filename).h</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">win_bison -o %(Filename).cpp %(Identity)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">win_bison -o %(Filename).cpp %(Identity) --defines=%(Filename).h</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Generating syntax parser</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).cpp; %(Filename).h</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">win_bison -o %(Filename).cpp %(Identity)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">win_bison -o %(Filename).cpp %(Identity) --defines=%(Filename).h</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Generating syntax parser</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).cpp; %(Filename).h</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">win_bison -o %(Filename).cpp %(Identity)</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">win_bison -o %(Filename).cpp %(Identity) --defines=%(Filename).h</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Generating syntax parser</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).cpp; %(Filename).h</Outputs>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ArgParser.cpp" />
+    <ClCompile Include="CompileTask.cpp" />
+    <ClCompile Include="InvalidCommandLineArguments.cpp" />
     <ClCompile Include="lexer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="parser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ArgParser.h" />
+    <ClInclude Include="CompileTask.h" />
+    <ClInclude Include="InvalidCommandLineArguments.h" />
     <ClInclude Include="lexer.h" />
-    <ClInclude Include="tokens.h" />
+    <ClInclude Include="parser.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="parser.test\parseme_test1.err" />
+    <None Include="parser.test\parseme_test1.rb" />
+    <None Include="parser.test\parseme_test2.err" />
+    <None Include="parser.test\parseme_test2.rb" />
+    <None Include="parser.test\parseme_test3.err" />
+    <None Include="parser.test\parseme_test3.rb" />
+    <None Include="parser.test\README" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
