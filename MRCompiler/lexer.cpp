@@ -363,16 +363,16 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[96] =
     {   0,
-       44,   44,   47,   45,   44,   41,   41,   40,   45,   18,
-       19,   29,   27,   20,   28,   30,   43,   17,   36,   37,
-       34,   42,   42,   42,   42,   42,   42,   42,   42,   42,
-       42,   45,   44,   41,   32,   38,   23,   21,   22,   24,
-       43,   35,   31,   33,   42,   42,   42,   11,   42,   42,
-       42,    5,   42,   42,   42,   42,   42,   39,   25,   42,
-        2,   42,    3,   42,   42,   42,   42,   42,   42,   42,
-       42,   42,   26,   13,    8,   42,   42,    6,   15,   42,
-       42,   42,   14,   42,   42,   16,   42,    1,   42,   12,
-       10,    7,    4,    9,    0
+       43,   43,   47,   45,   43,   41,   41,   40,   45,   18,
+       19,   29,   27,   20,   28,   30,   42,   17,   36,   37,
+       34,   44,   44,   44,   44,   44,   44,   44,   44,   44,
+       44,   45,   43,   41,   32,   38,   23,   21,   22,   24,
+       42,   35,   31,   33,   44,   44,   44,   11,   44,   44,
+       44,    5,   44,   44,   44,   44,   44,   39,   25,   44,
+        2,   44,    3,   44,   44,   44,   44,   44,   44,   44,
+       44,   44,   26,   13,    8,   44,   44,   44,    6,   15,
+       44,   44,   44,   14,   44,    7,   16,   44,    1,   44,
+       12,   10,    4,    9,    0
 
     } ;
 
@@ -424,9 +424,9 @@ static const flex_int16_t yy_base[97] =
        57,   46,   78,  101,  101,   62,  101,  101,  101,  101,
        64,  101,  101,  101,    0,   46,   52,    0,   44,   52,
        46,    0,   40,   48,   37,   18,   20,   52,  101,   45,
-        0,   44,    0,   35,   32,   36,   40,   39,   38,   34,
-       31,   31,  101,    0,   31,   33,   25,    0,    0,   30,
-       22,   25,    0,   28,   25,    0,   20,    0,   16,    0,
+        0,   25,    0,   36,   33,   37,   41,   40,   39,   35,
+       32,   32,  101,    0,    0,   34,   34,   26,    0,    0,
+       31,   23,   26,    0,   29,    0,    0,   21,    0,   16,
         0,    0,    0,    0,  101,   39
 
     } ;
@@ -452,9 +452,9 @@ static const flex_int16_t yy_nxt[137] =
        14,   15,   16,   17,   18,   19,   20,   21,   22,   22,
        23,   24,   25,   26,   22,   27,   22,   22,   22,   28,
        22,   29,   30,   31,   32,   47,   49,   50,   54,   68,
-       45,   48,   71,   55,   69,   72,   94,   93,   92,   70,
-       91,   90,   89,   88,   87,   86,   85,   84,   83,   82,
-       81,   80,   79,   78,   77,   76,   75,   74,   73,   67,
+       45,   48,   71,   55,   69,   72,   94,   75,   93,   70,
+       76,   92,   91,   90,   89,   88,   87,   86,   85,   84,
+       83,   82,   81,   80,   79,   78,   77,   74,   73,   67,
        66,   65,   64,   63,   62,   61,   60,   41,   59,   33,
        58,   57,   56,   53,   52,   51,   46,   44,   43,   42,
        41,   40,   39,   38,   37,   36,   35,   34,   33,   95,
@@ -471,9 +471,9 @@ static const flex_int16_t yy_chk[137] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,   24,   25,   25,   29,   56,
-       96,   24,   57,   29,   56,   57,   89,   87,   85,   56,
-       84,   82,   81,   80,   77,   76,   75,   72,   71,   70,
-       69,   68,   67,   66,   65,   64,   62,   60,   58,   55,
+       96,   24,   57,   29,   56,   57,   90,   62,   88,   56,
+       62,   85,   83,   82,   81,   78,   77,   76,   72,   71,
+       70,   69,   68,   67,   66,   65,   64,   60,   58,   55,
        54,   53,   51,   50,   49,   47,   46,   41,   36,   33,
        32,   31,   30,   28,   27,   26,   23,   21,   20,   19,
        17,   16,   15,   13,   12,    9,    8,    7,    5,    3,
@@ -791,227 +791,234 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 28 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");       return UNDEF;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");      */ return UNDEF;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
 #line 29 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");       return DEF;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");      */ return DEF;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
 #line 30 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");       return END;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");      */ return END;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
 #line 31 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");       return RETURN;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");      */ return RETURN;}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 32 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");       return IF;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");      */ return IF;}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 33 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");       return THEN;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");      */ return THEN;}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 34 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");       return ELSIF;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");      */ return ELSIF;}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
 #line 35 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");       return ELSE;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");      */ return ELSE;}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
 #line 36 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");       return UNLESS;} 
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");      */ return UNLESS;} 
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
 #line 37 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");       return WHILE;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");      */ return WHILE;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
 #line 38 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");       return DO;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");      */ return DO;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
 #line 39 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");       return UNTIL;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");      */ return UNTIL;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
 #line 40 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");       return CASE;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");      */ return CASE;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
 #line 41 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");       return WHEN;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");      */ return WHEN;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
 #line 42 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "bool true");     return BOOLEAN;}
+{col_nr += yyleng;      yylval.integer = 1;            /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "bool true");    */ return BOOLEAN;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
 #line 43 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "bool false");    return BOOLEAN;}                          
+{col_nr += yyleng;      yylval.integer = 0;            /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "bool false");   */ return BOOLEAN;}                          
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
 #line 44 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "semicol");       return SEMICOLON;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "semicol");      */ return SEMICOLON;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
 #line 45 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "parenth");       return LPAREN;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "parenth");      */ return LPAREN;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
 #line 46 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "parenth");       return RPAREN;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "parenth");      */ return RPAREN;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
 #line 47 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "comma");         return COMMA;}             
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "comma");        */ return COMMA;}             
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
 #line 48 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "assign");        return PLUSASSIGN;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "assign");       */ return PLUSASSIGN;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
 #line 49 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "assign");        return MINUSASSIGN;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "assign");       */ return MINUSASSIGN;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
 #line 50 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "assign");        return MULASSIGN;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "assign");       */ return MULASSIGN;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
 #line 51 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "assign");        return DIVASSIGN;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "assign");       */ return DIVASSIGN;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
 #line 52 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "assign");        return ANDASSIGN;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "assign");       */ return ANDASSIGN;}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
 #line 53 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "assign");        return ORASSIGN;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "assign");       */ return ORASSIGN;}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
 #line 54 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "operator");      return PLUS;}
+{col_nr += yyleng;      yylval.str=yytext;             /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "operator");     */ return PLUS;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
 #line 55 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "operator");      return MINUS;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "operator");     */ return MINUS;}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
 #line 56 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "operator");      return MUL;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "operator");     */ return MUL;}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
 #line 57 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "operator");      return DIV;}                                                   
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "operator");     */ return DIV;}                                                   
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
 #line 58 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "comparison");    return EQ;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "comparison");   */ return EQ;}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
 #line 59 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "comparison");    return NE;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "comparison");   */ return NE;}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
 #line 60 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "comparison");    return GE;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "comparison");   */ return GE;}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
 #line 61 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "comparison");    return GT;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "comparison");   */ return GT;}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
 #line 62 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "comparison");    return LE;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "comparison");   */ return LE;}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
 #line 63 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "comparison");    return LT;}                                       
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "comparison");   */ return LT;}                                       
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
 #line 64 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "comparison");    return ASSIGN;}                                          
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "assign");       */ return ASSIGN;}                                          
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
 #line 65 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "boolean oper");  return AND;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "boolean oper"); */ return AND;}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
 #line 66 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "boolean oper");  return OR;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "boolean oper"); */ return OR;}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
 #line 67 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "boolean oper");  return NOT;}                                                                      
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "boolean oper"); */ return NOT;}                                                                      
 	YY_BREAK
 case 41:
 /* rule 41 can match eol */
 YY_RULE_SETUP
 #line 68 "lexer.l"
-{col_nr = 0; line_nr++; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, "\\n", "new line"); return EOL;}
+{col_nr = 0; line_nr++;                                /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, "\\n", "new line");      */ return EOL;}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
 #line 69 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "id");           return IDENTIFIER;}
+{col_nr += yyleng;      yylval.integer=atoi(yytext);   /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "int");          */ return INTEGER;}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
 #line 70 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "int");          return INTEGER;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "tab/space");    */ }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
 #line 71 "lexer.l"
-{col_nr += yyleng; printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "tab/space");}
+{
+        col_nr += yyleng;      
+        yylval.str = new char[strlen(yytext+1)]; 
+        strcpy(yylval.str, yytext);             
+        
+        //printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "id");        
+        return IDENTIFIER;
+}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 73 "lexer.l"
+#line 80 "lexer.l"
 {
             if (yytext[0] < ' ') /* non-printable char */
             { 
@@ -1035,10 +1042,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 93 "lexer.l"
+#line 100 "lexer.l"
 ECHO;
 	YY_BREAK
-#line 1041 "lexer.cpp"
+#line 1048 "lexer.cpp"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2043,7 +2050,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 93 "lexer.l"
+#line 100 "lexer.l"
 
 
 /* 

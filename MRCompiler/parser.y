@@ -9,6 +9,12 @@ void yyerror(const char* str);
 
 %}
 
+%union
+{
+	int integer;
+	char* str;
+};
+
 // vul aan met tokendeclaraties
 %token
 	SEMICOLON COMMA LPAREN RPAREN
@@ -22,92 +28,125 @@ void yyerror(const char* str);
 	AND OR NOT 
 	EOL
 
+%type <integer> INTEGER
+%type <integer> BOOLEAN
+%type <str> IDENTIFIER
+
 %start program
 
 // vul aan met voorrangdeclaraties
 
+
+
+
+
+
+
 %%
+
+
+
+
+
+
+
 
 // vul aan met producties
-program : compstmt {cout << "program : DEF EOL" << endl;}
-		;
+program : compstmt ;
 
-compstmt    : stmt zeroOrMore_t_stmt zereOrOne_t
+compstmt : stmt zeroOrMore_t_stmt zeroOrOne_t ;
 
-zeroOrMore_t_stmt   :
-                    | t stmt zeroOrMore_t_stmt
-                    ;
-zereOrOne_t :   
-            | t
-            ;
+zeroOrMore_t_stmt 
+	: 
+	| zeroOrMore_t_stmt t stmt 
+	;
 
-zereOrOne_arglist   :   
-                    | arglist
-                    ;
+zeroOrOne_t	
+	:
+	| t
+	;
 
-zereOrOne_expressions   :   
-                        | expressions
-                        ;
-
-zeroOrMore_elseif   :
-                    | ELSIF expr then compstmt zeroOrMore_elseif
-                    ;
-
-zeroOrMore_when : 
-                | WHEN expr then compstmt zeroOrMore_when
-                ;
-
-zeroOrOne_else  :
-                | ELSE compstmt
-                ;
-
-literal : INTEGER | BOOLEAN
+stmt    : expr
+		| IF expr then compstmt zeroOrMore_elseif zeroOrOne_else END {cout << "IF expr" << endl;}
         ;
 
-stmt    : UNDEF IDENTIFIER
-        | DEF IDENTIFIER LPAREN zereOrOne_arglist RPAREN compstmt END
-        | RETURN expr
-        | IF expr then compstmt zeroOrMore_elseif zeroOrOne_else END
-        | UNLESS expr then compstmt zeroOrOne_else END
-        | WHILE expr do compstmt END
-        | UNTIL expr do compstmt END
-        | CASE expr WHEN expr then compstmt zeroOrMore_when zeroOrOne_else END
-        | expr
+expr	: IDENTIFIER assignop expr	{cout << "IDENTIFIER assignop expr: " << $<str>1 << endl;}
+        | expr binop expr			{cout << "expr binop expr" << endl;}
+        | NOT expr					{cout << "NOT expr" << endl;}
+        | literal					{cout << "literal: " << $<integer>1 << endl;}
+        | IDENTIFIER				{cout << "IDENTIFIER: " << $<str>1 << endl;}
+        | MINUS expr				{cout << "MINUS expr" << endl;}
+		| IDENTIFIER LPAREN zereOrOne_expressions RPAREN {cout << "function call" << endl;}
+		| LPAREN expr RPAREN		{cout << "LPAREN expr RPAREN" << endl;}
         ;
 
-expr    : IDENTIFIER assignop expr 
-        | expr binop expr
-        | NOT expr
-        | literal
-        | IDENTIFIER {cout << "expr : IDENTIFIER" << endl;}
-        | MINUS expr
-        | IDENTIFIER LPAREN zereOrOne_expressions RPAREN
-        | LPAREN expr RPAREN
-        ;
+expressions
+	: expr
+	| expressions COMMA expr
+	;
 
-expressions : expr
-            | expr COMMA expressions
-            ;
+zereOrOne_expressions
+	:   
+	| expressions
+	;
 
-arglist : IDENTIFIER
-        | IDENTIFIER COMMA arglist
-        ;
+zeroOrMore_elseif
+	:
+	| zeroOrMore_elseif ELSIF expr then compstmt
+	;
 
-then    : t | THEN | t THEN
-        ;
+zeroOrOne_else
+	:
+	| ELSE compstmt
+	;
 
-do  : t | DO | t DO
-    ;
+literal
+	: INTEGER
+	| BOOLEAN
+	;
 
-t   : SEMICOLON | EOL
-    ;
+assignop
+	: ASSIGN		{cout << "assign op: " << " = "   << endl;}
+	| PLUSASSIGN 	{cout << "assign op: " << " += "  << endl;}
+	| MINUSASSIGN 	{cout << "assign op: " << " -= "  << endl;}
+	| MULASSIGN 	{cout << "assign op: " << " *= "  << endl;}
+	| DIVASSIGN 	{cout << "assign op: " << " /= "  << endl;}
+	| ANDASSIGN 	{cout << "assign op: " << " &&= " << endl;}
+	| ORASSIGN 		{cout << "assign op: " << " ||= " << endl;}
+	;
 
-assignop    : ASSIGN | PLUSASSIGN | MINUSASSIGN | MULASSIGN | DIVASSIGN | ANDASSIGN | ORASSIGN
-            ;
+binop
+	: PLUS	{cout << "binop: " << $<str>1 << endl;}
+	| MINUS {cout << "binop: " << "-" << endl;}
+	| MUL 	{cout << "binop: " << "*" << endl;}
+	| DIV 	{cout << "binop: " << "/" << endl;}
+	| GT 	{cout << "binop: " << ">" << endl;}
+	| GE 	{cout << "binop: " << ">="<< endl;}
+	| LT 	{cout << "binop: " << "<" << endl;}
+	| LE 	{cout << "binop: " << "<="<< endl;}
+	| EQ 	{cout << "binop: " << "=="<< endl;}
+	| NE 	{cout << "binop: " << "!="<< endl;}
+	| AND 	{cout << "binop: " << "&&"<< endl;}
+	| OR 	{cout << "binop: " << "||"<< endl;}
+	;
 
-binop	: PLUS | MINUS | MUL | DIV | GT | GE | LT | LE | EQ | NE |AND | OR
-        ;
+t : SEMICOLON | EOL ;
+
+then : t | THEN | t THEN ;
+
+
+
+
+
+
 %%
+
+
+
+
+
+
+
 
 void yyerror (const char *s)
 {

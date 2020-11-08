@@ -3,10 +3,13 @@
 #include "parser.h"
 #include "ArgParser.h"
 #include <exception>
+#include <fstream>
+#include <stdio.h>
 
-using std::cout;	using std::endl;
-using std::cin;
-using std::exception;
+using std::cout;		using std::endl;
+using std::cin;			using std::exception;
+using std::ofstream;	using std::ifstream;
+using std::cerr;
 
 //Array with tokens such that index = tokenid - 250
 const char *tokens[] = {
@@ -54,6 +57,22 @@ int main(int argc, char* argv[])
 	else if (compilerTask.inputType() == InputType::FILE)
 	{
 		// TODO: read code from input file and do stuff
+		FILE* pCodeFile = fopen(compilerTask.inputFilePath().c_str(), "rb");
+		if( !pCodeFile )
+		{
+			cerr << "Cannot open file \"" << compilerTask.inputFilePath() << "\"" << endl;
+			return -1;
+		}
+
+		yyin = pCodeFile;
+
+		// parse untill there is nothing leftwd
+		do
+		{
+			yyparse();
+			//int code = yylex();
+			//cout << "[!] " << code << endl;
+		} while( !feof(pCodeFile) );
 	}
 
 	return 0;

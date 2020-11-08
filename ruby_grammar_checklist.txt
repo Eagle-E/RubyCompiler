@@ -1,0 +1,38 @@
+[X] <program> -> <compstmt>
+
+[X] <compstmt> -> <stmt> {<t> <stmt>} [<t>]
+
+[ ] <stmt> -> “undef” <identifier>
+    [ ] 		| “def” <identifier> “(” [<arglist>] “)” <compstmt> “end”
+    [ ] 		| “return” <expr>
+    [X] 		| “if” <expr> <then> <compstmt> {“elsif” <expr> <then> <compstmt>} [“else” <compstmt>] “end”
+    [ ] 		| “unless” <expr> <then> <compstmt> [“else” <compstmt>] “end”
+    [ ] 		| “while” <expr> <do> <compstmt> “end”
+    [ ] 		| “until” <expr> <do> <compstmt> “end”
+    [ ] 		| “case” <expr> “when” <expr> <then> <compstmt> {“when” <expr> <then> <compstmt>}[“else” <compstmt>] “end”
+    [X] 		| <expr>
+
+[X] <expr> -> <identifier> <assignop> <expr>
+    [X]			| <expr> <binop> <expr> 
+    [X]			| “!”<expr>
+    [X]			| <literal> 
+    [X]			| <identifier> 
+    [X]			| “-” <expr>
+    [X]			| <identifier> “(” [<exprs>] “)” 
+    [X]			| “(” <expr> “)”
+
+[X] <exprs> -> <expr> {“,” <expr>}
+
+[ ] <arglist> -> <identifier> {“,” <identifier>}
+
+[X] <then> -> <t> | “then” | <t> “then”
+
+[ ] <do> -> <t> | “do” | <t> “do”
+
+[X] <literal> -> INTEGER | BOOLEAN
+
+[X] <t> -> “;” | “\n”
+
+[X] <assignop> -> “=” | “+=” | “−=” | “∗=” | “/=” | “&&=” | “||=”
+
+[X] <binop> -> “+” | “-” | “*” | “/” | “>” | “>=” | “<” | “<=” | “==” | “!=” | “&&” | “||”

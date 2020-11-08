@@ -69,25 +69,25 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="parser.test\parseme_test1.err">
+    <None Include="parser_test\parseme_test1.err">
       <Filter>Test Files</Filter>
     </None>
-    <None Include="parser.test\parseme_test1.rb">
+    <None Include="parser_test\parseme_test1.rb">
       <Filter>Test Files</Filter>
     </None>
-    <None Include="parser.test\parseme_test2.err">
+    <None Include="parser_test\parseme_test2.err">
       <Filter>Test Files</Filter>
     </None>
-    <None Include="parser.test\parseme_test2.rb">
+    <None Include="parser_test\parseme_test2.rb">
       <Filter>Test Files</Filter>
     </None>
-    <None Include="parser.test\parseme_test3.err">
+    <None Include="parser_test\parseme_test3.err">
       <Filter>Test Files</Filter>
     </None>
-    <None Include="parser.test\parseme_test3.rb">
+    <None Include="parser_test\parseme_test3.rb">
       <Filter>Test Files</Filter>
     </None>
-    <None Include="parser.test\README">
+    <None Include="parser_test\README">
       <Filter>Test Files</Filter>
     </None>
   </ItemGroup>
