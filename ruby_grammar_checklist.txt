@@ -2,14 +2,15 @@
 
 [X] <compstmt> -> <stmt> {<t> <stmt>} [<t>]
 
-[ ] <stmt> -> “undef” <identifier>
-    [ ] 		| “def” <identifier> “(” [<arglist>] “)” <compstmt> “end”
-    [ ] 		| “return” <expr>
+[X] <stmt> -> 
+	[X]			  “undef” <identifier>
+    [X] 		| “def” <identifier> “(” [<arglist>] “)” <compstmt> “end”
+    [X] 		| “return” <expr>
     [X] 		| “if” <expr> <then> <compstmt> {“elsif” <expr> <then> <compstmt>} [“else” <compstmt>] “end”
-    [ ] 		| “unless” <expr> <then> <compstmt> [“else” <compstmt>] “end”
-    [ ] 		| “while” <expr> <do> <compstmt> “end”
-    [ ] 		| “until” <expr> <do> <compstmt> “end”
-    [ ] 		| “case” <expr> “when” <expr> <then> <compstmt> {“when” <expr> <then> <compstmt>}[“else” <compstmt>] “end”
+    [X] 		| “unless” <expr> <then> <compstmt> [“else” <compstmt>] “end”
+    [X] 		| “while” <expr> <do> <compstmt> “end”
+    [X] 		| “until” <expr> <do> <compstmt> “end”
+    [X] 		| “case” <expr> “when” <expr> <then> <compstmt> {“when” <expr> <then> <compstmt>}[“else” <compstmt>] “end”
     [X] 		| <expr>
 
 [X] <expr> -> <identifier> <assignop> <expr>
@@ -23,11 +24,11 @@
 
 [X] <exprs> -> <expr> {“,” <expr>}
 
-[ ] <arglist> -> <identifier> {“,” <identifier>}
+[X] <arglist> -> <identifier> {“,” <identifier>}
 
 [X] <then> -> <t> | “then” | <t> “then”
 
-[ ] <do> -> <t> | “do” | <t> “do”
+[X] <do> -> <t> | “do” | <t> “do”
 
 [X] <literal> -> INTEGER | BOOLEAN
 

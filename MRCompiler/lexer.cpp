@@ -1008,10 +1008,10 @@ case 44:
 YY_RULE_SETUP
 #line 71 "lexer.l"
 {
-        col_nr += yyleng;      
-        yylval.str = new char[strlen(yytext+1)]; 
+        col_nr += yyleng; 
+        yylval.str = new char[strlen(yytext+1)]; // copy yytext to yyval.str
         strcpy(yylval.str, yytext);             
-        
+            
         //printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "id");        
         return IDENTIFIER;
 }
