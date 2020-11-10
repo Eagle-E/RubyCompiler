@@ -22,6 +22,12 @@
     <Filter Include="Test Files">
       <UniqueIdentifier>{acafed29-5795-43e8-ae99-ad8efb530927}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Parse Tree">
+      <UniqueIdentifier>{2e1c19fa-974d-4a44-8350-80615f36e8cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Parse Tree">
+      <UniqueIdentifier>{ea9ba001-42e1-4cb7-b85e-7dc47e66edd0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="lexer.l">
@@ -47,6 +53,21 @@
     <ClInclude Include="InvalidCommandLineArguments.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="UnaryOperation.h">
+      <Filter>Header Files\Parse Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="Operation.h">
+      <Filter>Header Files\Parse Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="UnaryNumericOperation.h">
+      <Filter>Header Files\Parse Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="UnaryNumericNegation.h">
+      <Filter>Header Files\Parse Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="Literal.h">
+      <Filter>Header Files\Parse Tree</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lexer.cpp">
@@ -66,6 +87,18 @@
     </ClCompile>
     <ClCompile Include="InvalidCommandLineArguments.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UnaryOperation.cpp">
+      <Filter>Source Files\Parse Tree</Filter>
+    </ClCompile>
+    <ClCompile Include="UnaryNumericOperation.cpp">
+      <Filter>Source Files\Parse Tree</Filter>
+    </ClCompile>
+    <ClCompile Include="UnaryNumericNegation.cpp">
+      <Filter>Source Files\Parse Tree</Filter>
+    </ClCompile>
+    <ClCompile Include="Literal.cpp">
+      <Filter>Source Files\Parse Tree</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

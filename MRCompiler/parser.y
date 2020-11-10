@@ -1,6 +1,8 @@
 %{
 #include "lexer.h"
 #include <iostream>
+#include "Literal.h"
+
 
 using std::cout;	using std::endl;
 using std::cerr;
@@ -92,9 +94,10 @@ expressions
 	| expressions COMMA expr
 	;
 
-arglist : IDENTIFIER
-        | arglist COMMA IDENTIFIER
-        ;
+arglist 
+	: IDENTIFIER
+	| arglist COMMA IDENTIFIER
+	;
 
 zereOrOne_expressions
 	:   
@@ -116,9 +119,10 @@ zeroOrMore_when
 	| zeroOrMore_when WHEN expr then compstmt
 	;
 
-zereOrOne_arglist   :   
-                    | arglist
-                    ;
+zereOrOne_arglist   
+	:   
+	| arglist
+	;
 
 literal
 	: INTEGER

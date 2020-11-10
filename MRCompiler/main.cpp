@@ -6,6 +6,10 @@
 #include <fstream>
 #include <stdio.h>
 
+#include "Literal.h"
+#include "UnaryNumericNegation.h"
+
+
 using std::cout;		using std::endl;
 using std::cin;			using std::exception;
 using std::ofstream;	using std::ifstream;
@@ -29,7 +33,7 @@ const char *tokens[] = {
 int main(int argc, char* argv[])
 {
 	CompileTask compilerTask;
-
+	/*
 	// parse aguments to get the task to be done
 	try
 	{
@@ -73,7 +77,10 @@ int main(int argc, char* argv[])
 			//int code = yylex();
 			//cout << "[!] " << code << endl;
 		} while( !feof(pCodeFile) );
-	}
+	}*/
+
+	UnaryNumericNegation n(Literal(19));
+	cout << n.execute().value() << endl;
 
 	return 0;
 }

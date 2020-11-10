@@ -179,7 +179,11 @@
     <ClCompile Include="CompileTask.cpp" />
     <ClCompile Include="InvalidCommandLineArguments.cpp" />
     <ClCompile Include="lexer.cpp" />
+    <ClCompile Include="Literal.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="UnaryNumericNegation.cpp" />
+    <ClCompile Include="UnaryNumericOperation.cpp" />
+    <ClCompile Include="UnaryOperation.cpp" />
     <ClCompile Include="parser.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +191,11 @@
     <ClInclude Include="CompileTask.h" />
     <ClInclude Include="InvalidCommandLineArguments.h" />
     <ClInclude Include="lexer.h" />
+    <ClInclude Include="Literal.h" />
+    <ClInclude Include="Operation.h" />
+    <ClInclude Include="UnaryNumericNegation.h" />
+    <ClInclude Include="UnaryNumericOperation.h" />
+    <ClInclude Include="UnaryOperation.h" />
     <ClInclude Include="parser.h" />
   </ItemGroup>
   <ItemGroup>
