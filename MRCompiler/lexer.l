@@ -51,7 +51,7 @@ false        {col_nr += yyleng;      yylval.integer = 0;            /*printf("co
 [/]=         {col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "assign");       */ return DIVASSIGN;}
 &&=          {col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "assign");       */ return ANDASSIGN;}
 \|\|=        {col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "assign");       */ return ORASSIGN;}
-\+           {col_nr += yyleng;      yylval.str=yytext;             /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "operator");     */ return PLUS;}
+\+           {col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "operator");     */ return PLUS;}
 -            {col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "operator");     */ return MINUS;}
 \*           {col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "operator");     */ return MUL;}
 [/]          {col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "operator");     */ return DIV;}                                                   

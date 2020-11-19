@@ -921,7 +921,7 @@ YY_RULE_SETUP
 case 27:
 YY_RULE_SETUP
 #line 54 "lexer.l"
-{col_nr += yyleng;      yylval.str=yytext;             /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "operator");     */ return PLUS;}
+{col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "operator");     */ return PLUS;}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP

@@ -2,10 +2,13 @@
 #include "lexer.h"
 #include <iostream>
 #include "Literal.h"
-
+#include "UnaryNumericNegation.h"
+#include "Statement.h"
 
 using std::cout;	using std::endl;
 using std::cerr;
+
+UnaryNumericNegation n;
 
 void yyerror(const char* str);
 
@@ -15,6 +18,7 @@ void yyerror(const char* str);
 {
 	int integer;
 	char* str;
+	Statement* statement;
 };
 
 // vul aan met tokendeclaraties
@@ -33,6 +37,7 @@ void yyerror(const char* str);
 %type <integer> INTEGER
 %type <integer> BOOLEAN
 %type <str> IDENTIFIER
+%type <statement> program
 
 %start program
 

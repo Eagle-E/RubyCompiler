@@ -8,7 +8,9 @@
 
 #include "Literal.h"
 #include "UnaryNumericNegation.h"
-
+#include "LiteralExpression.h"
+#include "Statement.h"
+#include "CompoundStatement.h"
 
 using std::cout;		using std::endl;
 using std::cin;			using std::exception;
@@ -33,7 +35,7 @@ const char *tokens[] = {
 int main(int argc, char* argv[])
 {
 	CompileTask compilerTask;
-	/*
+	
 	// parse aguments to get the task to be done
 	try
 	{
@@ -71,16 +73,32 @@ int main(int argc, char* argv[])
 		yyin = pCodeFile;
 
 		// parse untill there is nothing leftwd
-		do
+		/*do
 		{
-			yyparse();
+			//yyparse();
 			//int code = yylex();
 			//cout << "[!] " << code << endl;
-		} while( !feof(pCodeFile) );
-	}*/
+		} while( !feof(pCodeFile) );*/
 
-	UnaryNumericNegation n(Literal(19));
-	cout << n.execute().value() << endl;
+		try
+		{
+			CompoundStatement cs;
+
+			UnaryNumericNegation nn;
+			LiteralExpression * le = new LiteralExpression(Literal(17));
+			vector<Expression*> operands;
+			operands.push_back(le);
+			nn.execute(operands);
+			delete le;
+		}
+		catch (exception& e)
+		{
+			cout << e.what() << endl;
+		}
+
+	}
+
+	
 
 	return 0;
 }

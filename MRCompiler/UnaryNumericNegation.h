@@ -1,19 +1,16 @@
 #ifndef UNARYNUMERICNEGATION_H
 #define UNARYNUMERICNEGATION_H
 
-#include "UnaryNumericOperation.h"
-#include "Literal.h"
+#include "UnaryOperation.h"
+#include "Expression.h"
 
-class UnaryNumericNegation : public UnaryNumericOperation
+class UnaryNumericNegation : public UnaryOperation
 {
 public:
 	UnaryNumericNegation();
-	UnaryNumericNegation(Literal l);
+	~UnaryNumericNegation();
 
-	Literal execute() const
-	{
-		return Literal(-mLiteral.value());
-	}
+	LiteralExpression execute(vector<Expression*>& operands);
 
 private:
 };
