@@ -44,6 +44,21 @@
 #if YYDEBUG
 extern int yydebug;
 #endif
+/* "%code requires" blocks.  */
+#line 1 "parser.y"
+
+#include "lexer.h"
+#include <iostream>
+#include "Literal.h"
+
+using std::cout;	using std::endl;
+using std::cerr;
+
+void yyerror(const char* str);
+
+
+
+#line 62 "parser.h"
 
 /* Token kinds.  */
 #ifndef YYTOKENTYPE
@@ -104,13 +119,13 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 18 "parser.y"
+#line 15 "parser.y"
 
 	int integer;
 	char* str;
-	Statement* statement;
+	Literal* literal;
 
-#line 114 "parser.h"
+#line 129 "parser.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

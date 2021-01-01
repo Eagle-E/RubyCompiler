@@ -7,7 +7,7 @@ extern int yyleng;
 extern int col_nr;
 extern int row_nr;
 
-/* The file from which lex will read input tokens (default is stdin). */
+/* The file from which lex will read input tokens. */
 extern FILE *yyin;
 
 /* Function to set yyin to another file */

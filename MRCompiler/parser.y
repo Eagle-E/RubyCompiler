@@ -1,25 +1,23 @@
-%{
+%code requires {
 #include "lexer.h"
 #include <iostream>
 #include "Literal.h"
-#include "UnaryNumericNegation.h"
-#include "Statement.h"
 
 using std::cout;	using std::endl;
 using std::cerr;
 
-UnaryNumericNegation n;
-
 void yyerror(const char* str);
 
-%}
+
+}
 
 %union
 {
 	int integer;
 	char* str;
-	Statement* statement;
+	Literal* literal;
 };
+
 
 // vul aan met tokendeclaraties
 %token
@@ -31,13 +29,16 @@ void yyerror(const char* str);
 	ASSIGN PLUSASSIGN MINUSASSIGN MULASSIGN DIVASSIGN ANDASSIGN ORASSIGN	
 	PLUS MINUS MUL DIV			
 	GT GE LT LE EQ NE
-	AND OR NOT 
+	AND OR NOT
 	EOL
 
 %type <integer> INTEGER
 %type <integer> BOOLEAN
 %type <str> IDENTIFIER
-%type <statement> program
+%nterm <literal> literal
+
+ // The parser takes an additional argument: root compound statement
+ //%parse-param { CompoundStatement& programAST }
 
 %start program
 
@@ -87,7 +88,7 @@ stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
 expr	: IDENTIFIER assignop expr	{/*cout << "IDENTIFIER assignop expr: " << $<str>1 << endl;*/}
         | expr binop expr			{/*cout << "expr binop expr" << endl;*/}
         | NOT expr					{/*cout << "NOT expr" << endl;*/}
-        | literal					{/*cout << "literal: " << $<integer>1 << endl;*/}
+        | literal					{cout << "[expr] literal: " << $1->value() << endl;}
         | IDENTIFIER				{/*cout << "IDENTIFIER: " << $<str>1 << endl;*/}
         | MINUS expr				{/*cout << "MINUS expr" << endl;*/}
 		| IDENTIFIER LPAREN zereOrOne_expressions RPAREN {/*cout << "function call" << endl;*/}
@@ -130,8 +131,8 @@ zereOrOne_arglist
 	;
 
 literal
-	: INTEGER
-	| BOOLEAN
+	: INTEGER { $$ = new Literal($1); cout << "literal int:" << $1 << endl;  }
+	| BOOLEAN { $$ = new Literal($1); cout << "literal bool:" << $1 << endl; }
 	;
 
 assignop

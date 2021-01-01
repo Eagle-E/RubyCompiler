@@ -49,9 +49,12 @@ int main(int argc, char* argv[])
 	// do task
 	if (compilerTask.inputType() == InputType::STDIN)
 	{
+		
 		// keep reading lines until Ctrl+c
 		string line;
+		//CompoundStatement program;
 
+		// EXPERIMENTAL
 		while (true)
 		{
 			//std::getline(cin, line);
@@ -59,6 +62,7 @@ int main(int argc, char* argv[])
 
 			cout << "#" << yyparse()  << "#" << endl;
 		}
+		
 	}
 	else if (compilerTask.inputType() == InputType::FILE)
 	{
@@ -73,13 +77,13 @@ int main(int argc, char* argv[])
 		yyin = pCodeFile;
 
 		// parse untill there is nothing leftwd
-		/*do
+		do
 		{
-			//yyparse();
-			//int code = yylex();
-			//cout << "[!] " << code << endl;
-		} while( !feof(pCodeFile) );*/
-
+			yyparse();
+			int code = yylex();
+			cout << "[!] " << code << endl;
+		} while( !feof(pCodeFile) );
+		/*
 		try
 		{
 			CompoundStatement cs;
@@ -94,7 +98,7 @@ int main(int argc, char* argv[])
 		catch (exception& e)
 		{
 			cout << e.what() << endl;
-		}
+		}*/
 
 	}
 
