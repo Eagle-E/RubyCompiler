@@ -39,8 +39,8 @@ do           {col_nr += yyleng;                                     /*printf("co
 until        {col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");      */ return UNTIL;}
 case         {col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");      */ return CASE;}
 when         {col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "keyword");      */ return WHEN;}
-true         {col_nr += yyleng;      yylval.integer = 1;            /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "bool true");    */ return BOOLEAN;}
-false        {col_nr += yyleng;      yylval.integer = 0;            /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "bool false");   */ return BOOLEAN;}                          
+true         {col_nr += yyleng;      yylval.t_int = 1;              /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "bool true");    */ return BOOLEAN;}
+false        {col_nr += yyleng;      yylval.t_int = 0;              /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "bool false");   */ return BOOLEAN;}                          
 ;            {col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "semicol");      */ return SEMICOLON;}
 \(           {col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "parenth");      */ return LPAREN;}
 \)           {col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "parenth");      */ return RPAREN;}
@@ -66,12 +66,12 @@ false        {col_nr += yyleng;      yylval.integer = 0;            /*printf("co
 \|\|         {col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "boolean oper"); */ return OR;}
 !            {col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "boolean oper"); */ return NOT;}                                                                      
 {LINEEND}    {col_nr = 0; line_nr++;                                /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, "\\n", "new line");      */ return EOL;}
-{INTEGER}    {col_nr += yyleng;      yylval.integer=atoi(yytext);   /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "int");          */ return INTEGER;}
+{INTEGER}    {col_nr += yyleng;      yylval.t_int=atoi(yytext);     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "int");          */ return INTEGER;}
 [[:blank:]]* {col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "tab/space");    */ }
 {IDENTIFIER} {
         col_nr += yyleng; 
-        yylval.str = new char[strlen(yytext+1)]; // copy yytext to yyval.str
-        strcpy(yylval.str, yytext);             
+        yylval.t_str = new char[strlen(yytext+1)]; // copy yytext to yyval.str
+        strcpy(yylval.t_str, yytext);             
             
         //printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "id");        
         return IDENTIFIER;

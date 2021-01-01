@@ -5,6 +5,11 @@ LiteralExpression::LiteralExpression()
 {
 }
 
+LiteralExpression::LiteralExpression(int val)
+	: mLiteral(val)
+{
+}
+
 LiteralExpression::LiteralExpression(Literal l)
 	: mLiteral(l)
 {

@@ -8,6 +8,7 @@ class LiteralExpression : public Expression
 {
 public:
 	LiteralExpression();
+	LiteralExpression(int val);
 	LiteralExpression(Literal l);
 	~LiteralExpression();
 

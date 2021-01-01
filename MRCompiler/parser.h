@@ -49,7 +49,8 @@ extern int yydebug;
 
 #include "lexer.h"
 #include <iostream>
-#include "Literal.h"
+#include "Expression.h"
+#include "LiteralExpression.h"
 
 using std::cout;	using std::endl;
 using std::cerr;
@@ -58,7 +59,7 @@ void yyerror(const char* str);
 
 
 
-#line 62 "parser.h"
+#line 63 "parser.h"
 
 /* Token kinds.  */
 #ifndef YYTOKENTYPE
@@ -119,13 +120,13 @@ void yyerror(const char* str);
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 15 "parser.y"
+#line 16 "parser.y"
 
-	int integer;
-	char* str;
-	Literal* literal;
+	int t_int;
+	char* t_str;
+	Expression* t_expression;
 
-#line 129 "parser.h"
+#line 130 "parser.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

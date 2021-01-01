@@ -861,12 +861,12 @@ YY_RULE_SETUP
 case 15:
 YY_RULE_SETUP
 #line 42 "lexer.l"
-{col_nr += yyleng;      yylval.integer = 1;            /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "bool true");    */ return BOOLEAN;}
+{col_nr += yyleng;      yylval.t_int = 1;              /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "bool true");    */ return BOOLEAN;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
 #line 43 "lexer.l"
-{col_nr += yyleng;      yylval.integer = 0;            /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "bool false");   */ return BOOLEAN;}                          
+{col_nr += yyleng;      yylval.t_int = 0;              /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "bool false");   */ return BOOLEAN;}                          
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
@@ -997,7 +997,7 @@ YY_RULE_SETUP
 case 42:
 YY_RULE_SETUP
 #line 69 "lexer.l"
-{col_nr += yyleng;      yylval.integer=atoi(yytext);   /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "int");          */ return INTEGER;}
+{col_nr += yyleng;      yylval.t_int=atoi(yytext);     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "int");          */ return INTEGER;}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
@@ -1009,8 +1009,8 @@ YY_RULE_SETUP
 #line 71 "lexer.l"
 {
         col_nr += yyleng; 
-        yylval.str = new char[strlen(yytext+1)]; // copy yytext to yyval.str
-        strcpy(yylval.str, yytext);             
+        yylval.t_str = new char[strlen(yytext+1)]; // copy yytext to yyval.str
+        strcpy(yylval.t_str, yytext);             
             
         //printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "id");        
         return IDENTIFIER;
