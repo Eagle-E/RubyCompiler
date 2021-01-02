@@ -13,13 +13,14 @@ public:
 	CompoundStatement(vector<Statement*> & expressions);
 	~CompoundStatement();
 
-	void setExpressions(vector<Statement*> & expressions);
+	void setSatements(vector<Statement*> & statements);
+	void addStatement(Statement* statement);
 	void execute();
 
 private:
 	void deleteExpressions();
 
-	vector<Statement*> mExpressions;
+	vector<Statement*> mStatements;
 
 };
 

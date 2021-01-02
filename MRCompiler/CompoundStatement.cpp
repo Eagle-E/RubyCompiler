@@ -13,15 +13,20 @@ CompoundStatement::~CompoundStatement()
 	deleteExpressions();
 }
 
-void CompoundStatement::setExpressions(vector<Statement*>& expressions)
+void CompoundStatement::setSatements(vector<Statement*>& statements)
 {
 	deleteExpressions();
-	mExpressions.assign(expressions.begin(), expressions.end());
+	mStatements.assign(statements.begin(), statements.end());
+}
+
+void CompoundStatement::addStatement(Statement* statement)
+{
+	mStatements.push_back(statement);
 }
 
 void CompoundStatement::execute()
 {
-	for (Statement* expr : mExpressions)
+	for (Statement* expr : mStatements)
 	{
 		expr->execute();
 	}
@@ -33,7 +38,7 @@ void CompoundStatement::execute()
 */
 void CompoundStatement::deleteExpressions()
 {
-	int c = mExpressions.size();
-	for (int i = 0; i < c; i++) delete mExpressions.at(i);
-	mExpressions.clear();
+	int c = mStatements.size();
+	for (int i = 0; i < c; i++) delete mStatements.at(i);
+	mStatements.clear();
 }

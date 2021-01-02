@@ -12,6 +12,8 @@ public:
 	ExpressionStatement(Expression* expr);
 	~ExpressionStatement();
 
+	void execute();
+
 private:
 	Expression* mExpression;
 };

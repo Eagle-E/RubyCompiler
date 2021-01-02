@@ -3,12 +3,13 @@
 #include <iostream>
 #include "Expression.h"
 #include "LiteralExpression.h"
+#include "Statement.h"
+#include "ExpressionStatement.h"
 
 using std::cout;	using std::endl;
 using std::cerr;
 
 void yyerror(const char* str);
-
 
 }
 
@@ -17,6 +18,7 @@ void yyerror(const char* str);
 	int t_int;
 	char* t_str;
 	Expression* t_expression;
+	Statement* t_statement;
 };
 
 
@@ -33,20 +35,22 @@ void yyerror(const char* str);
 	AND OR NOT
 	EOL
 
+ // terminal types
 %type <t_int> INTEGER
 %type <t_int> BOOLEAN
 %type <t_str> IDENTIFIER
 
- //%nterm <literal> literal
+ // non-terminal types
 %nterm <t_int> literal
 %nterm <t_expression> expr
+%nterm <t_statement> stmt
 
  // The parser takes an additional argument: root compound statement
  //%parse-param { CompoundStatement& programAST }
 
 %start program
 
-// vul aan met voorrangdeclaraties
+ // vul aan met voorrangdeclaraties
 
 
 
@@ -66,11 +70,12 @@ void yyerror(const char* str);
 // vul aan met producties
 program : compstmt ;
 
-compstmt : stmt zeroOrMore_t_stmt zeroOrOne_t ;
+compstmt : stmt zeroOrMore_t_stmt zeroOrOne_t {cout << "[compstmt]" << endl;}
+		 ;
 
 zeroOrMore_t_stmt 
 	: 
-	| zeroOrMore_t_stmt t stmt 
+	| zeroOrMore_t_stmt t stmt {cout << "[LIST compstmt]" << endl;}
 	;
 
 zeroOrOne_t	
@@ -86,7 +91,7 @@ stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
 		| WHILE expr do compstmt END {cout << "while" << endl;}
 		| UNTIL expr do compstmt END {cout << "until" << endl;}
 		| CASE expr WHEN expr then compstmt zeroOrMore_when zeroOrOne_else END {cout << "case" << endl;}
-		| expr				
+		| expr		{$$ = new ExpressionStatement($expr);}		
         ;
 
 expr	: IDENTIFIER assignop expr	{/*cout << "IDENTIFIER assignop expr: " << $<str>1 << endl;*/}
