@@ -1,7 +1,17 @@
 #include "CompoundStatement.h"
 
+// TEST
+#include <iostream>
+using std::cout;	using std::endl;
+// END TEST
+
 CompoundStatement::CompoundStatement()
 {
+}
+
+CompoundStatement::CompoundStatement(const char* s)
+{
+	ms = s;
 }
 
 CompoundStatement::CompoundStatement(vector<Statement*>& expressions)
@@ -30,6 +40,8 @@ void CompoundStatement::execute()
 	{
 		expr->execute();
 	}
+
+	cout << "test compound stm: " << ms << endl;
 }
 
 /*

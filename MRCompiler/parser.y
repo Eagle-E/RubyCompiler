@@ -5,12 +5,19 @@
 #include "LiteralExpression.h"
 #include "Statement.h"
 #include "ExpressionStatement.h"
+#include "CompoundStatement.h"
 
 using std::cout;	using std::endl;
 using std::cerr;
 
 void yyerror(const char* str);
 
+// the abstract syntax tree
+extern CompoundStatement * rootStatement;
+}
+
+%code{
+CompoundStatement * rootStatement = new CompoundStatement("IT WORKS?!");
 }
 
 %union
@@ -74,7 +81,7 @@ compstmt : stmt zeroOrMore_t_stmt zeroOrOne_t {cout << "[compstmt]" << endl;}
 		 ;
 
 zeroOrMore_t_stmt 
-	: 
+	: /* empty */ {}
 	| zeroOrMore_t_stmt t stmt {cout << "[LIST compstmt]" << endl;}
 	;
 

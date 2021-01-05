@@ -1,5 +1,5 @@
-#ifndef COMPOUNDEXPRESSION_H
-#define COMPOUNDEXPRESSION_H
+#ifndef COMPOUNDSTATEMENT_H
+#define COMPOUNDSTATEMENT_H
 
 #include "Statement.h"
 #include <vector>
@@ -10,6 +10,7 @@ class CompoundStatement : public Statement
 {
 public:
 	CompoundStatement();
+	CompoundStatement(const char*); // for test
 	CompoundStatement(vector<Statement*> & expressions);
 	~CompoundStatement();
 
@@ -19,9 +20,9 @@ public:
 
 private:
 	void deleteExpressions();
-
+	const char* ms;
 	vector<Statement*> mStatements;
 
 };
 
-#endif // !COMPOUNDEXPRESSION_H
+#endif // !COMPOUNDSTATEMENT_H

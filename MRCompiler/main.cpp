@@ -1,11 +1,11 @@
 #include <iostream>
-#include "lexer.h"
-#include "parser.h"
-#include "ArgParser.h"
 #include <exception>
 #include <fstream>
 #include <stdio.h>
 
+#include "lexer.h"
+#include "parser.h"
+#include "ArgParser.h"
 #include "Literal.h"
 #include "UnaryNumericNegation.h"
 #include "LiteralExpression.h"
@@ -83,6 +83,10 @@ int main(int argc, char* argv[])
 			int code = yylex();
 			cout << "[!] " << code << endl;
 		} while( !feof(pCodeFile) );
+
+		
+		rootStatement->execute();
+
 		/*
 		try
 		{
