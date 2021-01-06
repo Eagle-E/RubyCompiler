@@ -95,6 +95,27 @@
     <ClInclude Include="ExpressionStatement.h">
       <Filter>Header Files\Parse Tree</Filter>
     </ClInclude>
+    <ClInclude Include="BooleanLiteral.h">
+      <Filter>Header Files\Parse Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="IntegerLiteral.h">
+      <Filter>Header Files\Parse Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="UnaryNumericNegationExpression.h">
+      <Filter>Header Files\Parse Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="UnaryBooleanNegationExpression.h">
+      <Filter>Header Files\Parse Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="UnaryOperationExpression.h">
+      <Filter>Header Files\Parse Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="InvalidOperandType.h">
+      <Filter>Header Files\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="InvalidAmountOfOperands.h">
+      <Filter>Header Files\Exceptions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lexer.cpp">
@@ -147,6 +168,27 @@
     </ClCompile>
     <ClCompile Include="ExpressionStatement.cpp">
       <Filter>Source Files\Parse Tree</Filter>
+    </ClCompile>
+    <ClCompile Include="IntegerLiteral.cpp">
+      <Filter>Source Files\Parse Tree</Filter>
+    </ClCompile>
+    <ClCompile Include="BooleanLiteral.cpp">
+      <Filter>Source Files\Parse Tree</Filter>
+    </ClCompile>
+    <ClCompile Include="UnaryNumericNegationExpression.cpp">
+      <Filter>Source Files\Parse Tree</Filter>
+    </ClCompile>
+    <ClCompile Include="UnaryBooleanNegationExpression.cpp">
+      <Filter>Source Files\Parse Tree</Filter>
+    </ClCompile>
+    <ClCompile Include="UnaryOperationExpression.cpp">
+      <Filter>Source Files\Parse Tree</Filter>
+    </ClCompile>
+    <ClCompile Include="InvalidOperandType.cpp">
+      <Filter>Source Files\Exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="InvalidAmountOfOperands.cpp">
+      <Filter>Source Files\Exceptions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

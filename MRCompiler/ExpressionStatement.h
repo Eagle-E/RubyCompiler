@@ -13,7 +13,6 @@ public:
 	~ExpressionStatement();
 
 	void execute();
-
 private:
 	Expression* mExpression;
 };

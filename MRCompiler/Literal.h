@@ -7,15 +7,11 @@
 class Literal
 {
 public:
-	Literal();
-	Literal(int val);
-	Literal(const Literal& val);
+	static bool sameType(Literal& l1, Literal& l2);
 
-	void set(int val);
-	int value() const;
+	virtual ~Literal();
 
 private:
-	int mVal;
 };
 
 

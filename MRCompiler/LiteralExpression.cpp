@@ -1,30 +1,27 @@
 #include "LiteralExpression.h"
 
 LiteralExpression::LiteralExpression()
-	: mLiteral()
+	: mLiteral(nullptr)
 {
 }
 
-LiteralExpression::LiteralExpression(int val)
-	: mLiteral(val)
-{
-}
-
-LiteralExpression::LiteralExpression(Literal l)
+LiteralExpression::LiteralExpression(Literal * l)
 	: mLiteral(l)
 {
 }
 
 LiteralExpression::~LiteralExpression()
 {
+	if (mLiteral != nullptr)
+		delete mLiteral;
 }
 
-Literal LiteralExpression::getLiteral()
+Literal* LiteralExpression::getLiteral()
 {
+
 	return mLiteral;
 }
-
-Literal LiteralExpression::eval()
+Literal* LiteralExpression::eval()
 {
 	return mLiteral;
 }

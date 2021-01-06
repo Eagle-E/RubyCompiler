@@ -5,13 +5,13 @@
 using std::cout;	using std::endl;
 // END TEST
 
+/*
+*******************************************************************************
+**************************** CONSTRUCTORS & DESTRUCTOR ************************
+*******************************************************************************
+*/
 CompoundStatement::CompoundStatement()
 {
-}
-
-CompoundStatement::CompoundStatement(const char* s)
-{
-	ms = s;
 }
 
 CompoundStatement::CompoundStatement(vector<Statement*>& expressions)
@@ -23,16 +23,32 @@ CompoundStatement::~CompoundStatement()
 	deleteExpressions();
 }
 
+/*
+*******************************************************************************
+******************* MANIPULATORS (for list of statements) *********************
+*******************************************************************************
+*/
 void CompoundStatement::setSatements(vector<Statement*>& statements)
 {
 	deleteExpressions();
 	mStatements.assign(statements.begin(), statements.end());
 }
 
-void CompoundStatement::addStatement(Statement* statement)
+void CompoundStatement::appendStatement(Statement* statement)
 {
 	mStatements.push_back(statement);
 }
+
+void CompoundStatement::prependStatement(Statement* statement)
+{
+	mStatements.insert(mStatements.begin(), statement);
+}
+
+/*
+*******************************************************************************
+*******************          STATEMENT FUNCTIONS          *********************
+*******************************************************************************
+*/
 
 void CompoundStatement::execute()
 {
@@ -40,13 +56,17 @@ void CompoundStatement::execute()
 	{
 		expr->execute();
 	}
-
-	cout << "test compound stm: " << ms << endl;
 }
 
 /*
-* Deletes Expression* objects from memory if there are any in vecor 
-* expressions.
+*******************************************************************************
+*******************           PRIVATE FUNCTIONS           *********************
+*******************************************************************************
+*/
+
+/*
+* Deletes Expression* objects from memory if there are any in list of expressions.
+* Deletes all list elements, making list empty.
 */
 void CompoundStatement::deleteExpressions()
 {

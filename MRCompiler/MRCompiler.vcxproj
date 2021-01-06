@@ -176,41 +176,55 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ArgParser.cpp" />
+    <ClCompile Include="BooleanLiteral.cpp" />
     <ClCompile Include="CompileTask.cpp" />
     <ClCompile Include="CompoundStatement.cpp" />
     <ClCompile Include="Expression.cpp" />
     <ClCompile Include="ExpressionStatement.cpp" />
     <ClCompile Include="InvalidCommandLineArguments.cpp" />
     <ClCompile Include="InvalidNumberOfOperands.cpp" />
+    <ClCompile Include="InvalidOperandType.cpp" />
     <ClCompile Include="lexer.cpp" />
     <ClCompile Include="Literal.cpp" />
     <ClCompile Include="LiteralExpression.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="IntegerLiteral.cpp" />
+    <ClCompile Include="InvalidAmountOfOperands.cpp" />
     <ClCompile Include="OperationExpression.cpp" />
     <ClCompile Include="Statement.cpp" />
     <ClCompile Include="UnaryBooleanNegation.cpp" />
+    <ClCompile Include="UnaryBooleanNegationExpression.cpp" />
     <ClCompile Include="UnaryNumericNegation.cpp" />
+    <ClCompile Include="UnaryNumericNegationExpression.cpp" />
     <ClCompile Include="UnaryOperation.cpp" />
     <ClCompile Include="parser.cpp" />
+    <ClCompile Include="UnaryOperationExpression.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArgParser.h" />
+    <ClInclude Include="BooleanLiteral.h" />
+    <ClInclude Include="IntegerLiteral.h" />
     <ClInclude Include="CompileTask.h" />
     <ClInclude Include="CompoundStatement.h" />
     <ClInclude Include="Expression.h" />
     <ClInclude Include="ExpressionStatement.h" />
     <ClInclude Include="InvalidCommandLineArguments.h" />
     <ClInclude Include="InvalidNumberOfOperands.h" />
+    <ClInclude Include="InvalidOperandType.h" />
     <ClInclude Include="lexer.h" />
     <ClInclude Include="Literal.h" />
     <ClInclude Include="LiteralExpression.h" />
+    <ClInclude Include="InvalidAmountOfOperands.h" />
     <ClInclude Include="Operation.h" />
     <ClInclude Include="OperationExpression.h" />
     <ClInclude Include="Statement.h" />
     <ClInclude Include="UnaryBooleanNegation.h" />
+    <ClInclude Include="UnaryBooleanNegationExpression.h" />
     <ClInclude Include="UnaryNumericNegation.h" />
+    <ClInclude Include="UnaryNumericNegationExpression.h" />
     <ClInclude Include="UnaryOperation.h" />
     <ClInclude Include="parser.h" />
+    <ClInclude Include="UnaryOperationExpression.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="parser_test\parseme_test1.err" />

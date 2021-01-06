@@ -1,6 +1,9 @@
 #ifndef  STATEMENT_H
 #define STATEMENT_H
 
+#include <string>
+using std::string;
+
 class Statement
 {
 public:

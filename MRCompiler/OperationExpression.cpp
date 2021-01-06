@@ -1,12 +1,13 @@
 #include "OperationExpression.h"
 
 OperationExpression::OperationExpression()
-	: mOperation(nullptr), mOperands(nullptr)
+	//: mOperation(nullptr), mOperands(nullptr)
 {
 }
 
 OperationExpression::~OperationExpression()
 {
+	/*
 	if (mOperands != nullptr)
 	{
 		int c = mOperands->size();
@@ -16,8 +17,10 @@ OperationExpression::~OperationExpression()
 	}
 	if (mOperation != nullptr)
 		delete mOperation;
+		*/
 }
 
+/*
 void OperationExpression::setOperation(Operation* op)
 {
 	mOperation = op;
@@ -34,6 +37,7 @@ Literal OperationExpression::eval()
 		return Literal();
 	else
 	{
-		return mOperation->execute(*mOperands).getLiteral();
+		return *mOperation->execute(*mOperands).getLiteral();
 	}
 }
+*/

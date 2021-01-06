@@ -6,6 +6,11 @@
 #include "Statement.h"
 #include "ExpressionStatement.h"
 #include "CompoundStatement.h"
+#include "Literal.h"
+#include "IntegerLiteral.h"
+#include "BooleanLiteral.h"
+#include "UnaryBooleanNegationExpression.h"
+#include "UnaryNumericNegationExpression.h"
 
 using std::cout;	using std::endl;
 using std::cerr;
@@ -13,11 +18,11 @@ using std::cerr;
 void yyerror(const char* str);
 
 // the abstract syntax tree
-extern CompoundStatement * rootStatement;
+extern CompoundStatement* rootStatement;
 }
 
 %code{
-CompoundStatement * rootStatement = new CompoundStatement("IT WORKS?!");
+CompoundStatement* rootStatement = new CompoundStatement();
 }
 
 %union
@@ -26,6 +31,7 @@ CompoundStatement * rootStatement = new CompoundStatement("IT WORKS?!");
 	char* t_str;
 	Expression* t_expression;
 	Statement* t_statement;
+	Literal* t_literal;
 };
 
 
@@ -48,19 +54,11 @@ CompoundStatement * rootStatement = new CompoundStatement("IT WORKS?!");
 %type <t_str> IDENTIFIER
 
  // non-terminal types
-%nterm <t_int> literal
+%nterm <t_literal> literal
 %nterm <t_expression> expr
 %nterm <t_statement> stmt
 
- // The parser takes an additional argument: root compound statement
- //%parse-param { CompoundStatement& programAST }
-
 %start program
-
- // vul aan met voorrangdeclaraties
-
-
-
 
 
 
@@ -77,12 +75,19 @@ CompoundStatement * rootStatement = new CompoundStatement("IT WORKS?!");
 // vul aan met producties
 program : compstmt ;
 
-compstmt : stmt zeroOrMore_t_stmt zeroOrOne_t {cout << "[compstmt]" << endl;}
+compstmt : stmt zeroOrMore_t_stmt zeroOrOne_t 
+								{
+									rootStatement->prependStatement($stmt);
+									
+								}
 		 ;
 
 zeroOrMore_t_stmt 
 	: /* empty */ {}
-	| zeroOrMore_t_stmt t stmt {cout << "[LIST compstmt]" << endl;}
+	| zeroOrMore_t_stmt t stmt	{
+									rootStatement->appendStatement($stmt); 
+									cout << "[LIST compstmt]" << endl;
+								}
 	;
 
 zeroOrOne_t	
@@ -103,13 +108,19 @@ stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
 
 expr	: IDENTIFIER assignop expr	{/*cout << "IDENTIFIER assignop expr: " << $<str>1 << endl;*/}
         | expr binop expr			{/*cout << "expr binop expr" << endl;*/}
-        | NOT expr					{/*cout << "NOT expr" << endl;*/}
+        | NOT expr					{
+										$$ = new UnaryBooleanNegationExpression($2); 
+										cout << "[MINUS expr] " /*<< $$->eval().value()*/ << endl;
+									}
         | literal					{
 										$$ = new LiteralExpression($literal); 
-										cout << "[expr] literal: " << $$->eval().value() << endl;
+										cout << "[expr] literal: " /*<< $$->eval().value()*/ << endl;
 									}
         | IDENTIFIER				{/*cout << "IDENTIFIER: " << $<str>1 << endl;*/}
-        | MINUS expr				{/*cout << "MINUS expr" << endl;*/}
+        | MINUS expr				{
+										$$ = new UnaryNumericNegationExpression($2); 
+										cout << "[MINUS expr] " /*<< $$->eval().value()*/ << endl;
+									}
 		| IDENTIFIER LPAREN zereOrOne_expressions RPAREN {/*cout << "function call" << endl;*/}
 		| LPAREN expr RPAREN		{/*cout << "LPAREN expr RPAREN" << endl;*/}
         ;
@@ -150,8 +161,8 @@ zereOrOne_arglist
 	;
 
 literal
-	: INTEGER { $$ = $INTEGER; cout << "literal int:" << $1 << endl;  }
-	| BOOLEAN { $$ = $BOOLEAN; cout << "literal bool:" << $1 << endl; }
+	: INTEGER { $$ = new IntegerLiteral($INTEGER); cout << "literal int:" << $INTEGER << endl; }
+	| BOOLEAN { $$ = new BooleanLiteral($BOOLEAN); cout << "literal bool:" << $BOOLEAN << endl; }
 	;
 
 assignop
@@ -189,9 +200,6 @@ do   : t | DO | t DO ;
 
 
 %%
-
-
-
 
 
 

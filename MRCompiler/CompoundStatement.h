@@ -9,18 +9,21 @@ using std::vector;
 class CompoundStatement : public Statement
 {
 public:
+	// CONSTRUCTORS & DESTRUCTOR
 	CompoundStatement();
-	CompoundStatement(const char*); // for test
 	CompoundStatement(vector<Statement*> & expressions);
 	~CompoundStatement();
 
+	// MANIPULATORS (for list of statements)
 	void setSatements(vector<Statement*> & statements);
-	void addStatement(Statement* statement);
+	void appendStatement(Statement* statement);
+	void prependStatement(Statement* statement);
+	
+	// STATEMENT FUNCS
 	void execute();
 
 private:
 	void deleteExpressions();
-	const char* ms;
 	vector<Statement*> mStatements;
 
 };

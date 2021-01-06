@@ -7,7 +7,7 @@ class Expression
 {
 public:
 	virtual ~Expression() = 0;
-	virtual Literal eval() = 0;
+	virtual Literal* eval() = 0;
 };
 
 

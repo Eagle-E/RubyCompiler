@@ -7,10 +7,16 @@
 #include "parser.h"
 #include "ArgParser.h"
 #include "Literal.h"
-#include "UnaryNumericNegation.h"
 #include "LiteralExpression.h"
 #include "Statement.h"
 #include "CompoundStatement.h"
+#include "OperationExpression.h"
+#include "UnaryOperationExpression.h"
+#include "UnaryBooleanNegationExpression.h"
+#include "UnaryNumericNegationExpression.h"
+
+#include "IntegerLiteral.h"
+#include "BooleanLiteral.h"
 
 using std::cout;		using std::endl;
 using std::cin;			using std::exception;
@@ -107,6 +113,17 @@ int main(int argc, char* argv[])
 	}
 
 	
+	delete rootStatement;
+
+	//cout << "--------TESTING----------" << endl;
+	//IntegerLiteral l1(17);
+	//BooleanLiteral l2(true);
+	//IntegerLiteral l3(18);
+	//IntegerLiteral l4(17);
+	//
+	//cout << "type of l1 and l2 equeal? " << Literal::sameType(l1, l2) << endl;
+	//cout << "type of l1 and l3 equeal? " << Literal::sameType(l1, l3) << endl;
+	//cout << false << endl;
 
 	return 0;
 }

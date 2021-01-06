@@ -54,6 +54,11 @@ extern int yydebug;
 #include "Statement.h"
 #include "ExpressionStatement.h"
 #include "CompoundStatement.h"
+#include "Literal.h"
+#include "IntegerLiteral.h"
+#include "BooleanLiteral.h"
+#include "UnaryBooleanNegationExpression.h"
+#include "UnaryNumericNegationExpression.h"
 
 using std::cout;	using std::endl;
 using std::cerr;
@@ -61,9 +66,9 @@ using std::cerr;
 void yyerror(const char* str);
 
 // the abstract syntax tree
-extern CompoundStatement * rootStatement;
+extern CompoundStatement* rootStatement;
 
-#line 67 "parser.h"
+#line 72 "parser.h"
 
 /* Token kinds.  */
 #ifndef YYTOKENTYPE
@@ -124,14 +129,15 @@ extern CompoundStatement * rootStatement;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 24 "parser.y"
+#line 29 "parser.y"
 
 	int t_int;
 	char* t_str;
 	Expression* t_expression;
 	Statement* t_statement;
+	Literal* t_literal;
 
-#line 135 "parser.h"
+#line 141 "parser.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

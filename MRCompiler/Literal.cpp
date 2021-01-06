@@ -1,26 +1,17 @@
 #include "Literal.h"
+#include <typeinfo>
+#include <string.h>
 
-Literal::Literal()
-	: mVal(0)
+
+
+/*
+* Returns true if both given literal objects are the same (subclass).
+*/
+bool Literal::sameType(Literal& l1, Literal& l2)
 {
+	return strcmp(typeid(l1).name(), typeid(l2).name()) == 0;
 }
 
-Literal::Literal(int val)
-	: mVal(val)
+Literal::~Literal()
 {
-}
-
-Literal::Literal(const Literal& val)
-{
-	mVal = val.mVal;
-}
-
-void Literal::set(int val)
-{
-	mVal = val;
-}
-
-int Literal::value() const
-{
-	return mVal;
 }

@@ -25,9 +25,9 @@ LiteralExpression UnaryNumericNegation::execute(vector<Expression*>& operands)
         throw InvalidNumberOfOperands("Invalid number of operands for operator");
 
     // there is exaclty one arg, take negation and return
-    Literal operandLiteral = operands.at(0)->eval();
-    LiteralExpression le(Literal(-operandLiteral.value()));
-    cout << le.getLiteral().value() << endl;
-    return le;
+    //Literal operandLiteral = operands.at(0)->eval();
+    //LiteralExpression le(Literal(*(-operandLiteral.value())));
+    //cout << le.getLiteral().value() << endl;
+    return LiteralExpression();
 }
 

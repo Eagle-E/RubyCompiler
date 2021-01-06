@@ -8,15 +8,14 @@ class LiteralExpression : public Expression
 {
 public:
 	LiteralExpression();
-	LiteralExpression(int val);
-	LiteralExpression(Literal l);
+	LiteralExpression(Literal * l);
 	~LiteralExpression();
 
-	Literal getLiteral();
-	Literal eval();
+	Literal* getLiteral();
+	Literal* eval();
 
 private:
-	Literal mLiteral;
+	Literal* mLiteral;
 };
 
 

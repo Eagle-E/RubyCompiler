@@ -12,14 +12,15 @@ class OperationExpression : public Expression
 public:
 	OperationExpression();
 	~OperationExpression();
+	virtual Literal* eval() = 0;
 
-	void setOperation(Operation* op);
-	void setOperands(vector<Expression*>* operands);
-	Literal eval();
+
+	//void setOperation(Operation* op);
+	//void setOperands(vector<Expression*>* operands);
 
 private:
-	Operation* mOperation;
-	vector<Expression*>* mOperands;
+	//Operation* mOperation;
+	//vector<Expression*>* mOperands;
 };
 
 
