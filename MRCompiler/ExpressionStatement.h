@@ -12,7 +12,7 @@ public:
 	ExpressionStatement(Expression* expr);
 	~ExpressionStatement();
 
-	void execute();
+	void execute(StackAndTable* stackAndTable);
 private:
 	Expression* mExpression;
 };

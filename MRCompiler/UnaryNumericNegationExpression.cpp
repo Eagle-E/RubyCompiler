@@ -21,12 +21,12 @@ UnaryNumericNegationExpression::~UnaryNumericNegationExpression()
 * @throws an InvalidOperandType exception if the operand is of wrong type
 * @throws an InvalidAmountOfOperands exception if the given amount of operands is wrong
 */
-Literal* UnaryNumericNegationExpression::eval()
+Literal* UnaryNumericNegationExpression::eval(StackAndTable* stackAndTable)
 {
 	if (mOperand != nullptr)
 	{
 		// check if operand is of BooleanLiteral type
-		IntegerLiteral* evalResInt = dynamic_cast<IntegerLiteral*>(mOperand->eval());
+		IntegerLiteral* evalResInt = dynamic_cast<IntegerLiteral*>(mOperand->eval(stackAndTable));
 		if (evalResInt != nullptr)
 		{
 			// dynamic cast succeeded, result of eval was a boolean literal

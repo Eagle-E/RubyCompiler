@@ -181,6 +181,8 @@
     <ClCompile Include="CompoundStatement.cpp" />
     <ClCompile Include="Expression.cpp" />
     <ClCompile Include="ExpressionStatement.cpp" />
+    <ClCompile Include="FunctionTable.cpp" />
+    <ClCompile Include="IdentifierExpression.cpp" />
     <ClCompile Include="InvalidCommandLineArguments.cpp" />
     <ClCompile Include="InvalidNumberOfOperands.cpp" />
     <ClCompile Include="InvalidOperandType.cpp" />
@@ -191,6 +193,8 @@
     <ClCompile Include="IntegerLiteral.cpp" />
     <ClCompile Include="InvalidAmountOfOperands.cpp" />
     <ClCompile Include="OperationExpression.cpp" />
+    <ClCompile Include="ProgramStack.cpp" />
+    <ClCompile Include="StackItem.cpp" />
     <ClCompile Include="Statement.cpp" />
     <ClCompile Include="UnaryBooleanNegation.cpp" />
     <ClCompile Include="UnaryBooleanNegationExpression.cpp" />
@@ -203,6 +207,8 @@
   <ItemGroup>
     <ClInclude Include="ArgParser.h" />
     <ClInclude Include="BooleanLiteral.h" />
+    <ClInclude Include="FunctionTable.h" />
+    <ClInclude Include="IdentifierExpression.h" />
     <ClInclude Include="IntegerLiteral.h" />
     <ClInclude Include="CompileTask.h" />
     <ClInclude Include="CompoundStatement.h" />
@@ -217,6 +223,9 @@
     <ClInclude Include="InvalidAmountOfOperands.h" />
     <ClInclude Include="Operation.h" />
     <ClInclude Include="OperationExpression.h" />
+    <ClInclude Include="ProgramStack.h" />
+    <ClInclude Include="StackAndTable.h" />
+    <ClInclude Include="StackItem.h" />
     <ClInclude Include="Statement.h" />
     <ClInclude Include="UnaryBooleanNegation.h" />
     <ClInclude Include="UnaryBooleanNegationExpression.h" />

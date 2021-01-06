@@ -12,7 +12,7 @@ class OperationExpression : public Expression
 public:
 	OperationExpression();
 	~OperationExpression();
-	virtual Literal* eval() = 0;
+	virtual Literal* eval(StackAndTable* stackAndTable) = 0;
 
 
 	//void setOperation(Operation* op);

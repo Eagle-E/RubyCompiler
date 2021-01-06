@@ -50,11 +50,11 @@ void CompoundStatement::prependStatement(Statement* statement)
 *******************************************************************************
 */
 
-void CompoundStatement::execute()
+void CompoundStatement::execute(StackAndTable* stackAndTable)
 {
-	for (Statement* expr : mStatements)
+	for (Statement* stmt : mStatements)
 	{
-		expr->execute();
+		stmt->execute(stackAndTable);
 	}
 }
 

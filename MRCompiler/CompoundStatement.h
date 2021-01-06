@@ -20,7 +20,7 @@ public:
 	void prependStatement(Statement* statement);
 	
 	// STATEMENT FUNCS
-	void execute();
+	void execute(StackAndTable* stackAndTable);
 
 private:
 	void deleteExpressions();

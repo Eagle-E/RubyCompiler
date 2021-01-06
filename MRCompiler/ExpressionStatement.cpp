@@ -1,5 +1,6 @@
 #include "ExpressionStatement.h"
 #include "Expression.h"
+#include "StackAndTable.h"
 
 ExpressionStatement::ExpressionStatement()
 	: mExpression(nullptr)
@@ -17,8 +18,8 @@ ExpressionStatement::~ExpressionStatement()
 		delete mExpression;
 }
 
-void ExpressionStatement::execute()
+void ExpressionStatement::execute(StackAndTable* stackAndTable)
 {
 	if (mExpression != nullptr)
-		mExpression->eval();
+		mExpression->eval(stackAndTable);
 }

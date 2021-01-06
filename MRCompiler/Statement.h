@@ -4,11 +4,13 @@
 #include <string>
 using std::string;
 
+class StackAndTable;
+
 class Statement
 {
 public:
 	virtual ~Statement() = 0;
-	virtual void execute() = 0;
+	virtual void execute(StackAndTable* stackAndTable) = 0;
 
 private:
 };

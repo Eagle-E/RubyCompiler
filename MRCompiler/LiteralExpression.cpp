@@ -20,7 +20,7 @@ Literal* LiteralExpression::getLiteral()
 {
 	return mLiteral;
 }
-Literal* LiteralExpression::eval()
+Literal* LiteralExpression::eval(StackAndTable* stackAndTable)
 {
-	return mLiteral;
+	return new Literal(*mLiteral);
 }

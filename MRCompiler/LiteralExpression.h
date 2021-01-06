@@ -12,7 +12,7 @@ public:
 	~LiteralExpression();
 
 	Literal* getLiteral();
-	Literal* eval();
+	Literal* eval(StackAndTable* stackAndTable);
 
 private:
 	Literal* mLiteral;

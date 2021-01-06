@@ -6,6 +6,7 @@
 #include "lexer.h"
 #include "parser.h"
 #include "ArgParser.h"
+#include "StackAndTable.h"
 #include "Literal.h"
 #include "LiteralExpression.h"
 #include "Statement.h"
@@ -14,7 +15,6 @@
 #include "UnaryOperationExpression.h"
 #include "UnaryBooleanNegationExpression.h"
 #include "UnaryNumericNegationExpression.h"
-
 #include "IntegerLiteral.h"
 #include "BooleanLiteral.h"
 
@@ -90,8 +90,8 @@ int main(int argc, char* argv[])
 			//cout << "[!] " << code << endl;
 		} while( !feof(pCodeFile) );
 
-		
-		rootStatement->execute();
+		StackAndTable st;
+		rootStatement->execute(&st);
 
 	}
 

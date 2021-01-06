@@ -11,6 +11,7 @@
 #include "BooleanLiteral.h"
 #include "UnaryBooleanNegationExpression.h"
 #include "UnaryNumericNegationExpression.h"
+#include "IdentifierExpression.h"
 
 // BEGIN TEST
 #include <typeinfo>
@@ -113,31 +114,29 @@ stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
 expr	: IDENTIFIER assignop expr	{/*cout << "IDENTIFIER assignop expr: " << $<str>1 << endl;*/}
         | expr binop expr			{/*cout << "expr binop expr" << endl;*/}
         | NOT expr					{
-										//cout << typeid($2).name() << endl;
-										//cout << $2 << endl;
 										$$ = new UnaryBooleanNegationExpression($2); 
 										//cout << "[MINUS expr] " /*<< $$->eval().value()*/ << endl;
 									}
         | literal					{
 										$$ = new LiteralExpression($literal);
-										BooleanLiteral* b = dynamic_cast<BooleanLiteral*>($literal);
-										if (b != nullptr)
-										{
-											cout << "[expr] literal: " << b->val() << endl;
-										}
-										else
-										{
-											cout << "[expr] literal: " /*<< $$->eval().value()*/ << endl;
-										}
+										//cout << "[expr] literal: " /*<< $$->eval().value()*/ << endl;
 									}
-        | IDENTIFIER				{/*cout << "IDENTIFIER: " << $<str>1 << endl;*/}
+        | IDENTIFIER				{
+										/*cout << "IDENTIFIER: " << $<str>1 << endl;*/
+										$$ = new IdentifierExpression($1);	
+									}
         | MINUS expr				{
-										typeid($2).name();
 										$$ = new UnaryNumericNegationExpression($2); 
 										//cout << "[MINUS expr] " /*<< $$->eval().value()*/ << endl;
 									}
-		| IDENTIFIER LPAREN zereOrOne_expressions RPAREN {/*cout << "function call" << endl;*/}
-		| LPAREN expr RPAREN		{/*cout << "LPAREN expr RPAREN" << endl;*/}
+		| IDENTIFIER LPAREN zereOrOne_expressions RPAREN 
+									{
+										/*cout << "function call" << endl;*/
+									}
+		| LPAREN expr RPAREN		{
+										$$ = $2;
+										/*cout << "LPAREN expr RPAREN" << endl;*/
+									}
         ;
 
 expressions
@@ -177,7 +176,7 @@ zereOrOne_arglist
 
 literal
 	: INTEGER { $$ = new IntegerLiteral($INTEGER); /*cout << "literal int:" << $INTEGER << endl; */ }
-	| BOOLEAN { $$ = new BooleanLiteral($BOOLEAN); cout << "literal bool:" << $BOOLEAN << endl; }
+	| BOOLEAN { $$ = new BooleanLiteral($BOOLEAN); /*cout << "literal bool:" << $BOOLEAN << endl;*/ }
 	;
 
 assignop

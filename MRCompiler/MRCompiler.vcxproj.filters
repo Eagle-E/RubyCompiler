@@ -34,6 +34,30 @@
     <Filter Include="Source Files\Exceptions">
       <UniqueIdentifier>{63e33b58-9235-47ae-a446-e3adeb74d53f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Parse Tree\Literals">
+      <UniqueIdentifier>{d9b7bb2b-c6ab-46e8-b503-bcc0830d530d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Parse Tree\Statements">
+      <UniqueIdentifier>{f6babb8a-280a-4ee3-83e0-b85fa62ef9cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Parse Tree\Expressions">
+      <UniqueIdentifier>{a85dc6f7-9778-49d4-8c3a-d8d8e34ba3b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Parse Tree\Operations">
+      <UniqueIdentifier>{657da0cb-d3c5-4a15-9569-164eff61e44d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Parse Tree\Literals">
+      <UniqueIdentifier>{caf31003-7109-4b9d-85db-671849707bff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Parse Tree\Expressions">
+      <UniqueIdentifier>{055b407c-1021-4e78-b3f7-af46ea985b65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Parse Tree\Operations">
+      <UniqueIdentifier>{c6dd23f1-3053-455a-8e73-6fa91cd70dd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Parse Tree\Statements">
+      <UniqueIdentifier>{00de4398-37ea-4d7d-a986-e35b666e724d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="lexer.l">
@@ -56,65 +80,80 @@
     <ClInclude Include="CompileTask.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UnaryOperation.h">
-      <Filter>Header Files\Parse Tree</Filter>
-    </ClInclude>
-    <ClInclude Include="Operation.h">
-      <Filter>Header Files\Parse Tree</Filter>
-    </ClInclude>
-    <ClInclude Include="UnaryNumericNegation.h">
-      <Filter>Header Files\Parse Tree</Filter>
-    </ClInclude>
-    <ClInclude Include="Literal.h">
-      <Filter>Header Files\Parse Tree</Filter>
-    </ClInclude>
-    <ClInclude Include="Expression.h">
-      <Filter>Header Files\Parse Tree</Filter>
-    </ClInclude>
-    <ClInclude Include="LiteralExpression.h">
-      <Filter>Header Files\Parse Tree</Filter>
-    </ClInclude>
-    <ClInclude Include="UnaryBooleanNegation.h">
-      <Filter>Header Files\Parse Tree</Filter>
-    </ClInclude>
-    <ClInclude Include="OperationExpression.h">
-      <Filter>Header Files\Parse Tree</Filter>
-    </ClInclude>
     <ClInclude Include="InvalidCommandLineArguments.h">
       <Filter>Header Files\Exceptions</Filter>
     </ClInclude>
     <ClInclude Include="InvalidNumberOfOperands.h">
       <Filter>Header Files\Exceptions</Filter>
     </ClInclude>
-    <ClInclude Include="Statement.h">
-      <Filter>Header Files\Parse Tree</Filter>
-    </ClInclude>
-    <ClInclude Include="CompoundStatement.h">
-      <Filter>Header Files\Parse Tree</Filter>
-    </ClInclude>
-    <ClInclude Include="ExpressionStatement.h">
-      <Filter>Header Files\Parse Tree</Filter>
-    </ClInclude>
-    <ClInclude Include="BooleanLiteral.h">
-      <Filter>Header Files\Parse Tree</Filter>
-    </ClInclude>
-    <ClInclude Include="IntegerLiteral.h">
-      <Filter>Header Files\Parse Tree</Filter>
-    </ClInclude>
-    <ClInclude Include="UnaryNumericNegationExpression.h">
-      <Filter>Header Files\Parse Tree</Filter>
-    </ClInclude>
-    <ClInclude Include="UnaryBooleanNegationExpression.h">
-      <Filter>Header Files\Parse Tree</Filter>
-    </ClInclude>
-    <ClInclude Include="UnaryOperationExpression.h">
-      <Filter>Header Files\Parse Tree</Filter>
-    </ClInclude>
     <ClInclude Include="InvalidOperandType.h">
       <Filter>Header Files\Exceptions</Filter>
     </ClInclude>
     <ClInclude Include="InvalidAmountOfOperands.h">
       <Filter>Header Files\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="BooleanLiteral.h">
+      <Filter>Header Files\Parse Tree\Literals</Filter>
+    </ClInclude>
+    <ClInclude Include="IntegerLiteral.h">
+      <Filter>Header Files\Parse Tree\Literals</Filter>
+    </ClInclude>
+    <ClInclude Include="Literal.h">
+      <Filter>Header Files\Parse Tree\Literals</Filter>
+    </ClInclude>
+    <ClInclude Include="IdentifierExpression.h">
+      <Filter>Header Files\Parse Tree\Expressions</Filter>
+    </ClInclude>
+    <ClInclude Include="Expression.h">
+      <Filter>Header Files\Parse Tree\Expressions</Filter>
+    </ClInclude>
+    <ClInclude Include="LiteralExpression.h">
+      <Filter>Header Files\Parse Tree\Expressions</Filter>
+    </ClInclude>
+    <ClInclude Include="OperationExpression.h">
+      <Filter>Header Files\Parse Tree\Expressions</Filter>
+    </ClInclude>
+    <ClInclude Include="UnaryBooleanNegationExpression.h">
+      <Filter>Header Files\Parse Tree\Expressions</Filter>
+    </ClInclude>
+    <ClInclude Include="UnaryNumericNegationExpression.h">
+      <Filter>Header Files\Parse Tree\Expressions</Filter>
+    </ClInclude>
+    <ClInclude Include="UnaryOperationExpression.h">
+      <Filter>Header Files\Parse Tree\Expressions</Filter>
+    </ClInclude>
+    <ClInclude Include="CompoundStatement.h">
+      <Filter>Header Files\Parse Tree\Statements</Filter>
+    </ClInclude>
+    <ClInclude Include="ExpressionStatement.h">
+      <Filter>Header Files\Parse Tree\Statements</Filter>
+    </ClInclude>
+    <ClInclude Include="Statement.h">
+      <Filter>Header Files\Parse Tree\Statements</Filter>
+    </ClInclude>
+    <ClInclude Include="Operation.h">
+      <Filter>Header Files\Parse Tree\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="UnaryBooleanNegation.h">
+      <Filter>Header Files\Parse Tree\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="UnaryNumericNegation.h">
+      <Filter>Header Files\Parse Tree\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="UnaryOperation.h">
+      <Filter>Header Files\Parse Tree\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgramStack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StackItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FunctionTable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StackAndTable.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -133,62 +172,74 @@
     <ClCompile Include="CompileTask.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UnaryOperation.cpp">
-      <Filter>Source Files\Parse Tree</Filter>
-    </ClCompile>
-    <ClCompile Include="UnaryNumericNegation.cpp">
-      <Filter>Source Files\Parse Tree</Filter>
-    </ClCompile>
-    <ClCompile Include="Literal.cpp">
-      <Filter>Source Files\Parse Tree</Filter>
-    </ClCompile>
-    <ClCompile Include="LiteralExpression.cpp">
-      <Filter>Source Files\Parse Tree</Filter>
-    </ClCompile>
-    <ClCompile Include="UnaryBooleanNegation.cpp">
-      <Filter>Source Files\Parse Tree</Filter>
-    </ClCompile>
-    <ClCompile Include="OperationExpression.cpp">
-      <Filter>Source Files\Parse Tree</Filter>
-    </ClCompile>
     <ClCompile Include="InvalidCommandLineArguments.cpp">
       <Filter>Source Files\Exceptions</Filter>
     </ClCompile>
     <ClCompile Include="InvalidNumberOfOperands.cpp">
       <Filter>Source Files\Exceptions</Filter>
     </ClCompile>
-    <ClCompile Include="Expression.cpp">
-      <Filter>Source Files\Parse Tree</Filter>
-    </ClCompile>
-    <ClCompile Include="Statement.cpp">
-      <Filter>Source Files\Parse Tree</Filter>
-    </ClCompile>
-    <ClCompile Include="CompoundStatement.cpp">
-      <Filter>Source Files\Parse Tree</Filter>
-    </ClCompile>
-    <ClCompile Include="ExpressionStatement.cpp">
-      <Filter>Source Files\Parse Tree</Filter>
-    </ClCompile>
-    <ClCompile Include="IntegerLiteral.cpp">
-      <Filter>Source Files\Parse Tree</Filter>
-    </ClCompile>
-    <ClCompile Include="BooleanLiteral.cpp">
-      <Filter>Source Files\Parse Tree</Filter>
-    </ClCompile>
-    <ClCompile Include="UnaryNumericNegationExpression.cpp">
-      <Filter>Source Files\Parse Tree</Filter>
-    </ClCompile>
-    <ClCompile Include="UnaryBooleanNegationExpression.cpp">
-      <Filter>Source Files\Parse Tree</Filter>
-    </ClCompile>
-    <ClCompile Include="UnaryOperationExpression.cpp">
-      <Filter>Source Files\Parse Tree</Filter>
-    </ClCompile>
     <ClCompile Include="InvalidOperandType.cpp">
       <Filter>Source Files\Exceptions</Filter>
     </ClCompile>
     <ClCompile Include="InvalidAmountOfOperands.cpp">
       <Filter>Source Files\Exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="BooleanLiteral.cpp">
+      <Filter>Source Files\Parse Tree\Literals</Filter>
+    </ClCompile>
+    <ClCompile Include="IntegerLiteral.cpp">
+      <Filter>Source Files\Parse Tree\Literals</Filter>
+    </ClCompile>
+    <ClCompile Include="Literal.cpp">
+      <Filter>Source Files\Parse Tree\Literals</Filter>
+    </ClCompile>
+    <ClCompile Include="Expression.cpp">
+      <Filter>Source Files\Parse Tree\Expressions</Filter>
+    </ClCompile>
+    <ClCompile Include="IdentifierExpression.cpp">
+      <Filter>Source Files\Parse Tree\Expressions</Filter>
+    </ClCompile>
+    <ClCompile Include="LiteralExpression.cpp">
+      <Filter>Source Files\Parse Tree\Expressions</Filter>
+    </ClCompile>
+    <ClCompile Include="OperationExpression.cpp">
+      <Filter>Source Files\Parse Tree\Expressions</Filter>
+    </ClCompile>
+    <ClCompile Include="UnaryBooleanNegationExpression.cpp">
+      <Filter>Source Files\Parse Tree\Expressions</Filter>
+    </ClCompile>
+    <ClCompile Include="UnaryNumericNegationExpression.cpp">
+      <Filter>Source Files\Parse Tree\Expressions</Filter>
+    </ClCompile>
+    <ClCompile Include="UnaryOperationExpression.cpp">
+      <Filter>Source Files\Parse Tree\Expressions</Filter>
+    </ClCompile>
+    <ClCompile Include="CompoundStatement.cpp">
+      <Filter>Source Files\Parse Tree\Statements</Filter>
+    </ClCompile>
+    <ClCompile Include="ExpressionStatement.cpp">
+      <Filter>Source Files\Parse Tree\Statements</Filter>
+    </ClCompile>
+    <ClCompile Include="Statement.cpp">
+      <Filter>Source Files\Parse Tree\Statements</Filter>
+    </ClCompile>
+    <ClCompile Include="UnaryBooleanNegation.cpp">
+      <Filter>Source Files\Parse Tree\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="UnaryNumericNegation.cpp">
+      <Filter>Source Files\Parse Tree\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="UnaryOperation.cpp">
+      <Filter>Source Files\Parse Tree\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="StackItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramStack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FunctionTable.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

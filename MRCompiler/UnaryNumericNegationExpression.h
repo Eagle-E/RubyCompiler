@@ -10,7 +10,7 @@ public:
 	UnaryNumericNegationExpression(Expression* operand);
 	~UnaryNumericNegationExpression();
 
-	Literal* eval();
+	Literal* eval(StackAndTable* stackAndTable);
 
 private:
 };
