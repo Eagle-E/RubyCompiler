@@ -86,44 +86,19 @@ int main(int argc, char* argv[])
 		do
 		{
 			yyparse();
-			int code = yylex();
-			cout << "[!] " << code << endl;
+			//int code = yylex();
+			//cout << "[!] " << code << endl;
 		} while( !feof(pCodeFile) );
 
 		
 		rootStatement->execute();
-
-		/*
-		try
-		{
-			CompoundStatement cs;
-
-			UnaryNumericNegation nn;
-			LiteralExpression * le = new LiteralExpression(Literal(17));
-			vector<Expression*> operands;
-			operands.push_back(le);
-			nn.execute(operands);
-			delete le;
-		}
-		catch (exception& e)
-		{
-			cout << e.what() << endl;
-		}*/
 
 	}
 
 	
 	delete rootStatement;
 
-	//cout << "--------TESTING----------" << endl;
-	//IntegerLiteral l1(17);
-	//BooleanLiteral l2(true);
-	//IntegerLiteral l3(18);
-	//IntegerLiteral l4(17);
-	//
-	//cout << "type of l1 and l2 equeal? " << Literal::sameType(l1, l2) << endl;
-	//cout << "type of l1 and l3 equeal? " << Literal::sameType(l1, l3) << endl;
-	//cout << false << endl;
+
 
 	return 0;
 }

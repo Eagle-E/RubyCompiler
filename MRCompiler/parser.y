@@ -12,6 +12,10 @@
 #include "UnaryBooleanNegationExpression.h"
 #include "UnaryNumericNegationExpression.h"
 
+// BEGIN TEST
+#include <typeinfo>
+// END TEST
+
 using std::cout;	using std::endl;
 using std::cerr;
 
@@ -86,7 +90,7 @@ zeroOrMore_t_stmt
 	: /* empty */ {}
 	| zeroOrMore_t_stmt t stmt	{
 									rootStatement->appendStatement($stmt); 
-									cout << "[LIST compstmt]" << endl;
+									//cout << "[LIST compstmt]" << endl;
 								}
 	;
 
@@ -109,17 +113,28 @@ stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
 expr	: IDENTIFIER assignop expr	{/*cout << "IDENTIFIER assignop expr: " << $<str>1 << endl;*/}
         | expr binop expr			{/*cout << "expr binop expr" << endl;*/}
         | NOT expr					{
+										//cout << typeid($2).name() << endl;
+										//cout << $2 << endl;
 										$$ = new UnaryBooleanNegationExpression($2); 
-										cout << "[MINUS expr] " /*<< $$->eval().value()*/ << endl;
+										//cout << "[MINUS expr] " /*<< $$->eval().value()*/ << endl;
 									}
         | literal					{
-										$$ = new LiteralExpression($literal); 
-										cout << "[expr] literal: " /*<< $$->eval().value()*/ << endl;
+										$$ = new LiteralExpression($literal);
+										BooleanLiteral* b = dynamic_cast<BooleanLiteral*>($literal);
+										if (b != nullptr)
+										{
+											cout << "[expr] literal: " << b->val() << endl;
+										}
+										else
+										{
+											cout << "[expr] literal: " /*<< $$->eval().value()*/ << endl;
+										}
 									}
         | IDENTIFIER				{/*cout << "IDENTIFIER: " << $<str>1 << endl;*/}
         | MINUS expr				{
+										typeid($2).name();
 										$$ = new UnaryNumericNegationExpression($2); 
-										cout << "[MINUS expr] " /*<< $$->eval().value()*/ << endl;
+										//cout << "[MINUS expr] " /*<< $$->eval().value()*/ << endl;
 									}
 		| IDENTIFIER LPAREN zereOrOne_expressions RPAREN {/*cout << "function call" << endl;*/}
 		| LPAREN expr RPAREN		{/*cout << "LPAREN expr RPAREN" << endl;*/}
@@ -161,7 +176,7 @@ zereOrOne_arglist
 	;
 
 literal
-	: INTEGER { $$ = new IntegerLiteral($INTEGER); cout << "literal int:" << $INTEGER << endl; }
+	: INTEGER { $$ = new IntegerLiteral($INTEGER); /*cout << "literal int:" << $INTEGER << endl; */ }
 	| BOOLEAN { $$ = new BooleanLiteral($BOOLEAN); cout << "literal bool:" << $BOOLEAN << endl; }
 	;
 
