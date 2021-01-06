@@ -176,6 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ArgParser.cpp" />
+    <ClCompile Include="AssignmentExpression.cpp" />
     <ClCompile Include="BooleanLiteral.cpp" />
     <ClCompile Include="CompileTask.cpp" />
     <ClCompile Include="CompoundStatement.cpp" />
@@ -183,6 +184,7 @@
     <ClCompile Include="ExpressionStatement.cpp" />
     <ClCompile Include="FunctionTable.cpp" />
     <ClCompile Include="IdentifierExpression.cpp" />
+    <ClCompile Include="IdentifierNotDefined.cpp" />
     <ClCompile Include="InvalidCommandLineArguments.cpp" />
     <ClCompile Include="InvalidNumberOfOperands.cpp" />
     <ClCompile Include="InvalidOperandType.cpp" />
@@ -206,9 +208,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArgParser.h" />
+    <ClInclude Include="AssignmentExpression.h" />
+    <ClInclude Include="AssignmentOperation.h" />
     <ClInclude Include="BooleanLiteral.h" />
     <ClInclude Include="FunctionTable.h" />
     <ClInclude Include="IdentifierExpression.h" />
+    <ClInclude Include="IdentifierNotDefined.h" />
     <ClInclude Include="IntegerLiteral.h" />
     <ClInclude Include="CompileTask.h" />
     <ClInclude Include="CompoundStatement.h" />
@@ -221,6 +226,7 @@
     <ClInclude Include="Literal.h" />
     <ClInclude Include="LiteralExpression.h" />
     <ClInclude Include="InvalidAmountOfOperands.h" />
+    <ClInclude Include="NumericAssignment.h" />
     <ClInclude Include="Operation.h" />
     <ClInclude Include="OperationExpression.h" />
     <ClInclude Include="ProgramStack.h" />

@@ -12,6 +12,8 @@
 #include "UnaryBooleanNegationExpression.h"
 #include "UnaryNumericNegationExpression.h"
 #include "IdentifierExpression.h"
+#include "AssignmentExpression.h"
+
 
 // BEGIN TEST
 #include <typeinfo>
@@ -111,8 +113,13 @@ stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
 		| expr		{$$ = new ExpressionStatement($expr);}		
         ;
 
-expr	: IDENTIFIER assignop expr	{/*cout << "IDENTIFIER assignop expr: " << $<str>1 << endl;*/}
-        | expr binop expr			{/*cout << "expr binop expr" << endl;*/}
+expr	: IDENTIFIER assignop expr	{
+										$$ = new AssignmentExpression($IDENTIFIER)
+										/*cout << "IDENTIFIER assignop expr: " << $<str>1 << endl;*/
+									}
+        | expr binop expr			{
+										/*cout << "expr binop expr" << endl;*/
+									}
         | NOT expr					{
 										$$ = new UnaryBooleanNegationExpression($2); 
 										//cout << "[MINUS expr] " /*<< $$->eval().value()*/ << endl;

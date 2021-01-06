@@ -155,6 +155,18 @@
     <ClInclude Include="StackAndTable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="IdentifierNotDefined.h">
+      <Filter>Header Files\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="AssignmentExpression.h">
+      <Filter>Header Files\Parse Tree\Expressions</Filter>
+    </ClInclude>
+    <ClInclude Include="AssignmentOperation.h">
+      <Filter>Header Files\Parse Tree\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="NumericAssignment.h">
+      <Filter>Header Files\Parse Tree\Operations</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lexer.cpp">
@@ -240,6 +252,12 @@
     </ClCompile>
     <ClCompile Include="FunctionTable.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IdentifierNotDefined.cpp">
+      <Filter>Source Files\Exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="AssignmentExpression.cpp">
+      <Filter>Source Files\Parse Tree\Expressions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -16,7 +16,7 @@ class Literal;
 class StackItem
 {
 public:
-	enum class SymbolType { IntegerLiteral, BooleanLiteral, NONE };
+	enum class SymbolType { IntegerLiteral, BooleanLiteral, NONE, OTHER };
 	StackItem();
 	StackItem(const StackItem& other);
 	~StackItem();

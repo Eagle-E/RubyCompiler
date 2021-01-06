@@ -91,7 +91,17 @@ int main(int argc, char* argv[])
 		} while( !feof(pCodeFile) );
 
 		StackAndTable st;
-		rootStatement->execute(&st);
+		
+		try
+		{
+			rootStatement->execute(&st);
+
+		}
+		// TODO add other exceptions types to catch more specific interpreter errors
+		catch (exception& e)
+		{
+			cout << e.what() << endl;
+		}
 
 	}
 
