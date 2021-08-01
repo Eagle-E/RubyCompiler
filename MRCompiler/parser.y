@@ -9,8 +9,7 @@
 #include "Literal.h"
 #include "IntegerLiteral.h"
 #include "BooleanLiteral.h"
-#include "UnaryBooleanNegationExpression.h"
-#include "UnaryNumericNegationExpression.h"
+#include "UnaryNegationExpression.h"
 #include "IdentifierExpression.h"
 #include "AssignmentExpression.h"
 
@@ -113,27 +112,31 @@ stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
 		| expr		{$$ = new ExpressionStatement($expr);}		
         ;
 
-expr	: IDENTIFIER assignop expr	{
-										$$ = new AssignmentExpression($IDENTIFIER)
-										/*cout << "IDENTIFIER assignop expr: " << $<str>1 << endl;*/
-									}
-        | expr binop expr			{
+expr	: expr binop expr			{
 										/*cout << "expr binop expr" << endl;*/
 									}
         | NOT expr					{
-										$$ = new UnaryBooleanNegationExpression($2); 
+										//$$ = new UnaryNegationExpression($2); 
 										//cout << "[MINUS expr] " /*<< $$->eval().value()*/ << endl;
 									}
         | literal					{
 										$$ = new LiteralExpression($literal);
-										//cout << "[expr] literal: " /*<< $$->eval().value()*/ << endl;
+										cout << "[expr] literal: ";
+										$literal->print();
+										cout << endl;
 									}
         | IDENTIFIER				{
-										/*cout << "IDENTIFIER: " << $<str>1 << endl;*/
+										cout << "whatever" << endl;
+										cout << "IDENTIFIER: " << $<t_str>1 << endl;
 										$$ = new IdentifierExpression($1);	
 									}
+		| IDENTIFIER assignop expr	{
+										IdentifierExpression* idExpr = new IdentifierExpression($IDENTIFIER);
+										$$ = new AssignmentExpression(idExpr, $3);
+										cout << "[IDENTIFIER assignop expr]: " << idExpr->getName() << "=" << "<expr>" << endl;
+									}
         | MINUS expr				{
-										$$ = new UnaryNumericNegationExpression($2); 
+										$$ = new UnaryNegationExpression($2); 
 										//cout << "[MINUS expr] " /*<< $$->eval().value()*/ << endl;
 									}
 		| IDENTIFIER LPAREN zereOrOne_expressions RPAREN 

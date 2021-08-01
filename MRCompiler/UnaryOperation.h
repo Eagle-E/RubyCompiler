@@ -1,17 +1,16 @@
 #ifndef UNARYOPERATION_H
 #define UNARYOPERATION_H
 
-#include "Operation.h"
-#include "Expression.h"
+class Literal;
 
 /*
 	Represents any unary operation (with one operand
 */
-class UnaryOperation : public Operation
+class UnaryOperation
 {
 public:
 	UnaryOperation();
-	virtual LiteralExpression execute(vector<Expression*>& operands) = 0;
+	virtual Literal* execute(Literal* operand) = 0;
 };
 
 

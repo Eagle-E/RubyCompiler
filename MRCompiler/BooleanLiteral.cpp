@@ -1,4 +1,5 @@
 #include "BooleanLiteral.h"
+#include <iostream>
 
 BooleanLiteral::BooleanLiteral()
 	: mVal(false)
@@ -22,4 +23,14 @@ void BooleanLiteral::set(bool val)
 bool BooleanLiteral::val() const
 {
 	return mVal;
+}
+
+void BooleanLiteral::print()
+{
+	std::cout << mVal;
+}
+
+Literal::Type BooleanLiteral::getType() const
+{
+	return Type::BOOL;
 }

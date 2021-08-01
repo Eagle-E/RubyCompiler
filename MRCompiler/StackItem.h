@@ -16,7 +16,7 @@ class Literal;
 class StackItem
 {
 public:
-	enum class SymbolType { IntegerLiteral, BooleanLiteral, NONE, OTHER };
+	enum class SymbolType { IntegerLiteral, BooleanLiteral, None, OTHER };
 	StackItem();
 	StackItem(const StackItem& other);
 	~StackItem();
@@ -24,7 +24,7 @@ public:
 	int getScope() const;
 	string getName() const;
 	SymbolType getType() const;
-	Literal getValue() const;
+	Literal* getValue() const;
 
 	void setScope(int scope);
 	void setName(string name);

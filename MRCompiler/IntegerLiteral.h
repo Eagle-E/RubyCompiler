@@ -12,6 +12,9 @@ public:
 
 	void set(int val);
 	int val() const;
+	void print();
+
+	Type getType() const;
 
 private:
 	int mVal;

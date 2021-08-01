@@ -10,7 +10,7 @@ public:
 	UnaryNumericNegation();
 	~UnaryNumericNegation();
 
-	LiteralExpression execute(vector<Expression*>& operands);
+	Literal* execute(Literal* operand);
 
 private:
 };

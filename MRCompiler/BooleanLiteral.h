@@ -12,6 +12,9 @@ public:
 
 	void set(bool val);
 	bool val() const;
+	void print();
+
+	Type getType() const;
 
 private:
 	bool mVal;

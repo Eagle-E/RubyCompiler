@@ -17,6 +17,8 @@ public:
 	const string & getName() const;
 	void setName(const string& idName);
 
+	void print(string& prepend);
+
 private:
 	string mName;
 };

@@ -1,5 +1,5 @@
 #include "IdentifierExpression.h"
-
+#include <iostream>
 IdentifierExpression::IdentifierExpression()
 {
 }
@@ -7,6 +7,7 @@ IdentifierExpression::IdentifierExpression()
 IdentifierExpression::IdentifierExpression(char* idName)
 	: mName(idName)
 {
+	std::cout << "new identifier: " << idName << std::endl;
 }
 
 IdentifierExpression::~IdentifierExpression()
@@ -27,4 +28,8 @@ const string & IdentifierExpression::getName() const
 void IdentifierExpression::setName(const string& idName)
 {
 	mName = idName;
+}
+
+void IdentifierExpression::print(string& prepend)
+{
 }

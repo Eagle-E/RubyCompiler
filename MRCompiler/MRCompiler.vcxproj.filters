@@ -113,12 +113,6 @@
     <ClInclude Include="OperationExpression.h">
       <Filter>Header Files\Parse Tree\Expressions</Filter>
     </ClInclude>
-    <ClInclude Include="UnaryBooleanNegationExpression.h">
-      <Filter>Header Files\Parse Tree\Expressions</Filter>
-    </ClInclude>
-    <ClInclude Include="UnaryNumericNegationExpression.h">
-      <Filter>Header Files\Parse Tree\Expressions</Filter>
-    </ClInclude>
     <ClInclude Include="UnaryOperationExpression.h">
       <Filter>Header Files\Parse Tree\Expressions</Filter>
     </ClInclude>
@@ -130,18 +124,6 @@
     </ClInclude>
     <ClInclude Include="Statement.h">
       <Filter>Header Files\Parse Tree\Statements</Filter>
-    </ClInclude>
-    <ClInclude Include="Operation.h">
-      <Filter>Header Files\Parse Tree\Operations</Filter>
-    </ClInclude>
-    <ClInclude Include="UnaryBooleanNegation.h">
-      <Filter>Header Files\Parse Tree\Operations</Filter>
-    </ClInclude>
-    <ClInclude Include="UnaryNumericNegation.h">
-      <Filter>Header Files\Parse Tree\Operations</Filter>
-    </ClInclude>
-    <ClInclude Include="UnaryOperation.h">
-      <Filter>Header Files\Parse Tree\Operations</Filter>
     </ClInclude>
     <ClInclude Include="ProgramStack.h">
       <Filter>Header Files</Filter>
@@ -161,10 +143,22 @@
     <ClInclude Include="AssignmentExpression.h">
       <Filter>Header Files\Parse Tree\Expressions</Filter>
     </ClInclude>
-    <ClInclude Include="AssignmentOperation.h">
+    <ClInclude Include="UnaryNegationExpression.h">
+      <Filter>Header Files\Parse Tree\Expressions</Filter>
+    </ClInclude>
+    <ClInclude Include="UnaryBooleanNegationExpression.h">
+      <Filter>Header Files\Parse Tree\Expressions</Filter>
+    </ClInclude>
+    <ClInclude Include="UnaryNumericNegationExpression.h">
+      <Filter>Header Files\Parse Tree\Expressions</Filter>
+    </ClInclude>
+    <ClInclude Include="UnaryOperation.h">
       <Filter>Header Files\Parse Tree\Operations</Filter>
     </ClInclude>
-    <ClInclude Include="NumericAssignment.h">
+    <ClInclude Include="UnaryNumericNegation.h">
+      <Filter>Header Files\Parse Tree\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="UnaryBooleanNegation.h">
       <Filter>Header Files\Parse Tree\Operations</Filter>
     </ClInclude>
   </ItemGroup>
@@ -217,12 +211,6 @@
     <ClCompile Include="OperationExpression.cpp">
       <Filter>Source Files\Parse Tree\Expressions</Filter>
     </ClCompile>
-    <ClCompile Include="UnaryBooleanNegationExpression.cpp">
-      <Filter>Source Files\Parse Tree\Expressions</Filter>
-    </ClCompile>
-    <ClCompile Include="UnaryNumericNegationExpression.cpp">
-      <Filter>Source Files\Parse Tree\Expressions</Filter>
-    </ClCompile>
     <ClCompile Include="UnaryOperationExpression.cpp">
       <Filter>Source Files\Parse Tree\Expressions</Filter>
     </ClCompile>
@@ -257,6 +245,15 @@
       <Filter>Source Files\Exceptions</Filter>
     </ClCompile>
     <ClCompile Include="AssignmentExpression.cpp">
+      <Filter>Source Files\Parse Tree\Expressions</Filter>
+    </ClCompile>
+    <ClCompile Include="UnaryNegationExpression.cpp">
+      <Filter>Source Files\Parse Tree\Expressions</Filter>
+    </ClCompile>
+    <ClCompile Include="UnaryNumericNegationExpression.cpp">
+      <Filter>Source Files\Parse Tree\Expressions</Filter>
+    </ClCompile>
+    <ClCompile Include="UnaryBooleanNegationExpression.cpp">
       <Filter>Source Files\Parse Tree\Expressions</Filter>
     </ClCompile>
   </ItemGroup>

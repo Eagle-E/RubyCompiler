@@ -12,6 +12,9 @@ public:
 	virtual ~Statement() = 0;
 	virtual void execute(StackAndTable* stackAndTable) = 0;
 
+	// FOR DEBUGGING
+	virtual void print(string& prepend);
+
 private:
 };
 

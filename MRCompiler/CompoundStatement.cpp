@@ -74,3 +74,20 @@ void CompoundStatement::deleteExpressions()
 	for (int i = 0; i < c; i++) delete mStatements.at(i);
 	mStatements.clear();
 }
+
+
+/*
+*******************************************************************************
+*******************           DEBUGGING FUNCTIONS           *******************
+*******************************************************************************
+*/
+
+
+void CompoundStatement::print(string& prepend)
+{
+	cout << prepend << "[Compound Stm]:" << endl;
+	for (Statement* stm : mStatements)
+	{
+		stm->print(string(prepend).append("\t"));
+	}
+}

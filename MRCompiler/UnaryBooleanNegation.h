@@ -13,7 +13,7 @@ public:
 	UnaryBooleanNegation();
 	~UnaryBooleanNegation();
 
-	LiteralExpression execute(vector<Expression*>& operands);
+	Literal* execute(Literal* operand);
 };
 
 

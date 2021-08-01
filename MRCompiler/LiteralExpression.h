@@ -14,6 +14,8 @@ public:
 	Literal* getLiteral();
 	Literal* eval(StackAndTable* stackAndTable);
 
+	void print(string& prepend);
+
 private:
 	Literal* mLiteral;
 };

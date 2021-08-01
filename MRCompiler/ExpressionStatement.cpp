@@ -1,6 +1,7 @@
 #include "ExpressionStatement.h"
 #include "Expression.h"
 #include "StackAndTable.h"
+#include <iostream>
 
 ExpressionStatement::ExpressionStatement()
 	: mExpression(nullptr)
@@ -22,4 +23,11 @@ void ExpressionStatement::execute(StackAndTable* stackAndTable)
 {
 	if (mExpression != nullptr)
 		mExpression->eval(stackAndTable);
+}
+
+void ExpressionStatement::print(string& prepend)
+{
+	std::cout << prepend << "[Expr Stm]:" << std::endl;
+	mExpression->print(string(prepend).append("\t"));
+	
 }

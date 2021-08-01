@@ -22,5 +22,10 @@ Literal* LiteralExpression::getLiteral()
 }
 Literal* LiteralExpression::eval(StackAndTable* stackAndTable)
 {
-	return new Literal(*mLiteral);
+	//return new Literal(*mLiteral);
+	return mLiteral;
+}
+
+void LiteralExpression::print(string& prepend)
+{
 }

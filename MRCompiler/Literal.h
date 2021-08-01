@@ -7,9 +7,16 @@
 class Literal
 {
 public:
-	static bool sameType(Literal& l1, Literal& l2);
+	enum class Type {INT, BOOL};
+
+	static bool sameType(Literal* l1, Literal* l2);
 
 	virtual ~Literal();
+
+	virtual Type getType() const = 0;
+
+	// function for debugging
+	virtual void print();
 
 private:
 };

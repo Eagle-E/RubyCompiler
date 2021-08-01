@@ -1,4 +1,5 @@
 #include "IntegerLiteral.h"
+#include <iostream>
 
 IntegerLiteral::IntegerLiteral()
 	: mVal(0)
@@ -22,4 +23,14 @@ void IntegerLiteral::set(int val)
 int IntegerLiteral::val() const
 {
 	return mVal;
+}
+
+void IntegerLiteral::print()
+{
+	std::cout << mVal;
+}
+
+Literal::Type IntegerLiteral::getType() const
+{
+	return Type::INT;
 }

@@ -3,7 +3,7 @@
 
 
 StackItem::StackItem()
-	: mScope(0), mIdName(""), mType(SymbolType::NONE), mValue(nullptr)
+	: mScope(0), mIdName(""), mType(SymbolType::None), mValue(nullptr)
 {
 }
 
@@ -34,12 +34,9 @@ StackItem::SymbolType StackItem::getType() const
 	return SymbolType();
 }
 
-Literal StackItem::getValue() const
+Literal* StackItem::getValue() const
 {
-	if (mValue != nullptr)
-		return *mValue;
-	else
-		return Literal();
+	return mValue;
 }
 
 void StackItem::setScope(int scope)

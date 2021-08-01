@@ -2,7 +2,6 @@
 #define OperationExpression_H
 
 #include "Expression.h"
-#include "Operation.h"
 #include <vector>
 
 using std::vector;

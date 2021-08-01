@@ -13,6 +13,9 @@ public:
 	~ExpressionStatement();
 
 	void execute(StackAndTable* stackAndTable);
+
+	void print(string& prepend);
+
 private:
 	Expression* mExpression;
 };

@@ -200,6 +200,7 @@
     <ClCompile Include="Statement.cpp" />
     <ClCompile Include="UnaryBooleanNegation.cpp" />
     <ClCompile Include="UnaryBooleanNegationExpression.cpp" />
+    <ClCompile Include="UnaryNegationExpression.cpp" />
     <ClCompile Include="UnaryNumericNegation.cpp" />
     <ClCompile Include="UnaryNumericNegationExpression.cpp" />
     <ClCompile Include="UnaryOperation.cpp" />
@@ -209,7 +210,6 @@
   <ItemGroup>
     <ClInclude Include="ArgParser.h" />
     <ClInclude Include="AssignmentExpression.h" />
-    <ClInclude Include="AssignmentOperation.h" />
     <ClInclude Include="BooleanLiteral.h" />
     <ClInclude Include="FunctionTable.h" />
     <ClInclude Include="IdentifierExpression.h" />
@@ -226,8 +226,6 @@
     <ClInclude Include="Literal.h" />
     <ClInclude Include="LiteralExpression.h" />
     <ClInclude Include="InvalidAmountOfOperands.h" />
-    <ClInclude Include="NumericAssignment.h" />
-    <ClInclude Include="Operation.h" />
     <ClInclude Include="OperationExpression.h" />
     <ClInclude Include="ProgramStack.h" />
     <ClInclude Include="StackAndTable.h" />
@@ -235,10 +233,11 @@
     <ClInclude Include="Statement.h" />
     <ClInclude Include="UnaryBooleanNegation.h" />
     <ClInclude Include="UnaryBooleanNegationExpression.h" />
+    <ClInclude Include="UnaryNegationExpression.h" />
+    <ClInclude Include="parser.h" />
     <ClInclude Include="UnaryNumericNegation.h" />
     <ClInclude Include="UnaryNumericNegationExpression.h" />
     <ClInclude Include="UnaryOperation.h" />
-    <ClInclude Include="parser.h" />
     <ClInclude Include="UnaryOperationExpression.h" />
   </ItemGroup>
   <ItemGroup>

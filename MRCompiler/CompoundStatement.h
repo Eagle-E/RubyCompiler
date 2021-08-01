@@ -22,6 +22,9 @@ public:
 	// STATEMENT FUNCS
 	void execute(StackAndTable* stackAndTable);
 
+	// DEBUGGING
+	void print(string& prepend);
+
 private:
 	void deleteExpressions();
 	vector<Statement*> mStatements;
