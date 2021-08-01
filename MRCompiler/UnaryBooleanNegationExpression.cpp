@@ -26,26 +26,27 @@ Literal* UnaryBooleanNegationExpression::eval(StackAndTable* stackAndTable)
 {
 	if (mOperand != nullptr)
 	{
-		// check if operand is of BooleanLiteral type
-		BooleanLiteral* evalResBoolean = dynamic_cast<BooleanLiteral*>(mOperand->eval(stackAndTable));
-		if (evalResBoolean != nullptr)
+		// check if operand is of BooleanLiteral or IntegerLiteral type
+		Literal* evalRes = mOperand->eval(stackAndTable);
+
+		if (evalRes->getType() == Literal::Type::BOOL)
 		{
 			// dynamic cast succeeded, result of eval was a boolean literal
-			bool resBool = !evalResBoolean->val();
-			delete evalResBoolean;
-			return new BooleanLiteral(resBool);
+			BooleanLiteral* res = static_cast<BooleanLiteral*>(evalRes);
+			delete evalRes;
+			return res;
 		}
 		else
 		{
 			// TODO, include what type is expected and what type is given
 			// TODO, include where the error occured
-			throw InvalidOperandType("Unary boolean negation expression has an operand that evaluates to a non-boolean literal");
+			throw InvalidOperandType("Wrong operand literal type passed to ! operation, expected bool");
 		}
 	}
 	else
 	{
 		// TODO, include what the expected amount of operands is and how many are given
 		// TODO, include where the error occured
-		throw InvalidAmountOfOperands("Unary boolean negation expression has the wrong amount of operands");
+		throw InvalidAmountOfOperands("Wrong amount of operands passed to Unary negation expression");
 	}
 }

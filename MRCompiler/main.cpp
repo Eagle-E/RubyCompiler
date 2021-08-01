@@ -111,35 +111,21 @@ int compile(int argc, char* argv[])
 
 void test()
 {
-	UnaryNumericNegation numNeg;
-	IntegerLiteral* intLiteral = new IntegerLiteral(17);
-	Literal* litNeg = numNeg.execute(intLiteral);
-	IntegerLiteral* intLiteralNeg = static_cast<IntegerLiteral*>(litNeg);
-	cout << intLiteral->val() << endl;
-	cout << intLiteralNeg->val() << endl;
 
-	UnaryBooleanNegation boolNeg;
-	BooleanLiteral* boolLiteral = new BooleanLiteral(false);
-	Literal* litNeg2 = boolNeg.execute(boolLiteral);
-	BooleanLiteral* boolLiteralNeg = static_cast<BooleanLiteral*>(litNeg2);
-	cout << boolLiteral->val() << endl;
-	cout << boolLiteralNeg->val() << endl;
-
-	//UnaryNegationExpression negExpr;
-	//IntegerLiteral * intLiteral = new IntegerLiteral(17);
-	//BooleanLiteral * boolLiteral = new BooleanLiteral(false);
-	//LiteralExpression * intLitExpr = new LiteralExpression(intLiteral);
-	//LiteralExpression * boolExpr = new LiteralExpression(boolLiteral);
-	//
-	//IntegerLiteral* test = dynamic_cast<IntegerLiteral*>(intLitExpr->eval(nullptr));
-	//
-	//negExpr.setOperand(intLitExpr);
-	//Literal* resInt = negExpr.eval(nullptr);
-	//cout << "result u negation int: -" << intLiteral->val() << " = " << static_cast<IntegerLiteral*>(resInt)->val() << endl;
-	//
-	//negExpr.setOperand(boolExpr);
-	//Literal* resBool = negExpr.eval(nullptr);
-	//cout << "result u negation int: -" << boolLiteral->val() << " = " << static_cast<BooleanLiteral*>(resBool)->val() << endl;
+	IntegerLiteral * intLiteral = new IntegerLiteral(17);
+	BooleanLiteral * boolLiteral = new BooleanLiteral(false);
+	LiteralExpression * intLitExpr = new LiteralExpression(intLiteral);
+	LiteralExpression * boolExpr = new LiteralExpression(boolLiteral);
+	
+	IntegerLiteral* test = dynamic_cast<IntegerLiteral*>(intLitExpr->eval(nullptr));
+	
+	negExpr.setOperand(intLitExpr);
+	Literal* resInt = negExpr.eval(nullptr);
+	cout << "result u negation int: -" << intLiteral->val() << " = " << static_cast<IntegerLiteral*>(resInt)->val() << endl;
+	
+	negExpr.setOperand(boolExpr);
+	Literal* resBool = negExpr.eval(nullptr);
+	cout << "result u negation int: -" << boolLiteral->val() << " = " << static_cast<BooleanLiteral*>(resBool)->val() << endl;
 }
 
 /*
