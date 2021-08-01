@@ -2,6 +2,8 @@
 #include "BooleanLiteral.h"
 #include "InvalidOperandType.h"
 #include "InvalidAmountOfOperands.h"
+#include "UnaryBooleanNegation.h"
+#include <iostream>
 
 UnaryBooleanNegationExpression::UnaryBooleanNegationExpression()
 {
@@ -26,17 +28,16 @@ Literal* UnaryBooleanNegationExpression::eval(StackAndTable* stackAndTable)
 {
 	if (mOperand != nullptr)
 	{
-		// check if operand is of BooleanLiteral or IntegerLiteral type
-		Literal* evalRes = mOperand->eval(stackAndTable);
-
-		if (evalRes->getType() == Literal::Type::BOOL)
+		// try executing the operation, if an exception is thrown then there is something
+		// wrong with the operand.
+		try
 		{
-			// dynamic cast succeeded, result of eval was a boolean literal
-			BooleanLiteral* res = static_cast<BooleanLiteral*>(evalRes);
-			delete evalRes;
+			Literal* evalRes = mOperand->eval(stackAndTable);
+			UnaryBooleanNegation op;
+			Literal* res = op.execute(static_cast<BooleanLiteral*>(evalRes));
 			return res;
 		}
-		else
+		catch (InvalidOperandType)
 		{
 			// TODO, include what type is expected and what type is given
 			// TODO, include where the error occured
@@ -49,4 +50,10 @@ Literal* UnaryBooleanNegationExpression::eval(StackAndTable* stackAndTable)
 		// TODO, include where the error occured
 		throw InvalidAmountOfOperands("Wrong amount of operands passed to Unary negation expression");
 	}
+}
+
+
+void UnaryBooleanNegationExpression::test()
+{
+	std::cout << "heyyyyyyyy" << std::endl;
 }

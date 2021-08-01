@@ -1,5 +1,5 @@
-#ifndef UNARYNUMERICNEGATION_H
-#define UNARYNUMERICNEGATION_H
+#ifndef UnaryNumericNegationExpression_h
+#define UnaryNumericNegationExpression_h
 
 #include "UnaryOperationExpression.h"
 

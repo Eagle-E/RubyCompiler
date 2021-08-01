@@ -1,5 +1,5 @@
-#ifndef UnaryBinaryNegation_h
-#define UnaryBinaryNegation_h
+#ifndef UnaryBooleanNegation_h
+#define UnaryBooleanNegation_h
 
 #include "UnaryOperation.h"
 
@@ -17,4 +17,4 @@ public:
 };
 
 
-#endif // !UnaryBinaryNegation_h
+#endif // !UnaryBooleanNegation_h

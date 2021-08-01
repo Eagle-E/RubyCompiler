@@ -3,6 +3,7 @@
 #include "InvalidOperandType.h"
 #include "InvalidAmountOfOperands.h"
 #include "UnaryNumericNegation.h"
+#include "UnaryBooleanNegation.h"
 
 UnaryNumericNegationExpression::UnaryNumericNegationExpression()
 {
@@ -26,18 +27,16 @@ Literal* UnaryNumericNegationExpression::eval(StackAndTable* stackAndTable)
 {
 	if (mOperand != nullptr)
 	{
-		// check if operand is of BooleanLiteral or IntegerLiteral type
-		Literal* evalRes = mOperand->eval(stackAndTable);
-
-		if (evalRes->getType() == Literal::Type::INT)
+		// try executing the operation, if an exception is thrown then there is something
+		// wrong with the operand.
+		try
 		{
-			// dynamic cast succeeded, result of eval was a boolean literal
-			//IntegerLiteral* res = UnaryNumericNegation; static_cast<IntegerLiteral*>(evalRes)
-			
-			delete evalRes;
+			Literal* evalRes = mOperand->eval(stackAndTable);
+			UnaryNumericNegation op;
+			Literal* res = op.execute(static_cast<IntegerLiteral*>(evalRes));
 			return res;
 		}
-		else
+		catch (InvalidOperandType)
 		{
 			// TODO, include what type is expected and what type is given
 			// TODO, include where the error occured

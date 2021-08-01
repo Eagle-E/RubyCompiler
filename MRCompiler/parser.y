@@ -9,8 +9,8 @@
 #include "Literal.h"
 #include "IntegerLiteral.h"
 #include "BooleanLiteral.h"
-#include "UnaryBooleanNegationExpression.h"
-#include "UnaryNumericNegationExpression.h"
+//#include "UnaryBooleanNegationExpression.h"
+//#include "UnaryNumericNegationExpression.h"
 #include "IdentifierExpression.h"
 #include "AssignmentExpression.h"
 
@@ -117,7 +117,7 @@ expr	: expr binop expr			{
 										/*cout << "expr binop expr" << endl;*/
 									}
         | NOT expr					{
-										$$ = new UnaryBooleanNegationExpression($2); 
+										//$$ = new UnaryBooleanNegationExpression($2); 
 										cout << "[NOT expr] " << endl;
 									}
         | literal					{
@@ -137,7 +137,7 @@ expr	: expr binop expr			{
 										cout << "[IDENTIFIER assignop expr]: " << idExpr->getName() << "=" << "<expr>" << endl;
 									}
         | MINUS expr				{
-										$$ = new UnaryNumericNegationExpression($2); 
+										//$$ = new UnaryNumericNegationExpression($2); 
 										cout << "[MINUS expr] " << endl;
 									}
 		| IDENTIFIER LPAREN zereOrOne_expressions RPAREN 

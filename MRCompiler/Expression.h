@@ -2,10 +2,12 @@
 #define EXPRESSION_H
 
 #include "Literal.h"
+#include "StackAndTable.h"
+
+
 #include <string>
 using std::string;
 
-class StackAndTable;
 
 class Expression
 {

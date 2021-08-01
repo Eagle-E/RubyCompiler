@@ -20,7 +20,7 @@ Literal* UnaryNumericNegation::execute(Literal* operand)
 {
     // check number of operands
     if (operand->getType() != Literal::Type::INT)
-        throw InvalidOperandType("Invalid number of operands for operator");
+        throw InvalidOperandType("Invalid operand type for - operation (negation), expected int");
 
     // return negation
     IntegerLiteral* intOperand = static_cast<IntegerLiteral*>(operand);

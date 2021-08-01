@@ -19,6 +19,8 @@
 #include "BooleanLiteral.h"
 #include "UnaryNumericNegation.h"
 #include "UnaryBooleanNegation.h"
+#include "UnaryBooleanNegationExpression.h"
+#include "UnaryNumericNegationExpression.h"
 
 using std::cout;		using std::endl;
 using std::cin;			using std::exception;
@@ -111,21 +113,27 @@ int compile(int argc, char* argv[])
 
 void test()
 {
-
 	IntegerLiteral * intLiteral = new IntegerLiteral(17);
 	BooleanLiteral * boolLiteral = new BooleanLiteral(false);
-	LiteralExpression * intLitExpr = new LiteralExpression(intLiteral);
+	LiteralExpression * intExpr = new LiteralExpression(intLiteral);
 	LiteralExpression * boolExpr = new LiteralExpression(boolLiteral);
 	
-	IntegerLiteral* test = dynamic_cast<IntegerLiteral*>(intLitExpr->eval(nullptr));
+	UnaryNumericNegationExpression intNegExpr(intExpr);
+	UnaryBooleanNegationExpression boolNegExpr(boolExpr);
 	
-	negExpr.setOperand(intLitExpr);
-	Literal* resInt = negExpr.eval(nullptr);
-	cout << "result u negation int: -" << intLiteral->val() << " = " << static_cast<IntegerLiteral*>(resInt)->val() << endl;
+	boolNegExpr.test();
+	boolNegExpr.eval(nullptr);
+
+	Literal* l1 = intNegExpr.eval(nullptr);
+	Literal* l2 = boolNegExpr.eval(nullptr);
+	//Literal* l1 = nullptr;
+	//Literal* l2 = nullptr;
+
+	IntegerLiteral* intRes = static_cast<IntegerLiteral*> (l1);
+	BooleanLiteral* boolRes = static_cast<BooleanLiteral*>(l2);
 	
-	negExpr.setOperand(boolExpr);
-	Literal* resBool = negExpr.eval(nullptr);
-	cout << "result u negation int: -" << boolLiteral->val() << " = " << static_cast<BooleanLiteral*>(resBool)->val() << endl;
+	cout << "ints: " << intLiteral->val() << " , " << intRes->val() << endl;
+	cout << "bools: " << boolLiteral->val() << " , " << boolRes->val() << endl;
 }
 
 /*

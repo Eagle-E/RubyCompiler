@@ -57,7 +57,8 @@ extern int yydebug;
 #include "Literal.h"
 #include "IntegerLiteral.h"
 #include "BooleanLiteral.h"
-#include "UnaryNegationExpression.h"
+//#include "UnaryBooleanNegationExpression.h"
+//#include "UnaryNumericNegationExpression.h"
 #include "IdentifierExpression.h"
 #include "AssignmentExpression.h"
 
@@ -74,7 +75,7 @@ void yyerror(const char* str);
 // the abstract syntax tree
 extern CompoundStatement* rootStatement;
 
-#line 78 "parser.h"
+#line 79 "parser.h"
 
 /* Token kinds.  */
 #ifndef YYTOKENTYPE
@@ -135,7 +136,7 @@ extern CompoundStatement* rootStatement;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 35 "parser.y"
+#line 36 "parser.y"
 
 	int t_int;
 	char* t_str;
@@ -143,7 +144,7 @@ union YYSTYPE
 	Statement* t_statement;
 	Literal* t_literal;
 
-#line 147 "parser.h"
+#line 148 "parser.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

@@ -9,6 +9,7 @@ public:
 	UnaryOperationExpression();
 	UnaryOperationExpression(Expression* operand);
 	~UnaryOperationExpression();
+
 	virtual Literal* eval(StackAndTable* stackAndTable) = 0;
 
 	void setOperand(Expression* operand);

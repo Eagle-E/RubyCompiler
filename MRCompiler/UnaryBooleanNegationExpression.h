@@ -1,5 +1,5 @@
-#ifndef UNARYBOOLEANNEGATION_H
-#define UNARYBOOLEANNEGATION_H
+#ifndef UnaryBooleanNegationExpression_h
+#define UnaryBooleanNegationExpression_h
 
 #include "UnaryOperationExpression.h"
 
@@ -11,9 +11,9 @@ public:
 	~UnaryBooleanNegationExpression();
 
 	Literal* eval(StackAndTable* stackAndTable);
-
+	void test();
 private:
 };
 
 
-#endif //UNARYBOOLEANNEGATION_H
+#endif //UnaryBooleanNegationExpression_h
