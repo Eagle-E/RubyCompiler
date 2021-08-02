@@ -1,4 +1,5 @@
 #include "OperationExpression.h"
+#include <iostream>
 
 OperationExpression::OperationExpression()
 	//: mOperation(nullptr), mOperands(nullptr)
@@ -18,6 +19,11 @@ OperationExpression::~OperationExpression()
 	if (mOperation != nullptr)
 		delete mOperation;
 		*/
+}
+
+void OperationExpression::print(string& prepend)
+{
+	std::cout << prepend << "[Oper Expr]" << std::endl;
 }
 
 /*

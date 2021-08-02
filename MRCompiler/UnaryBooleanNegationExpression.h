@@ -11,6 +11,7 @@ public:
 	~UnaryBooleanNegationExpression();
 
 	Literal* eval(StackAndTable* stackAndTable);
+	void print(string& prepend);
 	void test();
 private:
 };

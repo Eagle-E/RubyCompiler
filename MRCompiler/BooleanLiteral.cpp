@@ -34,3 +34,11 @@ Literal::Type BooleanLiteral::getType() const
 {
 	return Type::BOOL;
 }
+
+void BooleanLiteral::print(string prepend)
+{
+	std::cout << prepend << "[Bool Literal]: ";
+	string s;
+	mVal ? s = "true" : s = "false";
+	std::cout << s << std::endl;
+}

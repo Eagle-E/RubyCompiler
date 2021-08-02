@@ -12,7 +12,7 @@ public:
 	OperationExpression();
 	~OperationExpression();
 	virtual Literal* eval(StackAndTable* stackAndTable) = 0;
-
+	virtual void print(string& prepend);
 
 	//void setOperation(Operation* op);
 	//void setOperands(vector<Expression*>* operands);

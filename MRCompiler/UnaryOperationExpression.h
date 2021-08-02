@@ -14,6 +14,8 @@ public:
 
 	void setOperand(Expression* operand);
 
+	virtual void print(string& prepend);
+
 protected:
 	Expression* mOperand;
 };

@@ -57,8 +57,8 @@ extern int yydebug;
 #include "Literal.h"
 #include "IntegerLiteral.h"
 #include "BooleanLiteral.h"
-//#include "UnaryBooleanNegationExpression.h"
-//#include "UnaryNumericNegationExpression.h"
+#include "UnaryBooleanNegationExpression.h"
+#include "UnaryNumericNegationExpression.h"
 #include "IdentifierExpression.h"
 #include "AssignmentExpression.h"
 

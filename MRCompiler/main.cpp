@@ -13,14 +13,12 @@
 #include "Statement.h"
 #include "CompoundStatement.h"
 #include "OperationExpression.h"
-#include "UnaryOperationExpression.h"
-#include "UnaryNegationExpression.h"
 #include "IntegerLiteral.h"
 #include "BooleanLiteral.h"
-#include "UnaryNumericNegation.h"
-#include "UnaryBooleanNegation.h"
-#include "UnaryBooleanNegationExpression.h"
-#include "UnaryNumericNegationExpression.h"
+#include "Add.h"
+#include "Sub.h"
+#include "Mul.h"
+#include "Div.h"
 
 using std::cout;		using std::endl;
 using std::cin;			using std::exception;
@@ -93,10 +91,11 @@ int compile(int argc, char* argv[])
 
 		try
 		{
-			rootStatement->execute(&st);
 			cout << "----------------------------------------" << endl;
 			string s = "";
 			rootStatement->print(s);
+			cout << "----------------------------------------" << endl;
+			rootStatement->execute(&st);
 		}
 		// TODO add other exceptions types to catch more specific interpreter errors
 		catch (exception& e)
@@ -113,27 +112,31 @@ int compile(int argc, char* argv[])
 
 void test()
 {
-	IntegerLiteral * intLiteral = new IntegerLiteral(17);
+	IntegerLiteral * intLiteral1 = new IntegerLiteral(17);
+	IntegerLiteral * intLiteral2 = new IntegerLiteral(3);
 	BooleanLiteral * boolLiteral = new BooleanLiteral(false);
-	LiteralExpression * intExpr = new LiteralExpression(intLiteral);
+	
+	LiteralExpression * intExpr = new LiteralExpression(intLiteral1);
 	LiteralExpression * boolExpr = new LiteralExpression(boolLiteral);
 	
-	UnaryNumericNegationExpression intNegExpr(intExpr);
-	UnaryBooleanNegationExpression boolNegExpr(boolExpr);
-	
-	boolNegExpr.test();
-	boolNegExpr.eval(nullptr);
+	Add addOp;
+	Mul mulOp;
+	Div divOp;
+	Sub subOp;
 
-	Literal* l1 = intNegExpr.eval(nullptr);
-	Literal* l2 = boolNegExpr.eval(nullptr);
-	//Literal* l1 = nullptr;
-	//Literal* l2 = nullptr;
+	IntegerLiteral* res1 = static_cast<IntegerLiteral*>(addOp.execute(intLiteral1, intLiteral2));
+	IntegerLiteral* res2 = static_cast<IntegerLiteral*>(subOp.execute(intLiteral1, intLiteral2));
+	IntegerLiteral* res3 = static_cast<IntegerLiteral*>(mulOp.execute(intLiteral1, intLiteral2));
+	IntegerLiteral* res4 = static_cast<IntegerLiteral*>(divOp.execute(intLiteral1, intLiteral2));
 
-	IntegerLiteral* intRes = static_cast<IntegerLiteral*> (l1);
-	BooleanLiteral* boolRes = static_cast<BooleanLiteral*>(l2);
+	cout << intLiteral1->val() << " + " << intLiteral2->val() << " = " << res1->val() << endl;
+	cout << intLiteral1->val() << " - " << intLiteral2->val() << " = " << res2->val() << endl;
+	cout << intLiteral1->val() << " * " << intLiteral2->val() << " = " << res3->val() << endl;
+	cout << intLiteral1->val() << " / " << intLiteral2->val() << " = " << res4->val() << endl;
+
 	
-	cout << "ints: " << intLiteral->val() << " , " << intRes->val() << endl;
-	cout << "bools: " << boolLiteral->val() << " , " << boolRes->val() << endl;
+	//cout << "ints: " << intLiteral1->val() << " , " << intRes->val() << endl;
+	//cout << "bools: " << boolLiteral->val() << " , " << boolRes->val() << endl;
 }
 
 /*

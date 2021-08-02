@@ -1,6 +1,9 @@
 #ifndef LITERAL_H
 #define LITERAL_H
 
+#include <string>
+using std::string;
+
 /*
 	Represents an integer or boolean value
 */
@@ -16,7 +19,7 @@ public:
 	virtual Type getType() const = 0;
 
 	// function for debugging
-	virtual void print();
+	virtual void print(string prepend) = 0;
 
 private:
 };

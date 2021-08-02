@@ -16,7 +16,3 @@ bool Literal::sameType(Literal* l1, Literal* l2)
 Literal::~Literal()
 {
 }
-
-void Literal::print()
-{
-}

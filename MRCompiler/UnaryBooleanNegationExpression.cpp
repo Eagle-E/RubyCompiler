@@ -52,8 +52,15 @@ Literal* UnaryBooleanNegationExpression::eval(StackAndTable* stackAndTable)
 	}
 }
 
+void UnaryBooleanNegationExpression::print(string& prepend)
+{
+	std::cout << prepend << "[Bool Neg Expr !]:" << std::endl;
+	mOperand->print(string(prepend).append("\t"));
+}
+
 
 void UnaryBooleanNegationExpression::test()
 {
 	std::cout << "heyyyyyyyy" << std::endl;
 }
+

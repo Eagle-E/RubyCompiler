@@ -4,6 +4,7 @@
 #include "InvalidAmountOfOperands.h"
 #include "UnaryNumericNegation.h"
 #include "UnaryBooleanNegation.h"
+#include <iostream>
 
 UnaryNumericNegationExpression::UnaryNumericNegationExpression()
 {
@@ -49,4 +50,10 @@ Literal* UnaryNumericNegationExpression::eval(StackAndTable* stackAndTable)
 		// TODO, include where the error occured
 		throw InvalidAmountOfOperands("Wrong amount of operands passed to Unary negation expression");
 	}
+}
+
+void UnaryNumericNegationExpression::print(string& prepend)
+{
+	std::cout << prepend << "[Num Neg Expr -]:" << std::endl;
+	mOperand->print(string(prepend).append("\t"));
 }

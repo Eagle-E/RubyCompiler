@@ -161,6 +161,21 @@
     <ClInclude Include="UnaryBooleanNegation.h">
       <Filter>Header Files\Parse Tree\Operations</Filter>
     </ClInclude>
+    <ClInclude Include="BinOp.h">
+      <Filter>Header Files\Parse Tree\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Add.h">
+      <Filter>Header Files\Parse Tree\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Mul.h">
+      <Filter>Header Files\Parse Tree\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Div.h">
+      <Filter>Header Files\Parse Tree\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Sub.h">
+      <Filter>Header Files\Parse Tree\Operations</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lexer.cpp">
@@ -256,6 +271,21 @@
     <ClCompile Include="UnaryBooleanNegationExpression.cpp">
       <Filter>Source Files\Parse Tree\Expressions</Filter>
     </ClCompile>
+    <ClCompile Include="BinOp.cpp">
+      <Filter>Source Files\Parse Tree\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Add.cpp">
+      <Filter>Source Files\Parse Tree\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Mul.cpp">
+      <Filter>Source Files\Parse Tree\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Div.cpp">
+      <Filter>Source Files\Parse Tree\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Sub.cpp">
+      <Filter>Source Files\Parse Tree\Operations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="parser_test\parseme_test1.err">
@@ -277,6 +307,9 @@
       <Filter>Test Files</Filter>
     </None>
     <None Include="parser_test\README">
+      <Filter>Test Files</Filter>
+    </None>
+    <None Include="parser_test\test.rb">
       <Filter>Test Files</Filter>
     </None>
   </ItemGroup>

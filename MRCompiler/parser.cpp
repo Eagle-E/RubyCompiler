@@ -1295,7 +1295,7 @@ yyreduce:
   case 18: /* expr: NOT expr  */
 #line 119 "parser.y"
                                                         {
-										//$$ = new UnaryBooleanNegationExpression($2); 
+										(yyval.t_expression) = new UnaryBooleanNegationExpression((yyvsp[0].t_expression)); 
 										cout << "[NOT expr] " << endl;
 									}
 #line 1302 "parser.cpp"
@@ -1306,7 +1306,7 @@ yyreduce:
                                                         {
 										(yyval.t_expression) = new LiteralExpression((yyvsp[0].t_literal));
 										cout << "[expr] literal: ";
-										(yyvsp[0].t_literal)->print();
+										(yyvsp[0].t_literal)->print("");
 										cout << endl;
 									}
 #line 1313 "parser.cpp"
@@ -1335,7 +1335,7 @@ yyreduce:
   case 22: /* expr: MINUS expr  */
 #line 139 "parser.y"
                                                 {
-										//$$ = new UnaryNumericNegationExpression($2); 
+										(yyval.t_expression) = new UnaryNumericNegationExpression((yyvsp[0].t_expression)); 
 										cout << "[MINUS expr] " << endl;
 									}
 #line 1342 "parser.cpp"

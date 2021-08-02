@@ -16,6 +16,8 @@ public:
 
 	Type getType() const;
 
+	void print(string prepend);
+
 private:
 	bool mVal;
 };

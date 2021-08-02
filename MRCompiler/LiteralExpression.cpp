@@ -1,4 +1,5 @@
 #include "LiteralExpression.h"
+#include <iostream>
 
 LiteralExpression::LiteralExpression()
 	: mLiteral(nullptr)
@@ -28,4 +29,6 @@ Literal* LiteralExpression::eval(StackAndTable* stackAndTable)
 
 void LiteralExpression::print(string& prepend)
 {
+	std::cout << prepend << "[Lit Expr]:" << std::endl;
+	mLiteral->print(string(prepend).append("\t"));
 }

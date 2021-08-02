@@ -15,6 +15,7 @@ public:
 	void print();
 
 	Type getType() const;
+	void print(string prepend);
 
 private:
 	int mVal;
