@@ -1,15 +1,16 @@
-#ifndef DIV_H
-#define DIV_H
+#ifndef Equal_H
+#define Equal_H
 
 #include "BinOp.h"
 
-class Div : public BinOp
+class Equal : public BinOp
 {
 public:
-	Div();
-	~Div();
+	Equal();
+	~Equal();
 	Literal* execute(Literal* operand1, Literal* operand2);
 	void print(std::string& prepend);
 };
+
 
 #endif

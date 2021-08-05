@@ -176,21 +176,28 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Add.cpp" />
+    <ClCompile Include="And.cpp" />
     <ClCompile Include="ArgParser.cpp" />
     <ClCompile Include="AssignmentExpression.cpp" />
     <ClCompile Include="BinOp.cpp" />
+    <ClCompile Include="BinOpExpression.cpp" />
     <ClCompile Include="BooleanLiteral.cpp" />
     <ClCompile Include="CompileTask.cpp" />
     <ClCompile Include="CompoundStatement.cpp" />
     <ClCompile Include="Div.cpp" />
+    <ClCompile Include="Equal.cpp" />
     <ClCompile Include="Expression.cpp" />
     <ClCompile Include="ExpressionStatement.cpp" />
     <ClCompile Include="FunctionTable.cpp" />
+    <ClCompile Include="GreaterOrEqual.cpp" />
+    <ClCompile Include="GreaterThan.cpp" />
     <ClCompile Include="IdentifierExpression.cpp" />
     <ClCompile Include="IdentifierNotDefined.cpp" />
     <ClCompile Include="InvalidCommandLineArguments.cpp" />
     <ClCompile Include="InvalidNumberOfOperands.cpp" />
     <ClCompile Include="InvalidOperandType.cpp" />
+    <ClCompile Include="LessOrEqual.cpp" />
+    <ClCompile Include="LessThan.cpp" />
     <ClCompile Include="lexer.cpp" />
     <ClCompile Include="Literal.cpp" />
     <ClCompile Include="LiteralExpression.cpp" />
@@ -198,14 +205,15 @@
     <ClCompile Include="IntegerLiteral.cpp" />
     <ClCompile Include="InvalidAmountOfOperands.cpp" />
     <ClCompile Include="Mul.cpp" />
+    <ClCompile Include="NotEqual.cpp" />
     <ClCompile Include="OperationExpression.cpp" />
+    <ClCompile Include="Or.cpp" />
     <ClCompile Include="ProgramStack.cpp" />
     <ClCompile Include="StackItem.cpp" />
     <ClCompile Include="Statement.cpp" />
     <ClCompile Include="Sub.cpp" />
     <ClCompile Include="UnaryBooleanNegation.cpp" />
     <ClCompile Include="UnaryBooleanNegationExpression.cpp" />
-    <ClCompile Include="UnaryNegationExpression.cpp" />
     <ClCompile Include="UnaryNumericNegation.cpp" />
     <ClCompile Include="UnaryNumericNegationExpression.cpp" />
     <ClCompile Include="UnaryOperation.cpp" />
@@ -214,12 +222,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Add.h" />
+    <ClInclude Include="And.h" />
     <ClInclude Include="ArgParser.h" />
     <ClInclude Include="AssignmentExpression.h" />
     <ClInclude Include="BinOp.h" />
+    <ClInclude Include="BinOpExpression.h" />
     <ClInclude Include="BooleanLiteral.h" />
     <ClInclude Include="Div.h" />
+    <ClInclude Include="Equal.h" />
     <ClInclude Include="FunctionTable.h" />
+    <ClInclude Include="GreaterOrEqual.h" />
+    <ClInclude Include="GreaterThan.h" />
     <ClInclude Include="IdentifierExpression.h" />
     <ClInclude Include="IdentifierNotDefined.h" />
     <ClInclude Include="IntegerLiteral.h" />
@@ -230,12 +243,16 @@
     <ClInclude Include="InvalidCommandLineArguments.h" />
     <ClInclude Include="InvalidNumberOfOperands.h" />
     <ClInclude Include="InvalidOperandType.h" />
+    <ClInclude Include="LessOrEqual.h" />
+    <ClInclude Include="LessThan.h" />
     <ClInclude Include="lexer.h" />
     <ClInclude Include="Literal.h" />
     <ClInclude Include="LiteralExpression.h" />
     <ClInclude Include="InvalidAmountOfOperands.h" />
     <ClInclude Include="Mul.h" />
+    <ClInclude Include="NotEqual.h" />
     <ClInclude Include="OperationExpression.h" />
+    <ClInclude Include="Or.h" />
     <ClInclude Include="ProgramStack.h" />
     <ClInclude Include="StackAndTable.h" />
     <ClInclude Include="StackItem.h" />
@@ -243,7 +260,6 @@
     <ClInclude Include="Sub.h" />
     <ClInclude Include="UnaryBooleanNegation.h" />
     <ClInclude Include="UnaryBooleanNegationExpression.h" />
-    <ClInclude Include="UnaryNegationExpression.h" />
     <ClInclude Include="parser.h" />
     <ClInclude Include="UnaryNumericNegation.h" />
     <ClInclude Include="UnaryNumericNegationExpression.h" />

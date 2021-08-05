@@ -61,7 +61,20 @@ extern int yydebug;
 #include "UnaryNumericNegationExpression.h"
 #include "IdentifierExpression.h"
 #include "AssignmentExpression.h"
-
+#include "BinOpExpression.h"
+#include "BinOp.h"
+#include "Add.h"
+#include "Sub.h"
+#include "Mul.h"
+#include "Div.h"
+#include "Or.h"
+#include "And.h"
+#include "NotEqual.h"
+#include "Equal.h"
+#include "LessOrEqual.h"
+#include "LessThan.h"
+#include "GreaterOrEqual.h"
+#include "GreaterThan.h"
 
 // BEGIN TEST
 #include <typeinfo>
@@ -75,7 +88,7 @@ void yyerror(const char* str);
 // the abstract syntax tree
 extern CompoundStatement* rootStatement;
 
-#line 79 "parser.h"
+#line 92 "parser.h"
 
 /* Token kinds.  */
 #ifndef YYTOKENTYPE
@@ -136,15 +149,16 @@ extern CompoundStatement* rootStatement;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 36 "parser.y"
+#line 49 "parser.y"
 
 	int t_int;
 	char* t_str;
 	Expression* t_expression;
 	Statement* t_statement;
 	Literal* t_literal;
+	BinOp * t_binop;
 
-#line 148 "parser.h"
+#line 162 "parser.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

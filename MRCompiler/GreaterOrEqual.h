@@ -1,15 +1,16 @@
-#ifndef DIV_H
-#define DIV_H
+#ifndef GreaterOrEqual_H
+#define GreaterOrEqual_H
 
 #include "BinOp.h"
 
-class Div : public BinOp
+class GreaterOrEqual : public BinOp
 {
 public:
-	Div();
-	~Div();
+	GreaterOrEqual();
+	~GreaterOrEqual();
 	Literal* execute(Literal* operand1, Literal* operand2);
 	void print(std::string& prepend);
 };
+
 
 #endif

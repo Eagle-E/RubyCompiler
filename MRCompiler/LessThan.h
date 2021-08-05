@@ -1,15 +1,16 @@
-#ifndef DIV_H
-#define DIV_H
+#ifndef LessThan_H
+#define LessThan_H
 
 #include "BinOp.h"
 
-class Div : public BinOp
+class LessThan : public BinOp
 {
 public:
-	Div();
-	~Div();
+	LessThan();
+	~LessThan();
 	Literal* execute(Literal* operand1, Literal* operand2);
 	void print(std::string& prepend);
 };
+
 
 #endif

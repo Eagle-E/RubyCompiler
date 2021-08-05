@@ -1,8 +1,8 @@
 #include "UnaryBooleanNegationExpression.h"
 #include "BooleanLiteral.h"
+#include "UnaryBooleanNegation.h"
 #include "InvalidOperandType.h"
 #include "InvalidAmountOfOperands.h"
-#include "UnaryBooleanNegation.h"
 #include <iostream>
 
 UnaryBooleanNegationExpression::UnaryBooleanNegationExpression()

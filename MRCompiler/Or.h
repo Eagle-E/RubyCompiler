@@ -1,15 +1,16 @@
-#ifndef DIV_H
-#define DIV_H
+#ifndef Or_H
+#define Or_H
 
 #include "BinOp.h"
 
-class Div : public BinOp
+class Or : public BinOp
 {
 public:
-	Div();
-	~Div();
+	Or();
+	~Or();
 	Literal* execute(Literal* operand1, Literal* operand2);
 	void print(std::string& prepend);
 };
+
 
 #endif

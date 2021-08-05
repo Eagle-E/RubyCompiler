@@ -1,18 +1,17 @@
-#include "Add.h"
+#include "LessThan.h"
 #include "Literal.h"
 #include "IntegerLiteral.h"
 #include "InvalidOperandType.h"
 
-Add::Add()
-	: BinOp()
+LessThan::LessThan() : BinOp()
 {
 }
 
-Add::~Add()
+LessThan::~LessThan()
 {
 }
 
-Literal* Add::execute(Literal* operand1, Literal* operand2)
+Literal* LessThan::execute(Literal* operand1, Literal* operand2)
 {
     // check number of operands
     if (operand1->getType() != Literal::Type::INT || operand2->getType() != Literal::Type::INT)
@@ -23,10 +22,10 @@ Literal* Add::execute(Literal* operand1, Literal* operand2)
     // return negation
     IntegerLiteral* iop1 = static_cast<IntegerLiteral*>(operand1);
     IntegerLiteral* iop2 = static_cast<IntegerLiteral*>(operand2);
-    return new IntegerLiteral(iop1->val() + iop2->val());
+    return new IntegerLiteral(iop1->val() < iop2->val());
 }
 
-void Add::print(std::string& prepend)
+void LessThan::print(std::string& prepend)
 {
-    std::cout << prepend << "[BinOp ADD +]" << std::endl;
+    std::cout << prepend << "[BinOp Less Than <]" << std::endl;
 }

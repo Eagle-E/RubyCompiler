@@ -23,3 +23,8 @@ Literal* Sub::execute(Literal* operand1, Literal* operand2)
     IntegerLiteral* iop2 = static_cast<IntegerLiteral*>(operand2);
     return new IntegerLiteral(iop1->val() - iop2->val());
 }
+
+void Sub::print(std::string& prepend)
+{
+    std::cout << prepend << "[BinOp SUBTRACT -]" << std::endl;
+}

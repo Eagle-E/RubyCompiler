@@ -58,6 +58,18 @@
     <Filter Include="Source Files\Parse Tree\Statements">
       <UniqueIdentifier>{00de4398-37ea-4d7d-a986-e35b666e724d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Parse Tree\Operations\unary">
+      <UniqueIdentifier>{3db38ed9-a822-48f2-8f0c-80f943bd3b73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Parse Tree\Operations\binary">
+      <UniqueIdentifier>{bbb1318f-4b89-4f50-8e2b-a5e61cdf09c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Parse Tree\Operations\unary">
+      <UniqueIdentifier>{025348ea-c939-4ec7-a16f-4fe1e9522ae5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Parse Tree\Operations\binary">
+      <UniqueIdentifier>{f5849ae7-4de2-4f6f-a27d-5b2d8a38b26d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="lexer.l">
@@ -73,9 +85,6 @@
     </ClInclude>
     <ClInclude Include="parser.h">
       <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ArgParser.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CompileTask.h">
       <Filter>Header Files</Filter>
@@ -143,38 +152,65 @@
     <ClInclude Include="AssignmentExpression.h">
       <Filter>Header Files\Parse Tree\Expressions</Filter>
     </ClInclude>
-    <ClInclude Include="UnaryNegationExpression.h">
-      <Filter>Header Files\Parse Tree\Expressions</Filter>
-    </ClInclude>
     <ClInclude Include="UnaryBooleanNegationExpression.h">
       <Filter>Header Files\Parse Tree\Expressions</Filter>
     </ClInclude>
     <ClInclude Include="UnaryNumericNegationExpression.h">
       <Filter>Header Files\Parse Tree\Expressions</Filter>
     </ClInclude>
-    <ClInclude Include="UnaryOperation.h">
-      <Filter>Header Files\Parse Tree\Operations</Filter>
-    </ClInclude>
-    <ClInclude Include="UnaryNumericNegation.h">
-      <Filter>Header Files\Parse Tree\Operations</Filter>
-    </ClInclude>
-    <ClInclude Include="UnaryBooleanNegation.h">
-      <Filter>Header Files\Parse Tree\Operations</Filter>
-    </ClInclude>
-    <ClInclude Include="BinOp.h">
-      <Filter>Header Files\Parse Tree\Operations</Filter>
+    <ClInclude Include="BinOpExpression.h">
+      <Filter>Header Files\Parse Tree\Expressions</Filter>
     </ClInclude>
     <ClInclude Include="Add.h">
-      <Filter>Header Files\Parse Tree\Operations</Filter>
+      <Filter>Header Files\Parse Tree\Operations\binary</Filter>
     </ClInclude>
-    <ClInclude Include="Mul.h">
-      <Filter>Header Files\Parse Tree\Operations</Filter>
+    <ClInclude Include="And.h">
+      <Filter>Header Files\Parse Tree\Operations\binary</Filter>
+    </ClInclude>
+    <ClInclude Include="BinOp.h">
+      <Filter>Header Files\Parse Tree\Operations\binary</Filter>
     </ClInclude>
     <ClInclude Include="Div.h">
-      <Filter>Header Files\Parse Tree\Operations</Filter>
+      <Filter>Header Files\Parse Tree\Operations\binary</Filter>
+    </ClInclude>
+    <ClInclude Include="Equal.h">
+      <Filter>Header Files\Parse Tree\Operations\binary</Filter>
+    </ClInclude>
+    <ClInclude Include="GreaterOrEqual.h">
+      <Filter>Header Files\Parse Tree\Operations\binary</Filter>
+    </ClInclude>
+    <ClInclude Include="GreaterThan.h">
+      <Filter>Header Files\Parse Tree\Operations\binary</Filter>
+    </ClInclude>
+    <ClInclude Include="LessOrEqual.h">
+      <Filter>Header Files\Parse Tree\Operations\binary</Filter>
+    </ClInclude>
+    <ClInclude Include="LessThan.h">
+      <Filter>Header Files\Parse Tree\Operations\binary</Filter>
+    </ClInclude>
+    <ClInclude Include="Mul.h">
+      <Filter>Header Files\Parse Tree\Operations\binary</Filter>
+    </ClInclude>
+    <ClInclude Include="NotEqual.h">
+      <Filter>Header Files\Parse Tree\Operations\binary</Filter>
+    </ClInclude>
+    <ClInclude Include="Or.h">
+      <Filter>Header Files\Parse Tree\Operations\binary</Filter>
     </ClInclude>
     <ClInclude Include="Sub.h">
-      <Filter>Header Files\Parse Tree\Operations</Filter>
+      <Filter>Header Files\Parse Tree\Operations\binary</Filter>
+    </ClInclude>
+    <ClInclude Include="UnaryBooleanNegation.h">
+      <Filter>Header Files\Parse Tree\Operations\unary</Filter>
+    </ClInclude>
+    <ClInclude Include="UnaryNumericNegation.h">
+      <Filter>Header Files\Parse Tree\Operations\unary</Filter>
+    </ClInclude>
+    <ClInclude Include="UnaryOperation.h">
+      <Filter>Header Files\Parse Tree\Operations\unary</Filter>
+    </ClInclude>
+    <ClInclude Include="ArgParser.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -238,15 +274,6 @@
     <ClCompile Include="Statement.cpp">
       <Filter>Source Files\Parse Tree\Statements</Filter>
     </ClCompile>
-    <ClCompile Include="UnaryBooleanNegation.cpp">
-      <Filter>Source Files\Parse Tree\Operations</Filter>
-    </ClCompile>
-    <ClCompile Include="UnaryNumericNegation.cpp">
-      <Filter>Source Files\Parse Tree\Operations</Filter>
-    </ClCompile>
-    <ClCompile Include="UnaryOperation.cpp">
-      <Filter>Source Files\Parse Tree\Operations</Filter>
-    </ClCompile>
     <ClCompile Include="StackItem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -262,29 +289,62 @@
     <ClCompile Include="AssignmentExpression.cpp">
       <Filter>Source Files\Parse Tree\Expressions</Filter>
     </ClCompile>
-    <ClCompile Include="UnaryNegationExpression.cpp">
-      <Filter>Source Files\Parse Tree\Expressions</Filter>
-    </ClCompile>
     <ClCompile Include="UnaryNumericNegationExpression.cpp">
       <Filter>Source Files\Parse Tree\Expressions</Filter>
     </ClCompile>
     <ClCompile Include="UnaryBooleanNegationExpression.cpp">
       <Filter>Source Files\Parse Tree\Expressions</Filter>
     </ClCompile>
-    <ClCompile Include="BinOp.cpp">
-      <Filter>Source Files\Parse Tree\Operations</Filter>
+    <ClCompile Include="BinOpExpression.cpp">
+      <Filter>Source Files\Parse Tree\Expressions</Filter>
+    </ClCompile>
+    <ClCompile Include="UnaryBooleanNegation.cpp">
+      <Filter>Source Files\Parse Tree\Operations\unary</Filter>
+    </ClCompile>
+    <ClCompile Include="UnaryNumericNegation.cpp">
+      <Filter>Source Files\Parse Tree\Operations\unary</Filter>
+    </ClCompile>
+    <ClCompile Include="UnaryOperation.cpp">
+      <Filter>Source Files\Parse Tree\Operations\unary</Filter>
     </ClCompile>
     <ClCompile Include="Add.cpp">
-      <Filter>Source Files\Parse Tree\Operations</Filter>
+      <Filter>Source Files\Parse Tree\Operations\binary</Filter>
     </ClCompile>
-    <ClCompile Include="Mul.cpp">
-      <Filter>Source Files\Parse Tree\Operations</Filter>
+    <ClCompile Include="And.cpp">
+      <Filter>Source Files\Parse Tree\Operations\binary</Filter>
+    </ClCompile>
+    <ClCompile Include="BinOp.cpp">
+      <Filter>Source Files\Parse Tree\Operations\binary</Filter>
     </ClCompile>
     <ClCompile Include="Div.cpp">
-      <Filter>Source Files\Parse Tree\Operations</Filter>
+      <Filter>Source Files\Parse Tree\Operations\binary</Filter>
+    </ClCompile>
+    <ClCompile Include="Equal.cpp">
+      <Filter>Source Files\Parse Tree\Operations\binary</Filter>
+    </ClCompile>
+    <ClCompile Include="GreaterOrEqual.cpp">
+      <Filter>Source Files\Parse Tree\Operations\binary</Filter>
+    </ClCompile>
+    <ClCompile Include="GreaterThan.cpp">
+      <Filter>Source Files\Parse Tree\Operations\binary</Filter>
+    </ClCompile>
+    <ClCompile Include="LessOrEqual.cpp">
+      <Filter>Source Files\Parse Tree\Operations\binary</Filter>
+    </ClCompile>
+    <ClCompile Include="LessThan.cpp">
+      <Filter>Source Files\Parse Tree\Operations\binary</Filter>
+    </ClCompile>
+    <ClCompile Include="Mul.cpp">
+      <Filter>Source Files\Parse Tree\Operations\binary</Filter>
+    </ClCompile>
+    <ClCompile Include="NotEqual.cpp">
+      <Filter>Source Files\Parse Tree\Operations\binary</Filter>
+    </ClCompile>
+    <ClCompile Include="Or.cpp">
+      <Filter>Source Files\Parse Tree\Operations\binary</Filter>
     </ClCompile>
     <ClCompile Include="Sub.cpp">
-      <Filter>Source Files\Parse Tree\Operations</Filter>
+      <Filter>Source Files\Parse Tree\Operations\binary</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

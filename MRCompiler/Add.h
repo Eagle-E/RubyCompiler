@@ -9,6 +9,7 @@ public:
 	Add();
 	~Add();
 	Literal* execute(Literal* operand1, Literal* operand2);
+	void print(std::string& prepend);
 };
 
 

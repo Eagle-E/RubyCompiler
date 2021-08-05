@@ -13,7 +13,20 @@
 #include "UnaryNumericNegationExpression.h"
 #include "IdentifierExpression.h"
 #include "AssignmentExpression.h"
-
+#include "BinOpExpression.h"
+#include "BinOp.h"
+#include "Add.h"
+#include "Sub.h"
+#include "Mul.h"
+#include "Div.h"
+#include "Or.h"
+#include "And.h"
+#include "NotEqual.h"
+#include "Equal.h"
+#include "LessOrEqual.h"
+#include "LessThan.h"
+#include "GreaterOrEqual.h"
+#include "GreaterThan.h"
 
 // BEGIN TEST
 #include <typeinfo>
@@ -39,6 +52,7 @@ CompoundStatement* rootStatement = new CompoundStatement();
 	Expression* t_expression;
 	Statement* t_statement;
 	Literal* t_literal;
+	BinOp * t_binop;
 };
 
 
@@ -64,6 +78,7 @@ CompoundStatement* rootStatement = new CompoundStatement();
 %nterm <t_literal> literal
 %nterm <t_expression> expr
 %nterm <t_statement> stmt
+%nterm <t_binop> binop
 
 %start program
 
@@ -114,7 +129,8 @@ stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
         ;
 
 expr	: expr binop expr			{
-										/*cout << "expr binop expr" << endl;*/
+										$$ = new BinOpExpression($1, $3, $2);
+										cout << "\n[expr binop expr]" << endl;
 									}
         | NOT expr					{
 										$$ = new UnaryBooleanNegationExpression($2); 
@@ -122,9 +138,9 @@ expr	: expr binop expr			{
 									}
         | literal					{
 										$$ = new LiteralExpression($literal);
-										cout << "[expr] literal: ";
+										cout << "\n[expr] literal: ";
 										$literal->print("");
-										cout << endl;
+										//cout << endl;
 									}
         | IDENTIFIER				{
 										cout << "whatever" << endl;
@@ -201,18 +217,18 @@ assignop
 	;
 
 binop
-	: PLUS	{/*cout << "binop: " << $<str>1 << endl;*/}
-	| MINUS {/*cout << "binop: " << "-" << endl;*/}
-	| MUL 	{/*cout << "binop: " << "*" << endl;*/}
-	| DIV 	{/*cout << "binop: " << "/" << endl;*/}
-	| GT 	{/*cout << "binop: " << ">" << endl;*/}
-	| GE 	{/*cout << "binop: " << ">="<< endl;*/}
-	| LT 	{/*cout << "binop: " << "<" << endl;*/}
-	| LE 	{/*cout << "binop: " << "<="<< endl;*/}
-	| EQ 	{/*cout << "binop: " << "=="<< endl;*/}
-	| NE 	{/*cout << "binop: " << "!="<< endl;*/}
-	| AND 	{/*cout << "binop: " << "&&"<< endl;*/}
-	| OR 	{/*cout << "binop: " << "||"<< endl;*/}
+	: PLUS	{ $$ = new Add(); /*cout << "binop: " << $<str>1 << endl;*/}
+	| MINUS { $$ = new Sub(); /*cout << "binop: " << "-" << endl;*/}
+	| MUL 	{ $$ = new Mul(); /*cout << "binop: " << "*" << endl;*/}
+	| DIV 	{ $$ = new Div(); /*cout << "binop: " << "/" << endl;*/}
+	| GT 	{ $$ = new GreaterThan(); /*cout << "binop: " << ">" << endl;*/}
+	| GE 	{ $$ = new GreaterOrEqual(); /*cout << "binop: " << ">="<< endl;*/}
+	| LT 	{ $$ = new LessThan(); /*cout << "binop: " << "<" << endl;*/}
+	| LE 	{ $$ = new LessOrEqual(); /*cout << "binop: " << "<="<< endl;*/}
+	| EQ 	{ $$ = new Equal(); /*cout << "binop: " << "=="<< endl;*/}
+	| NE 	{ $$ = new NotEqual(); /*cout << "binop: " << "!="<< endl;*/}
+	| AND 	{ $$ = new And(); /*cout << "binop: " << "&&"<< endl;*/}
+	| OR 	{ $$ = new Or(); /*cout << "binop: " << "||"<< endl;*/}
 	;
 
 t : SEMICOLON | EOL ;

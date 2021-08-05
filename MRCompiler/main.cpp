@@ -15,10 +15,20 @@
 #include "OperationExpression.h"
 #include "IntegerLiteral.h"
 #include "BooleanLiteral.h"
+#include "BinOpExpression.h"
 #include "Add.h"
 #include "Sub.h"
 #include "Mul.h"
 #include "Div.h"
+#include "Or.h"
+#include "And.h"
+#include "NotEqual.h"
+#include "Equal.h"
+#include "LessOrEqual.h"
+#include "LessThan.h"
+#include "GreaterOrEqual.h"
+#include "GreaterThan.h"
+
 
 using std::cout;		using std::endl;
 using std::cin;			using std::exception;
@@ -114,25 +124,83 @@ void test()
 {
 	IntegerLiteral * intLiteral1 = new IntegerLiteral(17);
 	IntegerLiteral * intLiteral2 = new IntegerLiteral(3);
-	BooleanLiteral * boolLiteral = new BooleanLiteral(false);
+	BooleanLiteral * boolLiteral1 = new BooleanLiteral(false);
+	BooleanLiteral * boolLiteral2 = new BooleanLiteral(true);
 	
-	LiteralExpression * intExpr = new LiteralExpression(intLiteral1);
-	LiteralExpression * boolExpr = new LiteralExpression(boolLiteral);
+	LiteralExpression * intExpr1 = new LiteralExpression(intLiteral1);
+	LiteralExpression * intExpr2 = new LiteralExpression(intLiteral2);
+	LiteralExpression * boolExpr = new LiteralExpression(boolLiteral1);
 	
-	Add addOp;
-	Mul mulOp;
-	Div divOp;
-	Sub subOp;
 
-	IntegerLiteral* res1 = static_cast<IntegerLiteral*>(addOp.execute(intLiteral1, intLiteral2));
-	IntegerLiteral* res2 = static_cast<IntegerLiteral*>(subOp.execute(intLiteral1, intLiteral2));
-	IntegerLiteral* res3 = static_cast<IntegerLiteral*>(mulOp.execute(intLiteral1, intLiteral2));
-	IntegerLiteral* res4 = static_cast<IntegerLiteral*>(divOp.execute(intLiteral1, intLiteral2));
 
-	cout << intLiteral1->val() << " + " << intLiteral2->val() << " = " << res1->val() << endl;
-	cout << intLiteral1->val() << " - " << intLiteral2->val() << " = " << res2->val() << endl;
-	cout << intLiteral1->val() << " * " << intLiteral2->val() << " = " << res3->val() << endl;
-	cout << intLiteral1->val() << " / " << intLiteral2->val() << " = " << res4->val() << endl;
+	BinOpExpression* addExpr = new BinOpExpression(intExpr1, intExpr2, new Add());
+	BinOpExpression* subExpr = new BinOpExpression(intExpr1, intExpr2, new Sub());
+	BinOpExpression* mulExpr = new BinOpExpression(intExpr1, intExpr2, new Mul());
+	BinOpExpression* divExpr = new BinOpExpression(intExpr1, intExpr2, new Div());
+
+	string s;
+	addExpr->print(s);
+	subExpr->print(s);
+	mulExpr->print(s);
+	divExpr->print(s);
+
+	cout << "----------------------------------------" << endl;
+
+	try
+	{
+		//IntegerLiteral* res1 = static_cast<IntegerLiteral*>(addExpr->eval(nullptr));
+		//IntegerLiteral* res2 = static_cast<IntegerLiteral*>(subExpr->eval(nullptr));
+		//IntegerLiteral* res3 = static_cast<IntegerLiteral*>(mulExpr->eval(nullptr));
+		//IntegerLiteral* res4 = static_cast<IntegerLiteral*>(divExpr->eval(nullptr));
+
+		Add addOp;
+		Mul mulOp;
+		Div divOp;
+		Sub subOp;
+		Or orOp;
+		And andOp;
+		NotEqual neqOp;
+		Equal eqOp;
+		LessOrEqual leqOp;
+		LessThan ltOp;
+		GreaterOrEqual geqOp;
+		GreaterThan gtOp;
+		
+		IntegerLiteral* res1 = static_cast<IntegerLiteral*>(addOp.execute(intLiteral1, intLiteral2));
+		IntegerLiteral* res2 = static_cast<IntegerLiteral*>(subOp.execute(intLiteral1, intLiteral2));
+		IntegerLiteral* res3 = static_cast<IntegerLiteral*>(mulOp.execute(intLiteral1, intLiteral2));
+		IntegerLiteral* res4 = static_cast<IntegerLiteral*>(divOp.execute(intLiteral1, intLiteral2));
+		BooleanLiteral* res5 = static_cast<BooleanLiteral*>(orOp.execute(boolLiteral1, boolLiteral2));
+		BooleanLiteral* res6 = static_cast<BooleanLiteral*>(andOp.execute(boolLiteral1, boolLiteral2));
+		BooleanLiteral* res7 = static_cast<BooleanLiteral*>(neqOp.execute(boolLiteral1, boolLiteral2));
+		IntegerLiteral* res8 = static_cast<IntegerLiteral*>(neqOp.execute(intLiteral1, intLiteral2));
+		BooleanLiteral* res9 = static_cast<BooleanLiteral*>(eqOp.execute(boolLiteral1, boolLiteral2));
+		IntegerLiteral* res10 = static_cast<IntegerLiteral*>(eqOp.execute(intLiteral1, intLiteral2));
+		IntegerLiteral* res11 = static_cast<IntegerLiteral*>(leqOp.execute(intLiteral1, intLiteral2));
+		IntegerLiteral* res12 = static_cast<IntegerLiteral*>(ltOp.execute(intLiteral1, intLiteral2));
+		IntegerLiteral* res13 = static_cast<IntegerLiteral*>(geqOp.execute(intLiteral1, intLiteral2));
+		IntegerLiteral* res14 = static_cast<IntegerLiteral*>(gtOp.execute(intLiteral1, intLiteral2));
+
+		cout << intLiteral1->val() << " + " << intLiteral2->val() << " = " << res1->val() << endl;
+		cout << intLiteral1->val() << " - " << intLiteral2->val() << " = " << res2->val() << endl;
+		cout << intLiteral1->val() << " * " << intLiteral2->val() << " = " << res3->val() << endl;
+		cout << intLiteral1->val() << " / " << intLiteral2->val() << " = " << res4->val() << endl;
+		cout << boolLiteral1->val() << " || " << boolLiteral2->val() << " = " << res5->val() << endl;
+		cout << boolLiteral1->val() << " && " << boolLiteral2->val() << " = " << res6->val() << endl;
+		cout << boolLiteral1->val() << " != " << boolLiteral2->val() << " = " << res7->val() << endl;
+		cout << intLiteral1->val() << " != " << intLiteral2->val() << " = " << res8->val() << endl;
+		cout << boolLiteral1->val() << " == " << boolLiteral2->val() << " = " << res9->val() << endl;
+		cout << intLiteral1->val() << " == " << intLiteral2->val() << " = " << res10->val() << endl;
+		cout << intLiteral1->val() << " <= " << intLiteral2->val() << " = " << res11->val() << endl;
+		cout << intLiteral1->val() << " < " << intLiteral2->val() << " = " << res12->val() << endl;
+		cout << intLiteral1->val() << " >= " << intLiteral2->val() << " = " << res13->val() << endl;
+		cout << intLiteral1->val() << " > " << intLiteral2->val() << " = " << res14->val() << endl;
+	}
+	catch (exception e)
+	{
+		cout << e.what() << endl;
+	}
+
 
 	
 	//cout << "ints: " << intLiteral1->val() << " , " << intRes->val() << endl;
@@ -146,8 +214,8 @@ void test()
 */
 int main(int argc, char* argv[])
 {
-	//return compile(argc, argv);
-	test();
+	return compile(argc, argv);
+	//test();
 }
 
 

@@ -37,5 +37,6 @@ Literal::Type IntegerLiteral::getType() const
 
 void IntegerLiteral::print(string prepend)
 {
-	std::cout << prepend << "[Int Literal]: " << std::to_string(mVal) << std::endl;
+	//std::cout << prepend << "[Int Literal]: " << std::to_string(mVal) << std::endl;
+	std::cout << std::to_string(mVal);
 }
