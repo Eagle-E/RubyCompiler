@@ -2,38 +2,26 @@
 #define StackItem_H
 
 #include <string>
+#include <unordered_map>
 #include "Literal.h"
-
 using std::string;
-
+using std::unordered_map;
 
 /*
-* An item for the program stack, contains:
-*	- scope depth
-*	- identifier name
-*	- type of value identifier is referring to
-*	- value
+* An item for the program stack that represents a scope
 */
 class StackItem
 {
 public:
 	StackItem();
-	StackItem(const StackItem& other);
 	~StackItem();
 	
-	int getScope() const;
-	string getName() const;
-	Literal::Type getType() const;
-	Literal* getValue() const;
-
-	void setScope(int scope);
-	void setName(string name);
-	void setValue(Literal* val);
+	void setValue(const string& idName, Literal* value);
+	Literal& getValue(const string& idName);
 
 private:
-	int mScope;
-	string mIdName;
-	Literal* mValue;
+
+	unordered_map<string, Literal*> mScope;
 };
 
 

@@ -2,6 +2,7 @@
 #define ProgramStack_h
 
 #include <vector>
+#include "Literal.h"
 #include "StackItem.h"
 
 using std::vector;
@@ -27,16 +28,16 @@ public:
 	ProgramStack();
 	~ProgramStack();
 
-	void addNewItem(const string& idName, Literal* value);
 	void popScope(); // deletes all items of the highest scope depth and decrements scope counter
 	void pushScope();// increment scope counter
 	int getCurrentScopeDepth() const;
 
-	StackItem& lookup(const string& idName, LookupType lookupType = LookupType::LOCAL);
+	void setVariableValue(const string& idName, Literal* value);
+	Literal& getVariableValue(const string& idName, LookupType lookupType = LookupType::LOCAL);
 
 private:
-	int mCurrentScopeDepth;
-	vector<StackItem> mItems;
+	StackItem* getTopScope();
+	vector<StackItem*> mItems;
 };
 
 #endif ProgramStack_h

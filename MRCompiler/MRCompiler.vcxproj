@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -178,6 +178,7 @@
     <ClCompile Include="Add.cpp" />
     <ClCompile Include="And.cpp" />
     <ClCompile Include="ArgParser.cpp" />
+    <ClCompile Include="Assign.cpp" />
     <ClCompile Include="AssignmentExpression.cpp" />
     <ClCompile Include="BinOp.cpp" />
     <ClCompile Include="BinOpExpression.cpp" />
@@ -226,6 +227,7 @@
     <ClInclude Include="Add.h" />
     <ClInclude Include="And.h" />
     <ClInclude Include="ArgParser.h" />
+    <ClInclude Include="Assign.h" />
     <ClInclude Include="AssignmentExpression.h" />
     <ClInclude Include="BinOp.h" />
     <ClInclude Include="BinOpExpression.h" />

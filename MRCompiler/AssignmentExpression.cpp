@@ -24,9 +24,11 @@ Literal* AssignmentExpression::eval(StackAndTable* stackAndTable)
 {
 	if (mExprToAssign != nullptr)
 	{
-		Literal* result = mExprToAssign->eval(stackAndTable);
-		stackAndTable->stack.addNewItem(mId->getName(), result);
-		return result;
+		//Literal* result = mExprToAssign->eval(stackAndTable);
+		//stackAndTable->stack.addNewItem(mId->getName(), result);
+		//return result;
+		// TODO
+		return nullptr;
 	}
 	return nullptr;
 }

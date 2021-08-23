@@ -18,11 +18,12 @@ IdentifierExpression::~IdentifierExpression()
 
 Literal* IdentifierExpression::eval(StackAndTable* stackAndTable)
 {
-	Literal* result = stackAndTable->stack.lookup(mName).getValue();
+	// TODO: test
+	Literal& result = stackAndTable->stack.getVariableValue(mName);
 	std::cout << "-> [ID expr]: " << mName << " = ";
-	result->print("");
+	result.print("");
 	std::cout << std::endl;
-	return result;
+	return &result;
 }
 
 const string & IdentifierExpression::getName() const

@@ -2,79 +2,89 @@
 #include "IdentifierNotDefined.h"
 
 ProgramStack::ProgramStack()
-	: mCurrentScopeDepth(0)
 {
+	mItems.push_back(new StackItem());
 }
 
 ProgramStack::~ProgramStack()
 {
 	while (!mItems.empty())
+	{
+		delete mItems.at(mItems.size()-1);
 		mItems.pop_back();
+	}
 }
 
-void ProgramStack::addNewItem(const string& idName, Literal* value)
-{
-	StackItem newItem;
-	newItem.setScope(mCurrentScopeDepth);
-	newItem.setName(idName);
-	newItem.setValue(value);
-	mItems.push_back(newItem);
-}
+
 
 void ProgramStack::popScope()
 {
-	// remove all stack items of current scope then decrement scope
-	while (mItems.at(mItems.size()-1).getScope() == mCurrentScopeDepth)
+	// remove top scope, root scope cannot be removed
+	if (mItems.size() >= 2)
+	{
+		delete mItems.at(mItems.size() - 1);
 		mItems.pop_back();
-
-	mCurrentScopeDepth--;
+	}
 }
 
 void ProgramStack::pushScope()
 {
-	// increment scope counter
-	mCurrentScopeDepth++;
+	// add new scope to stack
+	mItems.push_back(new StackItem());
 }
 
 int ProgramStack::getCurrentScopeDepth() const
 {
-	return mCurrentScopeDepth;
+	// scope depth is the rank (index+1) of the scope in the stack
+	return mItems.size();
+}
+
+/*
+* Adds new variable to the stack on the current scope.
+*	- if variable already exists, value is updated
+*	- otherwise a new element is added.
+*/
+void ProgramStack::setVariableValue(const string& idName, Literal* value)
+{
+	// set value of variable
+	mItems.at(mItems.size() - 1)->setValue(idName, value);
 }
 
 /*
 	@returns stack item with given id name
 	@throws IdentifierNotDefined if the given name is not found in the stack
 */
-StackItem& ProgramStack::lookup(const string& idName, LookupType lookupType)
+Literal& ProgramStack::getVariableValue(const string& idName, LookupType lookupType)
 {
 	// check if stack is empty
 	if (mItems.size() == 0)
 		throw IdentifierNotDefined("Identifier \"" + idName + "\" is not defined");
 
-	vector<StackItem>::iterator iter = --mItems.end();
-	bool exit = false;
-
-	// iterate from back to front (local scope to parent scopes)
-	while (!exit)
+	int scopeIndex = mItems.size() - 1;
+	while (scopeIndex >= 0)
 	{
-		// if we're doing a local lookup break loop if the current item is outside scope
-		if (lookupType == LookupType::LOCAL && iter->getScope() < mCurrentScopeDepth)
-			break;
+		StackItem* scope = mItems.at(scopeIndex);
 
-		// check if item matches with the needed id
-		if (iter->getName().compare(idName) == 0)
+		try
 		{
-			return *iter;
+			return scope->getValue(idName);
 		}
-
-		// if we're at the first item in the stack, means we checked them all, quit
-		if (iter == mItems.begin())
-			exit = true;
-		else
-			iter--;
+		catch (IdentifierNotDefined e)
+		{
+			// variable not defined in current scope, throw exception again to quit
+			if (lookupType == LookupType::LOCAL)
+				throw e;
+			else if (lookupType == LookupType::GLOBAL)
+				scopeIndex--;
+		}
 	}
 
 	// item not found, we say it is undefined
 	throw IdentifierNotDefined("Identifier \"" + idName + "\" is not defined");
+}
+
+StackItem* ProgramStack::getTopScope()
+{
+	return mItems.at(mItems.size() - 1);
 }
 

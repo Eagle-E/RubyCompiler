@@ -1,58 +1,56 @@
 #include "StackItem.h"
 #include "Literal.h"
+#include "IdentifierNotDefined.h"
 
 
 StackItem::StackItem()
-	: mScope(0), mIdName(""), mValue(nullptr)
 {
 }
 
-StackItem::StackItem(const StackItem& other)
-{
-	this->mScope = other.mScope;
-	this->mIdName = other.mIdName;
-	this->mValue = other.mValue;
-}
 
 StackItem::~StackItem()
 {
+	for (auto i = mScope.begin(); i != mScope.end(); i++)
+	{
+		delete i->second;
+	}
+	mScope.clear();
 }
 
-int StackItem::getScope() const
+/*
+* - sets corresponding value of given variable
+* - if variable does not exist adds new record along with given Literal* value
+*/
+void StackItem::setValue(const string& idName, Literal* value)
 {
-	return mScope;
-}
-
-string StackItem::getName() const
-{
-	return mIdName;
-}
-
-Literal::Type StackItem::getType() const
-{
-	if (mValue == nullptr)
-		return Literal::Type::NIL;
+	unordered_map<string, Literal*>::iterator i = mScope.find(idName);
+	if (i != mScope.end())
+	{
+		// variable exists
+		delete i->second; // delete current literal value
+		i->second = value;
+	}
 	else
-		return mValue->getType();
+	{
+		// variable does not exist in current scope yet, add it
+		mScope[idName] = value;
+	}
 }
 
-Literal* StackItem::getValue() const
+/*
+* Returns value of given variable in current scope. 
+* Throws exception if variable does not exist.
+*/
+Literal& StackItem::getValue(const string& idName)
 {
-	return mValue;
-}
-
-void StackItem::setScope(int scope)
-{
-	mScope = scope;
-}
-
-void StackItem::setName(string name)
-{
-	mIdName = name;
-}
-
-
-void StackItem::setValue(Literal* val)
-{
-	mValue = val;
+	unordered_map<string, Literal*>::iterator i = mScope.find(idName);
+	if (i == mScope.end())
+	{
+		string msg = "ID \"" + idName + "\" not defined in current scope";
+		throw IdentifierNotDefined(msg);
+	}
+	else
+	{
+		return *i->second;
+	}
 }
