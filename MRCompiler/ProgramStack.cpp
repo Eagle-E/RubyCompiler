@@ -12,13 +12,13 @@ ProgramStack::~ProgramStack()
 		mItems.pop_back();
 }
 
-void ProgramStack::addNewItem(const string& idName, StackItem::SymbolType type, Literal* value)
+void ProgramStack::addNewItem(const string& idName, Literal* value)
 {
 	StackItem newItem;
 	newItem.setScope(mCurrentScopeDepth);
 	newItem.setName(idName);
-	newItem.setType(type);
 	newItem.setValue(value);
+	mItems.push_back(newItem);
 }
 
 void ProgramStack::popScope()
@@ -47,8 +47,15 @@ int ProgramStack::getCurrentScopeDepth() const
 */
 StackItem& ProgramStack::lookup(const string& idName, LookupType lookupType)
 {
-	vector<StackItem>::iterator iter = mItems.begin();
-	for (iter; iter != mItems.end(); iter++)
+	// check if stack is empty
+	if (mItems.size() == 0)
+		throw IdentifierNotDefined("Identifier \"" + idName + "\" is not defined");
+
+	vector<StackItem>::iterator iter = --mItems.end();
+	bool exit = false;
+
+	// iterate from back to front (local scope to parent scopes)
+	while (!exit)
 	{
 		// if we're doing a local lookup break loop if the current item is outside scope
 		if (lookupType == LookupType::LOCAL && iter->getScope() < mCurrentScopeDepth)
@@ -59,11 +66,15 @@ StackItem& ProgramStack::lookup(const string& idName, LookupType lookupType)
 		{
 			return *iter;
 		}
+
+		// if we're at the first item in the stack, means we checked them all, quit
+		if (iter == mItems.begin())
+			exit = true;
+		else
+			iter--;
 	}
 
 	// item not found, we say it is undefined
-	string msg = "Identifier ";
-	msg += idName;
-	msg += " is not defined";
-	throw IdentifierNotDefined(msg);
+	throw IdentifierNotDefined("Identifier \"" + idName + "\" is not defined");
 }
+

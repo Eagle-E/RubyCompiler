@@ -2,9 +2,10 @@
 #define StackItem_H
 
 #include <string>
+#include "Literal.h"
+
 using std::string;
 
-class Literal;
 
 /*
 * An item for the program stack, contains:
@@ -16,25 +17,22 @@ class Literal;
 class StackItem
 {
 public:
-	enum class SymbolType { IntegerLiteral, BooleanLiteral, None, OTHER };
 	StackItem();
 	StackItem(const StackItem& other);
 	~StackItem();
 	
 	int getScope() const;
 	string getName() const;
-	SymbolType getType() const;
+	Literal::Type getType() const;
 	Literal* getValue() const;
 
 	void setScope(int scope);
 	void setName(string name);
-	void setType(SymbolType type);
 	void setValue(Literal* val);
 
 private:
 	int mScope;
 	string mIdName;
-	SymbolType mType;
 	Literal* mValue;
 };
 

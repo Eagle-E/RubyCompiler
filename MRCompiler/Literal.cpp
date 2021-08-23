@@ -1,7 +1,7 @@
 #include "Literal.h"
 #include <typeinfo>
 #include <string.h>
-
+#include <iostream>
 
 
 /*
@@ -15,4 +15,14 @@ bool Literal::sameType(Literal* l1, Literal* l2)
 
 Literal::~Literal()
 {
+}
+
+Literal::Type Literal::getType() const
+{
+	return Type::NIL;
+}
+
+void Literal::print(string prepend)
+{
+	std::cout << prepend << " [Literal (base)]" << std::endl;
 }

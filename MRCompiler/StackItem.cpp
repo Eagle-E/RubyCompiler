@@ -3,7 +3,7 @@
 
 
 StackItem::StackItem()
-	: mScope(0), mIdName(""), mType(SymbolType::None), mValue(nullptr)
+	: mScope(0), mIdName(""), mValue(nullptr)
 {
 }
 
@@ -11,7 +11,6 @@ StackItem::StackItem(const StackItem& other)
 {
 	this->mScope = other.mScope;
 	this->mIdName = other.mIdName;
-	this->mType = other.mType;
 	this->mValue = other.mValue;
 }
 
@@ -21,17 +20,20 @@ StackItem::~StackItem()
 
 int StackItem::getScope() const
 {
-	return 0;
+	return mScope;
 }
 
 string StackItem::getName() const
 {
-	return string();
+	return mIdName;
 }
 
-StackItem::SymbolType StackItem::getType() const
+Literal::Type StackItem::getType() const
 {
-	return SymbolType();
+	if (mValue == nullptr)
+		return Literal::Type::NIL;
+	else
+		return mValue->getType();
 }
 
 Literal* StackItem::getValue() const
@@ -49,10 +51,6 @@ void StackItem::setName(string name)
 	mIdName = name;
 }
 
-void StackItem::setType(SymbolType type)
-{
-	mType = type;
-}
 
 void StackItem::setValue(Literal* val)
 {

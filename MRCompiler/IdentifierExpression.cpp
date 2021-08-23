@@ -1,5 +1,7 @@
-#include "IdentifierExpression.h"
 #include <iostream>
+#include "IdentifierExpression.h"
+#include "IdentifierNotDefined.h"
+
 IdentifierExpression::IdentifierExpression()
 {
 }
@@ -16,8 +18,11 @@ IdentifierExpression::~IdentifierExpression()
 
 Literal* IdentifierExpression::eval(StackAndTable* stackAndTable)
 {
-	//TODO
-	return nullptr;
+	Literal* result = stackAndTable->stack.lookup(mName).getValue();
+	std::cout << "-> [ID expr]: " << mName << " = ";
+	result->print("");
+	std::cout << std::endl;
+	return result;
 }
 
 const string & IdentifierExpression::getName() const
@@ -32,4 +37,5 @@ void IdentifierExpression::setName(const string& idName)
 
 void IdentifierExpression::print(string& prepend)
 {
+	std::cout << prepend << "[ID expr]: " << mName << std::endl;
 }

@@ -2,6 +2,7 @@
 #include "BooleanLiteral.h"
 #include "IntegerLiteral.h"
 #include "StackAndTable.h"
+#include <iostream>
 
 AssignmentExpression::AssignmentExpression()
 	:mId(nullptr), mExprToAssign(nullptr)
@@ -24,24 +25,7 @@ Literal* AssignmentExpression::eval(StackAndTable* stackAndTable)
 	if (mExprToAssign != nullptr)
 	{
 		Literal* result = mExprToAssign->eval(stackAndTable);
-		// check what type of literal it is
-		BooleanLiteral* bl = dynamic_cast<BooleanLiteral*>(result);
-		if (bl != nullptr)
-		{
-			stackAndTable->stack.addNewItem(mId->getName(), StackItem::SymbolType::BooleanLiteral, result);
-		}
-		else
-		{
-			IntegerLiteral* il = dynamic_cast<IntegerLiteral*>(result);
-			if (il != nullptr)
-			{
-				stackAndTable->stack.addNewItem(mId->getName(), StackItem::SymbolType::IntegerLiteral, result);
-			}
-			else
-			{
-				stackAndTable->stack.addNewItem(mId->getName(), StackItem::SymbolType::OTHER, result);
-			}
-		}
+		stackAndTable->stack.addNewItem(mId->getName(), result);
 		return result;
 	}
 	return nullptr;
@@ -49,4 +33,7 @@ Literal* AssignmentExpression::eval(StackAndTable* stackAndTable)
 
 void AssignmentExpression::print(string& prepend)
 {
+	std::cout << prepend << "[Assignment expr]:" << std::endl;
+	if (mId != nullptr) mId->print(string(prepend).append("\t"));
+	if (mExprToAssign != nullptr) mExprToAssign->print(string(prepend).append("\t"));
 }

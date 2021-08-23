@@ -1,17 +1,12 @@
-18+23
-5-9
-15*898
-1000/3
--8
-true || false
-true && false
-true != false
-true == false
-12 == 18
-12 != 18
-12 <= 18
-12 < 18
-12 >= 18
-12 > 18
-!true
-!false
+a=13
+a
+a = false
+a
+a = 15 + 16
+a
+a = a + 1
+a
+a = a * 2
+a
+a = a + false
+a

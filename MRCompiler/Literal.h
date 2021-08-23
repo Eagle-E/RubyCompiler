@@ -10,19 +10,20 @@ using std::string;
 class Literal
 {
 public:
-	enum class Type {INT, BOOL};
+	enum class Type {INT, BOOL, NIL};
 
 	static bool sameType(Literal* l1, Literal* l2);
 
 	virtual ~Literal();
 
-	virtual Type getType() const = 0;
+	virtual Type getType() const;
 
 	// function for debugging
-	virtual void print(string prepend) = 0;
+	virtual void print(string prepend);
 
 private:
 };
+
 
 
 #endif //LITERAL_H
