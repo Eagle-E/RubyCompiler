@@ -82,7 +82,13 @@ CompoundStatement* rootStatement = new CompoundStatement();
 
 %start program
 
-
+%right PREC_ASSIGN
+%left GT GE LT LE EQ NE
+%left OR
+%left AND
+%left PLUS MINUS
+%left MUL DIV
+%left UMINUS NOT
 
 
 %%
@@ -97,25 +103,32 @@ CompoundStatement* rootStatement = new CompoundStatement();
 // vul aan met producties
 program : compstmt ;
 
-compstmt : stmt zeroOrMore_t_stmt zeroOrOne_t 
+compstmt : stmt zeroOrMore_stmt zeroOrMore_t 
 								{
 									rootStatement->prependStatement($stmt);
 									
 								}
 		 ;
 
-zeroOrMore_t_stmt 
+zeroOrMore_stmt 
 	: /* empty */ {}
-	| zeroOrMore_t_stmt t stmt	{
-									rootStatement->appendStatement($stmt); 
-									//cout << "[LIST compstmt]" << endl;
+	| zeroOrMore_stmt zeroOrMore_t stmt	
+								{
+									rootStatement->appendStatement($stmt);
 								}
+	;
+
+zeroOrMore_t	
+	:
+	| zeroOrMore_t t
 	;
 
 zeroOrOne_t	
 	:
 	| t
 	;
+
+t : SEMICOLON | EOL ;
 
 stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
 		| DEF IDENTIFIER LPAREN zereOrOne_arglist RPAREN compstmt END {cout << "function def" << endl;}
@@ -128,42 +141,35 @@ stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
 		| expr		{$$ = new ExpressionStatement($expr);}		
         ;
 
-expr	: expr binop expr			{
-										$$ = new BinOpExpression($1, $3, $2);
-										cout << "\n[expr binop expr]" << endl;
-									}
-        | NOT expr					{
-										$$ = new UnaryBooleanNegationExpression($2); 
-										cout << "[NOT expr] " << endl;
-									}
-        | literal					{
-										$$ = new LiteralExpression($literal);
-										cout << "\n[expr] literal: ";
-										$literal->print("");
-										//cout << endl;
-									}
-        | IDENTIFIER				{
-										cout << "whatever" << endl;
-										cout << "IDENTIFIER: " << $<t_str>1 << endl;
-										$$ = new IdentifierExpression($1);	
-									}
-		| IDENTIFIER assignop expr	{
-										IdentifierExpression* idExpr = new IdentifierExpression($IDENTIFIER);
-										$$ = new AssignmentExpression(idExpr, $3);
-										cout << "[IDENTIFIER assignop expr]: " << idExpr->getName() << "=" << "<expr>" << endl;
-									}
-        | MINUS expr				{
-										$$ = new UnaryNumericNegationExpression($2); 
-										cout << "[MINUS expr] " << endl;
+
+
+expr	: 
+		expr PLUS expr			{$$ = new BinOpExpression($1, $3, new Add());}
+		| expr MINUS expr			{$$ = new BinOpExpression($1, $3, new Sub());}
+		| expr MUL expr				{$$ = new BinOpExpression($1, $3, new Mul());}
+		| expr DIV expr				{$$ = new BinOpExpression($1, $3, new Div());}
+		| expr GT expr				{$$ = new BinOpExpression($1, $3, new GreaterThan());}
+		| expr GE expr				{$$ = new BinOpExpression($1, $3, new GreaterOrEqual());}
+		| expr LT expr				{$$ = new BinOpExpression($1, $3, new LessThan());}
+		| expr LE expr				{$$ = new BinOpExpression($1, $3, new LessOrEqual());}
+		| expr EQ expr				{$$ = new BinOpExpression($1, $3, new Equal());}
+		| expr NE expr				{$$ = new BinOpExpression($1, $3, new NotEqual());}
+		| expr AND expr				{$$ = new BinOpExpression($1, $3, new And());}
+		| expr OR expr				{$$ = new BinOpExpression($1, $3, new Or());}
+
+        | NOT expr					{$$ = new UnaryBooleanNegationExpression($2); }
+        | MINUS expr %prec UMINUS	{$$ = new UnaryNumericNegationExpression($2); }
+
+        | literal					{$$ = new LiteralExpression($literal); }
+        | IDENTIFIER				{$$ = new IdentifierExpression($1);	}
+		| IDENTIFIER assignop expr %prec PREC_ASSIGN {
+										$$ = new AssignmentExpression(new IdentifierExpression($IDENTIFIER), $3);
 									}
 		| IDENTIFIER LPAREN zereOrOne_expressions RPAREN 
 									{
 										/*cout << "function call" << endl;*/
 									}
-		| LPAREN expr RPAREN		{
-										$$ = $2;
-										/*cout << "LPAREN expr RPAREN" << endl;*/
-									}
+		| LPAREN expr RPAREN		{$$ = $2; }
         ;
 
 expressions
@@ -171,14 +177,19 @@ expressions
 	| expressions COMMA expr
 	;
 
+zereOrOne_expressions
+	:   
+	| expressions
+	;
+
 arglist 
 	: IDENTIFIER
 	| arglist COMMA IDENTIFIER
 	;
 
-zereOrOne_expressions
+zereOrOne_arglist   
 	:   
-	| expressions
+	| arglist
 	;
 
 zeroOrMore_elseif
@@ -196,11 +207,6 @@ zeroOrMore_when
 	| zeroOrMore_when WHEN expr then compstmt
 	;
 
-zereOrOne_arglist   
-	:   
-	| arglist
-	;
-
 literal
 	: INTEGER { $$ = new IntegerLiteral($INTEGER); /*cout << "literal int:" << $INTEGER << endl; */ }
 	| BOOLEAN { $$ = new BooleanLiteral($BOOLEAN); /*cout << "literal bool:" << $BOOLEAN << endl;*/ }
@@ -216,22 +222,9 @@ assignop
 	| ORASSIGN 		{/*cout << "assign op: " << " ||= " << endl;*/}
 	;
 
-binop
-	: PLUS	{ $$ = new Add(); /*cout << "binop: " << $<str>1 << endl;*/}
-	| MINUS { $$ = new Sub(); /*cout << "binop: " << "-" << endl;*/}
-	| MUL 	{ $$ = new Mul(); /*cout << "binop: " << "*" << endl;*/}
-	| DIV 	{ $$ = new Div(); /*cout << "binop: " << "/" << endl;*/}
-	| GT 	{ $$ = new GreaterThan(); /*cout << "binop: " << ">" << endl;*/}
-	| GE 	{ $$ = new GreaterOrEqual(); /*cout << "binop: " << ">="<< endl;*/}
-	| LT 	{ $$ = new LessThan(); /*cout << "binop: " << "<" << endl;*/}
-	| LE 	{ $$ = new LessOrEqual(); /*cout << "binop: " << "<="<< endl;*/}
-	| EQ 	{ $$ = new Equal(); /*cout << "binop: " << "=="<< endl;*/}
-	| NE 	{ $$ = new NotEqual(); /*cout << "binop: " << "!="<< endl;*/}
-	| AND 	{ $$ = new And(); /*cout << "binop: " << "&&"<< endl;*/}
-	| OR 	{ $$ = new Or(); /*cout << "binop: " << "||"<< endl;*/}
-	;
 
-t : SEMICOLON | EOL ;
+
+
 
 then : t | THEN | t THEN ;
 do   : t | DO | t DO ;

@@ -140,7 +140,9 @@ extern CompoundStatement* rootStatement;
     AND = 296,                     /* AND  */
     OR = 297,                      /* OR  */
     NOT = 298,                     /* NOT  */
-    EOL = 299                      /* EOL  */
+    EOL = 299,                     /* EOL  */
+    PREC_ASSIGN = 300,             /* PREC_ASSIGN  */
+    UMINUS = 301                   /* UMINUS  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -158,7 +160,7 @@ union YYSTYPE
 	Literal* t_literal;
 	BinOp * t_binop;
 
-#line 162 "parser.h"
+#line 164 "parser.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
