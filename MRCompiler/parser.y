@@ -1,11 +1,13 @@
 %code requires {
 #include "lexer.h"
 #include <iostream>
+#include "Program.h"
+#include "CompoundStatement.h"
+
 #include "Expression.h"
 #include "LiteralExpression.h"
 #include "Statement.h"
 #include "ExpressionStatement.h"
-#include "CompoundStatement.h"
 #include "Literal.h"
 #include "IntegerLiteral.h"
 #include "BooleanLiteral.h"
@@ -38,11 +40,13 @@ using std::cerr;
 void yyerror(const char* str);
 
 // the abstract syntax tree
-extern CompoundStatement* rootStatement;
+extern Program* program;
+//extern CompoundStatement* rootStatement;
 }
 
 %code{
-CompoundStatement* rootStatement = new CompoundStatement();
+Program* program = new Program();
+CompoundStatement* rootStatement = program->getRootStatement(); //new CompoundStatement();
 }
 
 %union
@@ -52,7 +56,7 @@ CompoundStatement* rootStatement = new CompoundStatement();
 	Expression* t_expression;
 	Statement* t_statement;
 	Literal* t_literal;
-	BinOp * t_binop;
+	//BinOp * t_binop;
 };
 
 
@@ -78,7 +82,7 @@ CompoundStatement* rootStatement = new CompoundStatement();
 %nterm <t_literal> literal
 %nterm <t_expression> expr
 %nterm <t_statement> stmt
-%nterm <t_binop> binop
+ //%nterm <t_binop> binop
 
 %start program
 
@@ -123,10 +127,10 @@ zeroOrMore_t
 	| zeroOrMore_t t
 	;
 
-zeroOrOne_t	
-	:
-	| t
-	;
+ // zeroOrOne_t	
+ //	:
+ //	| t
+ //	;
 
 t : SEMICOLON | EOL ;
 

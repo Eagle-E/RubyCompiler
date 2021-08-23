@@ -212,6 +212,9 @@
     <ClInclude Include="ArgParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Program.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lexer.cpp">
@@ -345,6 +348,9 @@
     </ClCompile>
     <ClCompile Include="Sub.cpp">
       <Filter>Source Files\Parse Tree\Operations\binary</Filter>
+    </ClCompile>
+    <ClCompile Include="Program.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

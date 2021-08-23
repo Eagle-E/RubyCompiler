@@ -8,6 +8,8 @@
 #include "parser.h"
 #include "ArgParser.h"
 #include "StackAndTable.h"
+#include "Program.h"
+
 #include "Literal.h"
 #include "LiteralExpression.h"
 #include "Statement.h"
@@ -103,9 +105,9 @@ int compile(int argc, char* argv[])
 		{
 			cout << "----------------------------------------" << endl;
 			string s = "";
-			rootStatement->print(s);
+			program->getRootStatement()->print(s);
 			cout << "----------------------------------------" << endl;
-			rootStatement->execute(&st);
+			program->execute();
 		}
 		// TODO add other exceptions types to catch more specific interpreter errors
 		catch (exception& e)
@@ -115,7 +117,7 @@ int compile(int argc, char* argv[])
 
 	}
 
-	delete rootStatement;
+	delete program;
 
 	return 0;
 }
