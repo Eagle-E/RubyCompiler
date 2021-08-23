@@ -2,6 +2,7 @@
 #include "Literal.h"
 #include "IntegerLiteral.h"
 #include "InvalidOperandType.h"
+#include "DivideByZeroException.h"
 
 Div::Div()
 	:BinOp()
@@ -19,9 +20,11 @@ Literal* Div::execute(Literal* operand1, Literal* operand2)
         throw InvalidOperandType("Invalid operand type for / binary operation, expected (int, int)");
 
     // return negation
-    IntegerLiteral* iop1 = static_cast<IntegerLiteral*>(operand1);
-    IntegerLiteral* iop2 = static_cast<IntegerLiteral*>(operand2);
-    return new IntegerLiteral(iop1->val() / iop2->val());
+    IntegerLiteral* op1 = static_cast<IntegerLiteral*>(operand1);
+    IntegerLiteral* op2 = static_cast<IntegerLiteral*>(operand2);
+    if (op2->val() == 0)
+        throw DivideByZeroException("Error: Divided by 0.");
+    return new IntegerLiteral(op1->val() / op2->val());
 }
 
 void Div::print(std::string& prepend)

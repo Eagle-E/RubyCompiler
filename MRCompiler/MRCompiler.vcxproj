@@ -185,6 +185,7 @@
     <ClCompile Include="CompileTask.cpp" />
     <ClCompile Include="CompoundStatement.cpp" />
     <ClCompile Include="Div.cpp" />
+    <ClCompile Include="DivideByZeroException.cpp" />
     <ClCompile Include="Equal.cpp" />
     <ClCompile Include="Expression.cpp" />
     <ClCompile Include="ExpressionStatement.cpp" />
@@ -230,6 +231,7 @@
     <ClInclude Include="BinOpExpression.h" />
     <ClInclude Include="BooleanLiteral.h" />
     <ClInclude Include="Div.h" />
+    <ClInclude Include="DivideByZeroException.h" />
     <ClInclude Include="Equal.h" />
     <ClInclude Include="FunctionTable.h" />
     <ClInclude Include="GreaterOrEqual.h" />

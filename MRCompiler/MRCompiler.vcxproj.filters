@@ -215,6 +215,9 @@
     <ClInclude Include="Program.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DivideByZeroException.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lexer.cpp">
@@ -350,6 +353,9 @@
       <Filter>Source Files\Parse Tree\Operations\binary</Filter>
     </ClCompile>
     <ClCompile Include="Program.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DivideByZeroException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
