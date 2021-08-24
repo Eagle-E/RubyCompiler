@@ -70,6 +70,12 @@
     <Filter Include="Source Files\Parse Tree\Operations\binary">
       <UniqueIdentifier>{f5849ae7-4de2-4f6f-a27d-5b2d8a38b26d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Parse Tree\Operations\assignment">
+      <UniqueIdentifier>{28c19115-9a6a-43f0-a1c6-4e5eb25e48e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Parse Tree\Operations\assignment">
+      <UniqueIdentifier>{2e4290e7-8e47-4cfb-89f5-4561cddcaa50}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="lexer.l">
@@ -218,6 +224,27 @@
     <ClInclude Include="DivideByZeroException.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AssignOp.h">
+      <Filter>Header Files\Parse Tree\Operations\assignment</Filter>
+    </ClInclude>
+    <ClInclude Include="AssignTimes.h">
+      <Filter>Header Files\Parse Tree\Operations\assignment</Filter>
+    </ClInclude>
+    <ClInclude Include="AssignAnd.h">
+      <Filter>Header Files\Parse Tree\Operations\assignment</Filter>
+    </ClInclude>
+    <ClInclude Include="AssignDivide.h">
+      <Filter>Header Files\Parse Tree\Operations\assignment</Filter>
+    </ClInclude>
+    <ClInclude Include="AssignMinus.h">
+      <Filter>Header Files\Parse Tree\Operations\assignment</Filter>
+    </ClInclude>
+    <ClInclude Include="AssignOr.h">
+      <Filter>Header Files\Parse Tree\Operations\assignment</Filter>
+    </ClInclude>
+    <ClInclude Include="AssignPlus.h">
+      <Filter>Header Files\Parse Tree\Operations\assignment</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lexer.cpp">
@@ -357,6 +384,27 @@
     </ClCompile>
     <ClCompile Include="DivideByZeroException.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AssignOp.cpp">
+      <Filter>Source Files\Parse Tree\Operations\assignment</Filter>
+    </ClCompile>
+    <ClCompile Include="AssignTimes.cpp">
+      <Filter>Source Files\Parse Tree\Operations\assignment</Filter>
+    </ClCompile>
+    <ClCompile Include="AssignAnd.cpp">
+      <Filter>Source Files\Parse Tree\Operations\assignment</Filter>
+    </ClCompile>
+    <ClCompile Include="AssignDivide.cpp">
+      <Filter>Source Files\Parse Tree\Operations\assignment</Filter>
+    </ClCompile>
+    <ClCompile Include="AssignMinus.cpp">
+      <Filter>Source Files\Parse Tree\Operations\assignment</Filter>
+    </ClCompile>
+    <ClCompile Include="AssignOr.cpp">
+      <Filter>Source Files\Parse Tree\Operations\assignment</Filter>
+    </ClCompile>
+    <ClCompile Include="AssignPlus.cpp">
+      <Filter>Source Files\Parse Tree\Operations\assignment</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

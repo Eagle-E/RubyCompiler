@@ -77,6 +77,8 @@ extern int yydebug;
 #include "LessThan.h"
 #include "GreaterOrEqual.h"
 #include "GreaterThan.h"
+#include "AssignOp.h"
+#include "AssignPlus.h"
 
 // BEGIN TEST
 #include <typeinfo>
@@ -91,7 +93,7 @@ void yyerror(const char* str);
 extern Program* program;
 //extern CompoundStatement* rootStatement;
 
-#line 95 "parser.h"
+#line 97 "parser.h"
 
 /* Token kinds.  */
 #ifndef YYTOKENTYPE
@@ -154,16 +156,17 @@ extern Program* program;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 53 "parser.y"
+#line 55 "parser.y"
 
 	int t_int;
 	char* t_str;
 	Expression* t_expression;
 	Statement* t_statement;
 	Literal* t_literal;
+	AssignOp* t_assignop;
 	//BinOp * t_binop;
 
-#line 167 "parser.h"
+#line 170 "parser.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

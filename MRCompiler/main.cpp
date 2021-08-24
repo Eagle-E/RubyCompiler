@@ -102,7 +102,6 @@ int compile(int argc, char* argv[])
 	}
 
 	delete program;
-
 	return 0;
 }
 

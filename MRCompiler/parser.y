@@ -29,6 +29,8 @@
 #include "LessThan.h"
 #include "GreaterOrEqual.h"
 #include "GreaterThan.h"
+#include "AssignOp.h"
+#include "AssignPlus.h"
 
 // BEGIN TEST
 #include <typeinfo>
@@ -56,6 +58,7 @@ CompoundStatement* rootStatement = program->getRootStatement(); //new CompoundSt
 	Expression* t_expression;
 	Statement* t_statement;
 	Literal* t_literal;
+	AssignOp* t_assignop;
 	//BinOp * t_binop;
 };
 
@@ -82,6 +85,7 @@ CompoundStatement* rootStatement = program->getRootStatement(); //new CompoundSt
 %nterm <t_literal> literal
 %nterm <t_expression> expr
 %nterm <t_statement> stmt
+%nterm <t_assignop> assignop
  //%nterm <t_binop> binop
 
 %start program
@@ -167,7 +171,7 @@ expr	:
         | literal					{$$ = new LiteralExpression($literal); }
         | IDENTIFIER				{$$ = new IdentifierExpression($1);	}
 		| IDENTIFIER assignop expr %prec PREC_ASSIGN {
-										$$ = new AssignmentExpression(new IdentifierExpression($IDENTIFIER), $3);
+										$$ = new AssignmentExpression(new IdentifierExpression($IDENTIFIER), $3, $2);
 									}
 		| IDENTIFIER LPAREN zereOrOne_expressions RPAREN 
 									{
@@ -217,8 +221,8 @@ literal
 	;
 
 assignop
-	: ASSIGN		{/*cout << "assign op: " << " = "   << endl;*/}
-	| PLUSASSIGN 	{/*cout << "assign op: " << " += "  << endl;*/}
+	: ASSIGN		{$$ = new AssignOp(); }
+	| PLUSASSIGN 	{$$ = new AssignPlus(); }
 	| MINUSASSIGN 	{/*cout << "assign op: " << " -= "  << endl;*/}
 	| MULASSIGN 	{/*cout << "assign op: " << " *= "  << endl;*/}
 	| DIVASSIGN 	{/*cout << "assign op: " << " /= "  << endl;*/}

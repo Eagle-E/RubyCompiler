@@ -9,7 +9,6 @@ IdentifierExpression::IdentifierExpression()
 IdentifierExpression::IdentifierExpression(char* idName)
 	: mName(idName)
 {
-	std::cout << "new identifier: " << idName << std::endl;
 }
 
 IdentifierExpression::~IdentifierExpression()
