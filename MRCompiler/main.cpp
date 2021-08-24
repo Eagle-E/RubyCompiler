@@ -150,8 +150,8 @@ void test()
 */
 int main(int argc, char* argv[])
 {
-	//return compile(argc, argv);
-	test();
+	return compile(argc, argv);
+	//test();
 }
 
 
