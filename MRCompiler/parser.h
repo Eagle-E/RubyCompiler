@@ -79,10 +79,11 @@ extern int yydebug;
 #include "GreaterThan.h"
 #include "AssignOp.h"
 #include "AssignPlus.h"
-
-// BEGIN TEST
-#include <typeinfo>
-// END TEST
+#include "AssignMinus.h"
+#include "AssignTimes.h"
+#include "AssignDivide.h"
+#include "AssignOr.h"
+#include "AssignAnd.h"
 
 using std::cout;	using std::endl;
 using std::cerr;
@@ -93,7 +94,7 @@ void yyerror(const char* str);
 extern Program* program;
 //extern CompoundStatement* rootStatement;
 
-#line 97 "parser.h"
+#line 98 "parser.h"
 
 /* Token kinds.  */
 #ifndef YYTOKENTYPE
@@ -156,7 +157,7 @@ extern Program* program;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 55 "parser.y"
+#line 56 "parser.y"
 
 	int t_int;
 	char* t_str;
@@ -166,7 +167,7 @@ union YYSTYPE
 	AssignOp* t_assignop;
 	//BinOp * t_binop;
 
-#line 170 "parser.h"
+#line 171 "parser.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

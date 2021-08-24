@@ -31,10 +31,11 @@
 #include "GreaterThan.h"
 #include "AssignOp.h"
 #include "AssignPlus.h"
-
-// BEGIN TEST
-#include <typeinfo>
-// END TEST
+#include "AssignMinus.h"
+#include "AssignTimes.h"
+#include "AssignDivide.h"
+#include "AssignOr.h"
+#include "AssignAnd.h"
 
 using std::cout;	using std::endl;
 using std::cerr;
@@ -171,7 +172,7 @@ expr	:
         | literal					{$$ = new LiteralExpression($literal); }
         | IDENTIFIER				{$$ = new IdentifierExpression($1);	}
 		| IDENTIFIER assignop expr %prec PREC_ASSIGN {
-										$$ = new AssignmentExpression(new IdentifierExpression($IDENTIFIER), $3, $2);
+										$$ = new AssignmentExpression(new IdentifierExpression($1), $3, $2);
 									}
 		| IDENTIFIER LPAREN zereOrOne_expressions RPAREN 
 									{
@@ -216,20 +217,19 @@ zeroOrMore_when
 	;
 
 literal
-	: INTEGER { $$ = new IntegerLiteral($INTEGER); /*cout << "literal int:" << $INTEGER << endl; */ }
-	| BOOLEAN { $$ = new BooleanLiteral($BOOLEAN); /*cout << "literal bool:" << $BOOLEAN << endl;*/ }
+	: INTEGER { $$ = new IntegerLiteral($INTEGER); }
+	| BOOLEAN { $$ = new BooleanLiteral($BOOLEAN); }
 	;
 
 assignop
 	: ASSIGN		{$$ = new AssignOp(); }
 	| PLUSASSIGN 	{$$ = new AssignPlus(); }
-	| MINUSASSIGN 	{/*cout << "assign op: " << " -= "  << endl;*/}
-	| MULASSIGN 	{/*cout << "assign op: " << " *= "  << endl;*/}
-	| DIVASSIGN 	{/*cout << "assign op: " << " /= "  << endl;*/}
-	| ANDASSIGN 	{/*cout << "assign op: " << " &&= " << endl;*/}
-	| ORASSIGN 		{/*cout << "assign op: " << " ||= " << endl;*/}
+	| MINUSASSIGN 	{$$ = new AssignMinus(); }
+	| MULASSIGN 	{$$ = new AssignTimes(); }
+	| DIVASSIGN 	{$$ = new AssignDivide(); }
+	| ANDASSIGN 	{$$ = new AssignAnd(); }
+	| ORASSIGN 		{$$ = new AssignOr(); }
 	;
-
 
 
 

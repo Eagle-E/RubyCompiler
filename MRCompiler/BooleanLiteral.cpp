@@ -35,6 +35,11 @@ Literal::Type BooleanLiteral::getType() const
 	return Type::BOOL;
 }
 
+Literal* BooleanLiteral::copy() const
+{
+	return new BooleanLiteral(mVal);
+}
+
 void BooleanLiteral::print(string prepend)
 {
 	//std::cout << prepend << "[Bool Literal]: ";

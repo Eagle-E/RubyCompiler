@@ -12,11 +12,10 @@ class Literal
 public:
 	enum class Type {INT, BOOL, NIL};
 
-	static bool sameType(Literal* l1, Literal* l2);
-
 	virtual ~Literal();
 
 	virtual Type getType() const;
+	virtual Literal* copy() const;
 
 	// function for debugging
 	virtual void print(string prepend);

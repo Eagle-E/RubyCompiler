@@ -165,7 +165,7 @@ typedef enum yysymbol_kind_t yysymbol_kind_t;
 
 
 /* Unqualified %code blocks.  */
-#line 49 "parser.y"
+#line 50 "parser.y"
 
 Program* program = new Program();
 CompoundStatement* rootStatement = program->getRootStatement(); //new CompoundStatement();
@@ -538,13 +538,13 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,   112,   112,   114,   122,   123,   130,   131,   139,   139,
-     141,   142,   143,   144,   145,   146,   147,   148,   149,   155,
-     156,   157,   158,   159,   160,   161,   162,   163,   164,   165,
-     166,   168,   169,   171,   172,   173,   176,   180,   184,   185,
-     189,   190,   194,   195,   199,   200,   204,   205,   209,   210,
-     214,   215,   219,   220,   224,   225,   226,   227,   228,   229,
-     230,   237,   237,   237,   238,   238,   238
+       0,   113,   113,   115,   123,   124,   131,   132,   140,   140,
+     142,   143,   144,   145,   146,   147,   148,   149,   150,   156,
+     157,   158,   159,   160,   161,   162,   163,   164,   165,   166,
+     167,   169,   170,   172,   173,   174,   177,   181,   185,   186,
+     190,   191,   195,   196,   200,   201,   205,   206,   210,   211,
+     215,   216,   220,   221,   225,   226,   227,   228,   229,   230,
+     231,   237,   237,   237,   238,   238,   238
 };
 #endif
 
@@ -1225,7 +1225,7 @@ yyreduce:
   switch (yyn)
     {
   case 3: /* compstmt: stmt zeroOrMore_stmt zeroOrMore_t  */
-#line 115 "parser.y"
+#line 116 "parser.y"
                                                                 {
 									rootStatement->prependStatement((yyvsp[-2].t_statement));
 									
@@ -1234,13 +1234,13 @@ yyreduce:
     break;
 
   case 4: /* zeroOrMore_stmt: %empty  */
-#line 122 "parser.y"
+#line 123 "parser.y"
                       {}
 #line 1240 "parser.cpp"
     break;
 
   case 5: /* zeroOrMore_stmt: zeroOrMore_stmt zeroOrMore_t stmt  */
-#line 124 "parser.y"
+#line 125 "parser.y"
                                                                 {
 									rootStatement->appendStatement((yyvsp[0].t_statement));
 								}
@@ -1248,157 +1248,157 @@ yyreduce:
     break;
 
   case 10: /* stmt: UNDEF IDENTIFIER  */
-#line 141 "parser.y"
+#line 142 "parser.y"
                                 {cout << "undef" << endl;}
 #line 1254 "parser.cpp"
     break;
 
   case 11: /* stmt: DEF IDENTIFIER LPAREN zereOrOne_arglist RPAREN compstmt END  */
-#line 142 "parser.y"
+#line 143 "parser.y"
                                                                               {cout << "function def" << endl;}
 #line 1260 "parser.cpp"
     break;
 
   case 12: /* stmt: RETURN expr  */
-#line 143 "parser.y"
+#line 144 "parser.y"
                                         {cout << "return" << endl;}
 #line 1266 "parser.cpp"
     break;
 
   case 13: /* stmt: IF expr then compstmt zeroOrMore_elseif zeroOrOne_else END  */
-#line 144 "parser.y"
+#line 145 "parser.y"
                                                                              {cout << "IF" << endl;}
 #line 1272 "parser.cpp"
     break;
 
   case 14: /* stmt: UNLESS expr then compstmt zeroOrOne_else END  */
-#line 145 "parser.y"
+#line 146 "parser.y"
                                                                {cout << "unless" << endl;}
 #line 1278 "parser.cpp"
     break;
 
   case 15: /* stmt: WHILE expr do compstmt END  */
-#line 146 "parser.y"
+#line 147 "parser.y"
                                              {cout << "while" << endl;}
 #line 1284 "parser.cpp"
     break;
 
   case 16: /* stmt: UNTIL expr do compstmt END  */
-#line 147 "parser.y"
+#line 148 "parser.y"
                                              {cout << "until" << endl;}
 #line 1290 "parser.cpp"
     break;
 
   case 17: /* stmt: CASE expr WHEN expr then compstmt zeroOrMore_when zeroOrOne_else END  */
-#line 148 "parser.y"
+#line 149 "parser.y"
                                                                                        {cout << "case" << endl;}
 #line 1296 "parser.cpp"
     break;
 
   case 18: /* stmt: expr  */
-#line 149 "parser.y"
+#line 150 "parser.y"
                                 {(yyval.t_statement) = new ExpressionStatement((yyvsp[0].t_expression));}
 #line 1302 "parser.cpp"
     break;
 
   case 19: /* expr: expr PLUS expr  */
-#line 155 "parser.y"
+#line 156 "parser.y"
                                                 {(yyval.t_expression) = new BinOpExpression((yyvsp[-2].t_expression), (yyvsp[0].t_expression), new Add());}
 #line 1308 "parser.cpp"
     break;
 
   case 20: /* expr: expr MINUS expr  */
-#line 156 "parser.y"
+#line 157 "parser.y"
                                                         {(yyval.t_expression) = new BinOpExpression((yyvsp[-2].t_expression), (yyvsp[0].t_expression), new Sub());}
 #line 1314 "parser.cpp"
     break;
 
   case 21: /* expr: expr MUL expr  */
-#line 157 "parser.y"
+#line 158 "parser.y"
                                                         {(yyval.t_expression) = new BinOpExpression((yyvsp[-2].t_expression), (yyvsp[0].t_expression), new Mul());}
 #line 1320 "parser.cpp"
     break;
 
   case 22: /* expr: expr DIV expr  */
-#line 158 "parser.y"
+#line 159 "parser.y"
                                                         {(yyval.t_expression) = new BinOpExpression((yyvsp[-2].t_expression), (yyvsp[0].t_expression), new Div());}
 #line 1326 "parser.cpp"
     break;
 
   case 23: /* expr: expr GT expr  */
-#line 159 "parser.y"
+#line 160 "parser.y"
                                                         {(yyval.t_expression) = new BinOpExpression((yyvsp[-2].t_expression), (yyvsp[0].t_expression), new GreaterThan());}
 #line 1332 "parser.cpp"
     break;
 
   case 24: /* expr: expr GE expr  */
-#line 160 "parser.y"
+#line 161 "parser.y"
                                                         {(yyval.t_expression) = new BinOpExpression((yyvsp[-2].t_expression), (yyvsp[0].t_expression), new GreaterOrEqual());}
 #line 1338 "parser.cpp"
     break;
 
   case 25: /* expr: expr LT expr  */
-#line 161 "parser.y"
+#line 162 "parser.y"
                                                         {(yyval.t_expression) = new BinOpExpression((yyvsp[-2].t_expression), (yyvsp[0].t_expression), new LessThan());}
 #line 1344 "parser.cpp"
     break;
 
   case 26: /* expr: expr LE expr  */
-#line 162 "parser.y"
+#line 163 "parser.y"
                                                         {(yyval.t_expression) = new BinOpExpression((yyvsp[-2].t_expression), (yyvsp[0].t_expression), new LessOrEqual());}
 #line 1350 "parser.cpp"
     break;
 
   case 27: /* expr: expr EQ expr  */
-#line 163 "parser.y"
+#line 164 "parser.y"
                                                         {(yyval.t_expression) = new BinOpExpression((yyvsp[-2].t_expression), (yyvsp[0].t_expression), new Equal());}
 #line 1356 "parser.cpp"
     break;
 
   case 28: /* expr: expr NE expr  */
-#line 164 "parser.y"
+#line 165 "parser.y"
                                                         {(yyval.t_expression) = new BinOpExpression((yyvsp[-2].t_expression), (yyvsp[0].t_expression), new NotEqual());}
 #line 1362 "parser.cpp"
     break;
 
   case 29: /* expr: expr AND expr  */
-#line 165 "parser.y"
+#line 166 "parser.y"
                                                         {(yyval.t_expression) = new BinOpExpression((yyvsp[-2].t_expression), (yyvsp[0].t_expression), new And());}
 #line 1368 "parser.cpp"
     break;
 
   case 30: /* expr: expr OR expr  */
-#line 166 "parser.y"
+#line 167 "parser.y"
                                                         {(yyval.t_expression) = new BinOpExpression((yyvsp[-2].t_expression), (yyvsp[0].t_expression), new Or());}
 #line 1374 "parser.cpp"
     break;
 
   case 31: /* expr: NOT expr  */
-#line 168 "parser.y"
+#line 169 "parser.y"
                                                         {(yyval.t_expression) = new UnaryBooleanNegationExpression((yyvsp[0].t_expression)); }
 #line 1380 "parser.cpp"
     break;
 
   case 32: /* expr: MINUS expr  */
-#line 169 "parser.y"
+#line 170 "parser.y"
                                         {(yyval.t_expression) = new UnaryNumericNegationExpression((yyvsp[0].t_expression)); }
 #line 1386 "parser.cpp"
     break;
 
   case 33: /* expr: literal  */
-#line 171 "parser.y"
+#line 172 "parser.y"
                                                         {(yyval.t_expression) = new LiteralExpression((yyvsp[0].t_literal)); }
 #line 1392 "parser.cpp"
     break;
 
   case 34: /* expr: IDENTIFIER  */
-#line 172 "parser.y"
+#line 173 "parser.y"
                                                 {(yyval.t_expression) = new IdentifierExpression((yyvsp[0].t_str));	}
 #line 1398 "parser.cpp"
     break;
 
   case 35: /* expr: IDENTIFIER assignop expr  */
-#line 173 "parser.y"
+#line 174 "parser.y"
                                                              {
 										(yyval.t_expression) = new AssignmentExpression(new IdentifierExpression((yyvsp[-2].t_str)), (yyvsp[0].t_expression), (yyvsp[-1].t_assignop));
 									}
@@ -1406,7 +1406,7 @@ yyreduce:
     break;
 
   case 36: /* expr: IDENTIFIER LPAREN zereOrOne_expressions RPAREN  */
-#line 177 "parser.y"
+#line 178 "parser.y"
                                                                         {
 										/*cout << "function call" << endl;*/
 									}
@@ -1414,62 +1414,62 @@ yyreduce:
     break;
 
   case 37: /* expr: LPAREN expr RPAREN  */
-#line 180 "parser.y"
+#line 181 "parser.y"
                                                 {(yyval.t_expression) = (yyvsp[-1].t_expression); }
 #line 1420 "parser.cpp"
     break;
 
   case 52: /* literal: INTEGER  */
-#line 219 "parser.y"
-                  { (yyval.t_literal) = new IntegerLiteral((yyvsp[0].t_int)); /*cout << "literal int:" << $INTEGER << endl; */ }
+#line 220 "parser.y"
+                  { (yyval.t_literal) = new IntegerLiteral((yyvsp[0].t_int)); }
 #line 1426 "parser.cpp"
     break;
 
   case 53: /* literal: BOOLEAN  */
-#line 220 "parser.y"
-                  { (yyval.t_literal) = new BooleanLiteral((yyvsp[0].t_int)); /*cout << "literal bool:" << $BOOLEAN << endl;*/ }
+#line 221 "parser.y"
+                  { (yyval.t_literal) = new BooleanLiteral((yyvsp[0].t_int)); }
 #line 1432 "parser.cpp"
     break;
 
   case 54: /* assignop: ASSIGN  */
-#line 224 "parser.y"
+#line 225 "parser.y"
                                 {(yyval.t_assignop) = new AssignOp(); }
 #line 1438 "parser.cpp"
     break;
 
   case 55: /* assignop: PLUSASSIGN  */
-#line 225 "parser.y"
+#line 226 "parser.y"
                         {(yyval.t_assignop) = new AssignPlus(); }
 #line 1444 "parser.cpp"
     break;
 
   case 56: /* assignop: MINUSASSIGN  */
-#line 226 "parser.y"
-                        {/*cout << "assign op: " << " -= "  << endl;*/}
+#line 227 "parser.y"
+                        {(yyval.t_assignop) = new AssignMinus(); }
 #line 1450 "parser.cpp"
     break;
 
   case 57: /* assignop: MULASSIGN  */
-#line 227 "parser.y"
-                        {/*cout << "assign op: " << " *= "  << endl;*/}
+#line 228 "parser.y"
+                        {(yyval.t_assignop) = new AssignTimes(); }
 #line 1456 "parser.cpp"
     break;
 
   case 58: /* assignop: DIVASSIGN  */
-#line 228 "parser.y"
-                        {/*cout << "assign op: " << " /= "  << endl;*/}
+#line 229 "parser.y"
+                        {(yyval.t_assignop) = new AssignDivide(); }
 #line 1462 "parser.cpp"
     break;
 
   case 59: /* assignop: ANDASSIGN  */
-#line 229 "parser.y"
-                        {/*cout << "assign op: " << " &&= " << endl;*/}
+#line 230 "parser.y"
+                        {(yyval.t_assignop) = new AssignAnd(); }
 #line 1468 "parser.cpp"
     break;
 
   case 60: /* assignop: ORASSIGN  */
-#line 230 "parser.y"
-                                {/*cout << "assign op: " << " ||= " << endl;*/}
+#line 231 "parser.y"
+                                {(yyval.t_assignop) = new AssignOr(); }
 #line 1474 "parser.cpp"
     break;
 

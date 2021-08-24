@@ -2,5 +2,5 @@
 
 Literal* AssignOp::assign(Literal* currentVarValue, Literal* valueToAssign)
 {
-	return valueToAssign;
+	return valueToAssign->copy();
 }

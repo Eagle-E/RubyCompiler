@@ -12,8 +12,7 @@ StackItem::~StackItem()
 {
 	for (auto i = mScope.begin(); i != mScope.end(); i++)
 	{
-		// TODO check if literals must be deleted manually or whether bison takes care of this
-		//delete i->second;
+		delete i->second;
 	}
 	mScope.clear();
 }

@@ -17,8 +17,8 @@ AssignmentExpression::AssignmentExpression(IdentifierExpression* id, Expression*
 
 AssignmentExpression::~AssignmentExpression()
 {
-	//if (mExprToAssign != nullptr)
-	//	delete mExprToAssign;
+	if (mExprToAssign != nullptr)
+		delete mExprToAssign;
 }
 
 /*

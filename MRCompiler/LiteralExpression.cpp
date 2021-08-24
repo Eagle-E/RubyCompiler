@@ -7,7 +7,7 @@ LiteralExpression::LiteralExpression()
 }
 
 LiteralExpression::LiteralExpression(Literal * l)
-	: mLiteral(l)
+	: mLiteral(l->copy())
 {
 }
 

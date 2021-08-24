@@ -35,6 +35,11 @@ Literal::Type IntegerLiteral::getType() const
 	return Type::INT;
 }
 
+Literal* IntegerLiteral::copy() const
+{
+	return new IntegerLiteral(mVal);
+}
+
 void IntegerLiteral::print(string prepend)
 {
 	//std::cout << prepend << "[Int Literal]: " << std::to_string(mVal) << std::endl;

@@ -7,8 +7,8 @@ IdentifierExpression::IdentifierExpression()
 }
 
 IdentifierExpression::IdentifierExpression(char* idName)
-	: mName(idName)
 {
+	mName = string(idName);
 }
 
 IdentifierExpression::~IdentifierExpression()

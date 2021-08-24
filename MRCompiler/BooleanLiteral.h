@@ -15,6 +15,7 @@ public:
 	void print();
 
 	Type getType() const;
+	Literal* copy() const;
 
 	void print(string prepend);
 

@@ -83,8 +83,6 @@ int compile(int argc, char* argv[])
 			//cout << "[!] " << code << endl;
 		} while (!feof(pCodeFile));
 
-		StackAndTable st;
-
 		try
 		{
 			cout << "----------------------------------------" << endl;
