@@ -19,6 +19,7 @@ public:
 	~IfStatement();
 
 	void setIfStatement(ConditionExpression* condition, CompoundStatement* body);
+	void setElseBody(CompoundStatement* body);
 
 	void execute(StackAndTable* stackAndTable);
 	void print(string& prepend);
@@ -26,7 +27,7 @@ public:
 private:
 	deque<ConditionExpression*> mConditions; // conditions for if statements, first one is if the rest else if
 	deque<CompoundStatement*> mBodies; // code blocks of if statements
-	//CompoundStatement* mElseBody;
+	CompoundStatement* mElseBody;
 };
 
 

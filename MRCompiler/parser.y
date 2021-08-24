@@ -91,7 +91,7 @@ int i = 0;
 
  // non-terminal types
  //%nterm <t_program> program
-%nterm <t_cmp_statement> compstmt zeroOrMore_stmt
+%nterm <t_cmp_statement> compstmt zeroOrMore_stmt zeroOrOne_else
 %nterm <t_statement> stmt
 %nterm <t_expression> expr
 %nterm <t_literal> literal
@@ -184,9 +184,12 @@ stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
 
 		| IF expr then zeroOrOne_t compstmt zeroOrMore_elseif zeroOrOne_else END
 			{
-				cout << "IF STMT" << endl;
 				IfStatement * ifStm = new IfStatement();
 				ifStm->setIfStatement(new ConditionExpression($expr), $compstmt);
+
+				if ($zeroOrOne_else != nullptr)
+					ifStm->setElseBody($zeroOrOne_else);
+
 				$$ = ifStm;
 			}
 
@@ -257,8 +260,8 @@ zeroOrMore_elseif
 	;
 
 zeroOrOne_else
-	:
-	| ELSE compstmt {/*$$ = $2;*/ }
+	:				{$$ = nullptr; }
+	| ELSE zeroOrOne_t compstmt {$$ = $compstmt; }
 	;
 
 zeroOrMore_when 

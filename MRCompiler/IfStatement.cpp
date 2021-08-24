@@ -26,6 +26,11 @@ void IfStatement::setIfStatement(ConditionExpression* condition, CompoundStateme
 	mBodies.push_back(body);
 }
 
+void IfStatement::setElseBody(CompoundStatement* body)
+{
+	mElseBody = body;
+}
+
 void IfStatement::execute(StackAndTable* stackAndTable)
 {
 	if (mConditions.empty())
@@ -50,6 +55,9 @@ void IfStatement::execute(StackAndTable* stackAndTable)
 		throw std::exception("Missing body for if/else if statement.");
 	}
 
+	// no condition passed, check if there is an "else" statement
+	if (mElseBody != nullptr)
+		mElseBody->execute(stackAndTable);
 
 	// TODO: throw custom expressions
 }
@@ -57,12 +65,18 @@ void IfStatement::execute(StackAndTable* stackAndTable)
 void IfStatement::print(string& prepend)
 {
 	std::cout << prepend << "[IF stm]:" << std::endl;
+	string newprepend = string(prepend).append("\t");
 	try
 	{
 		for (int i = 0; i < mConditions.size(); i++)
 		{
-			mConditions[i]->print(string(prepend).append("\t"));
-			mBodies[i]->print(string(prepend).append("\t"));
+			mConditions[i]->print(newprepend);
+			mBodies[i]->print(newprepend);
+		}
+		if (mElseBody != nullptr)
+		{
+			std::cout << prepend << "\t[else]: " << std::endl;
+			mElseBody->print(newprepend);
 		}
 	}
 	catch (std::out_of_range e)
