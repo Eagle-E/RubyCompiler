@@ -1,15 +1,21 @@
-b = 1
-b += 100
-b
-b -= 500
-b
-b *= -2
-b
-b /= 10
+if true then
+	a = 10
+	a
+end
+
+a
+
+if true
+	b = 22
+	b
+end
 b
 
-c = true
-c ||= false
+if true 
+then
+	c = 33
+	c
+end
+
 c
-c &&= false
-c
+

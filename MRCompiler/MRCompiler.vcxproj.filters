@@ -245,6 +245,12 @@
     <ClInclude Include="AssignPlus.h">
       <Filter>Header Files\Parse Tree\Operations\assignment</Filter>
     </ClInclude>
+    <ClInclude Include="IfStatement.h">
+      <Filter>Header Files\Parse Tree\Statements</Filter>
+    </ClInclude>
+    <ClInclude Include="ConditionExpression.h">
+      <Filter>Header Files\Parse Tree\Expressions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lexer.cpp">
@@ -405,6 +411,12 @@
     </ClCompile>
     <ClCompile Include="AssignPlus.cpp">
       <Filter>Source Files\Parse Tree\Operations\assignment</Filter>
+    </ClCompile>
+    <ClCompile Include="IfStatement.cpp">
+      <Filter>Source Files\Parse Tree\Statements</Filter>
+    </ClCompile>
+    <ClCompile Include="ConditionExpression.cpp">
+      <Filter>Source Files\Parse Tree\Expressions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -12,10 +12,10 @@ public:
 
 	CompoundStatement* getRootStatement();
 	void execute();
-	
-
+	void setRootStatement(CompoundStatement* rootStmt);
+	void print();
 private:
-	CompoundStatement mRootStatement;
+	CompoundStatement* mRootStatement;
 	StackAndTable mStackAndTable;
 };
 

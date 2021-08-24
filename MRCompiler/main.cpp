@@ -15,6 +15,8 @@
 #include "IdentifierNotDefined.h"
 #include "IntegerLiteral.h"
 #include "BooleanLiteral.h"
+#include "ConditionExpression.h"
+#include "IfStatement.h"
 
 using std::cout;		using std::endl;
 using std::cin;			using std::exception;
@@ -87,7 +89,7 @@ int compile(int argc, char* argv[])
 		{
 			cout << "----------------------------------------" << endl;
 			string s = "";
-			program->getRootStatement()->print(s);
+			program->print();
 			cout << "----------------------------------------" << endl;
 			program->execute();
 		}
@@ -105,7 +107,9 @@ int compile(int argc, char* argv[])
 
 void test()
 {
-	ProgramStack stack;
+	Program program;
+	CompoundStatement * rootStm = program.getRootStatement();
+	StackAndTable* stack = new StackAndTable();
 	IntegerLiteral* i1 = new IntegerLiteral(2);
 	IntegerLiteral* i2 = new IntegerLiteral(-7);
 	IntegerLiteral* i3 = new IntegerLiteral(99797);
@@ -114,25 +118,28 @@ void test()
 
 	try
 	{
-		stack.setVariableValue("a", i1);
-		stack.setVariableValue("b", i2);
-		stack.setVariableValue("c", i3);
-		stack.setVariableValue("d", b1);
-		stack.setVariableValue("e", b2);
-		cout << "a: "; stack.getVariableValue("a").print(""); cout << endl;
-		cout << "b: "; stack.getVariableValue("b").print(""); cout << endl;
-		cout << "c: "; stack.getVariableValue("c").print(""); cout << endl;
-		cout << "d: "; stack.getVariableValue("d").print(""); cout << endl;
-		cout << "e: "; stack.getVariableValue("e").print(""); cout << endl;
-		stack.pushScope();
-		stack.setVariableValue("a", new BooleanLiteral(false));
-		cout << "a: "; stack.getVariableValue("a").print(""); cout << endl;
-		stack.popScope();
-		stack.popScope();
-		stack.popScope();
-		stack.popScope();
-		stack.popScope();
-		cout << "a: "; stack.getVariableValue("a").print(""); cout << endl;
+		LiteralExpression* blExpr1 = new LiteralExpression(b1);
+		LiteralExpression* blExpr2 = new LiteralExpression(b2);
+		ConditionExpression * cexpr1 = new ConditionExpression(blExpr1);
+		ConditionExpression * cexpr2 = new ConditionExpression(blExpr2);
+
+		CompoundStatement* ifBody = new CompoundStatement();
+		IdentifierExpression * idA1 = new IdentifierExpression();
+		IdentifierExpression * idA2 = new IdentifierExpression();
+		idA1->setName("a");
+		idA2->setName("a");
+		
+		ifBody->appendStatement(new ExpressionStatement(new AssignmentExpression(
+			idA1, new LiteralExpression(i3), new AssignOp()
+		)));
+		ifBody->appendStatement(new ExpressionStatement(idA2));
+		string s("");
+
+		IfStatement* ifStm = new IfStatement();
+		ifStm->setIfStatement(cexpr2, ifBody);
+		ifStm->print(s);
+		ifStm->execute(stack);
+
 	}
 	catch (IdentifierNotDefined& e)
 	{

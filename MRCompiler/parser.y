@@ -36,6 +36,9 @@
 #include "AssignDivide.h"
 #include "AssignOr.h"
 #include "AssignAnd.h"
+#include "IfStatement.h"
+#include "ConditionExpression.h"
+
 
 using std::cout;	using std::endl;
 using std::cerr;
@@ -49,7 +52,9 @@ extern Program* program;
 
 %code{
 Program* program = new Program();
-CompoundStatement* rootStatement = program->getRootStatement(); //new CompoundStatement();
+ // CompoundStatement* rootStatement = program->getRootStatement(); //new CompoundStatement();
+CompoundStatement* rootStatement = new CompoundStatement();
+int i = 0;
 }
 
 %union
@@ -58,9 +63,11 @@ CompoundStatement* rootStatement = program->getRootStatement(); //new CompoundSt
 	char* t_str;
 	Expression* t_expression;
 	Statement* t_statement;
+	CompoundStatement* t_cmp_statement;
 	Literal* t_literal;
 	AssignOp* t_assignop;
 	//BinOp * t_binop;
+	//Program* t_program;
 };
 
 
@@ -80,12 +87,14 @@ CompoundStatement* rootStatement = program->getRootStatement(); //new CompoundSt
  // terminal types
 %type <t_int> INTEGER
 %type <t_int> BOOLEAN
-%type <t_str> IDENTIFIER
+%type <t_str> IDENTIFIER 
 
  // non-terminal types
-%nterm <t_literal> literal
-%nterm <t_expression> expr
+ //%nterm <t_program> program
+%nterm <t_cmp_statement> compstmt zeroOrMore_stmt
 %nterm <t_statement> stmt
+%nterm <t_expression> expr
+%nterm <t_literal> literal
 %nterm <t_assignop> assignop
  //%nterm <t_binop> binop
 
@@ -110,20 +119,42 @@ CompoundStatement* rootStatement = program->getRootStatement(); //new CompoundSt
 
 
 // vul aan met producties
-program : compstmt ;
+program : 
+		|
+		compstmt	{
+						//program->setRootStatement(rootStatement);
+						program->setRootStatement($1);
+					} 
+		;
 
 compstmt : stmt zeroOrMore_stmt zeroOrMore_t 
 								{
-									rootStatement->prependStatement($stmt);
+									cout << "@@@ + " << i << endl;
+									string s("\t\t");
+									$stmt->print(s);
+									i++;
+									//rootStatement->prependStatement($stmt);
+									cout << "<before>" << endl;
+									$2->prependStatement($stmt);
+									$$ = $2;
+									cout << "<after>" << endl;
 									
 								}
 		 ;
 
 zeroOrMore_stmt 
-	: /* empty */ {}
+	: /* empty */	{ 
+						cout << "@@@ * " << i << endl; i++; 
+						$$ = new CompoundStatement();
+					}
 	| zeroOrMore_stmt zeroOrMore_t stmt	
 								{
-									rootStatement->appendStatement($stmt);
+									cout << "@@@ - " << i << endl;
+									string s("\t\t");
+									$stmt->print(s);
+									i++;
+									//rootStatement->appendStatement($stmt);
+									$$->appendStatement($stmt);
 								}
 	;
 
@@ -132,17 +163,33 @@ zeroOrMore_t
 	| zeroOrMore_t t
 	;
 
- // zeroOrOne_t	
- //	:
- //	| t
- //	;
+zeroOrOne_t	
+:
+| t
+;
 
-t : SEMICOLON | EOL ;
+t : SEMICOLON { cout <<"[t]: " << ";" <<  endl;}
+  | EOL		  { cout <<"[t]: " << "EOL" <<  endl;}
+  ;
+
+then: t			{ cout <<"[then]: " << "<t>" <<  endl;}
+	| THEN		{ cout <<"[then]: " << "then" <<  endl;}
+	| t THEN	{ cout <<"[then]: " << "<t> then" <<  endl;}
+	;
+do   : t | DO | t DO ;
 
 stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
 		| DEF IDENTIFIER LPAREN zereOrOne_arglist RPAREN compstmt END {cout << "function def" << endl;}
 		| RETURN expr		{cout << "return" << endl;}
-		| IF expr then compstmt zeroOrMore_elseif zeroOrOne_else END {cout << "IF" << endl;}
+
+		| IF expr then zeroOrOne_t compstmt zeroOrMore_elseif zeroOrOne_else END
+			{
+				cout << "IF STMT" << endl;
+				IfStatement * ifStm = new IfStatement();
+				ifStm->setIfStatement(new ConditionExpression($expr), $compstmt);
+				$$ = ifStm;
+			}
+
 		| UNLESS expr then compstmt zeroOrOne_else END {cout << "unless" << endl;}
 		| WHILE expr do compstmt END {cout << "while" << endl;}
 		| UNTIL expr do compstmt END {cout << "until" << endl;}
@@ -152,8 +199,7 @@ stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
 
 
 
-expr	: 
-		expr PLUS expr			{$$ = new BinOpExpression($1, $3, new Add());}
+expr	: expr PLUS expr			{$$ = new BinOpExpression($1, $3, new Add());}
 		| expr MINUS expr			{$$ = new BinOpExpression($1, $3, new Sub());}
 		| expr MUL expr				{$$ = new BinOpExpression($1, $3, new Mul());}
 		| expr DIV expr				{$$ = new BinOpExpression($1, $3, new Div());}
@@ -171,7 +217,8 @@ expr	:
 
         | literal					{$$ = new LiteralExpression($literal); }
         | IDENTIFIER				{$$ = new IdentifierExpression($1);	}
-		| IDENTIFIER assignop expr %prec PREC_ASSIGN {
+		| IDENTIFIER assignop expr %prec PREC_ASSIGN 
+									{
 										$$ = new AssignmentExpression(new IdentifierExpression($1), $3, $2);
 									}
 		| IDENTIFIER LPAREN zereOrOne_expressions RPAREN 
@@ -204,11 +251,14 @@ zereOrOne_arglist
 zeroOrMore_elseif
 	:
 	| zeroOrMore_elseif ELSIF expr then compstmt
+		{
+			
+		}
 	;
 
 zeroOrOne_else
 	:
-	| ELSE compstmt
+	| ELSE compstmt {/*$$ = $2;*/ }
 	;
 
 zeroOrMore_when 
@@ -234,8 +284,6 @@ assignop
 
 
 
-then : t | THEN | t THEN ;
-do   : t | DO | t DO ;
 
 
 

@@ -70,8 +70,8 @@ void CompoundStatement::execute(StackAndTable* stackAndTable)
 */
 void CompoundStatement::deleteExpressions()
 {
-	int c = mStatements.size();
-	for (int i = 0; i < c; i++) delete mStatements.at(i);
+	for (int i = 0; i < mStatements.size(); i++)
+		delete mStatements.at(i);
 	mStatements.clear();
 }
 

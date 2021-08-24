@@ -191,6 +191,7 @@
     <ClCompile Include="BooleanLiteral.cpp" />
     <ClCompile Include="CompileTask.cpp" />
     <ClCompile Include="CompoundStatement.cpp" />
+    <ClCompile Include="ConditionExpression.cpp" />
     <ClCompile Include="Div.cpp" />
     <ClCompile Include="DivideByZeroException.cpp" />
     <ClCompile Include="Equal.cpp" />
@@ -201,6 +202,7 @@
     <ClCompile Include="GreaterThan.cpp" />
     <ClCompile Include="IdentifierExpression.cpp" />
     <ClCompile Include="IdentifierNotDefined.cpp" />
+    <ClCompile Include="IfStatement.cpp" />
     <ClCompile Include="InvalidCommandLineArguments.cpp" />
     <ClCompile Include="InvalidNumberOfOperands.cpp" />
     <ClCompile Include="InvalidOperandType.cpp" />
@@ -244,6 +246,7 @@
     <ClInclude Include="BinOp.h" />
     <ClInclude Include="BinOpExpression.h" />
     <ClInclude Include="BooleanLiteral.h" />
+    <ClInclude Include="ConditionExpression.h" />
     <ClInclude Include="Div.h" />
     <ClInclude Include="DivideByZeroException.h" />
     <ClInclude Include="Equal.h" />
@@ -252,6 +255,7 @@
     <ClInclude Include="GreaterThan.h" />
     <ClInclude Include="IdentifierExpression.h" />
     <ClInclude Include="IdentifierNotDefined.h" />
+    <ClInclude Include="IfStatement.h" />
     <ClInclude Include="IntegerLiteral.h" />
     <ClInclude Include="CompileTask.h" />
     <ClInclude Include="CompoundStatement.h" />
