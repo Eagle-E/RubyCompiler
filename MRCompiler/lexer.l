@@ -68,6 +68,8 @@ false        {col_nr += yyleng;      yylval.t_int = 0;              /*printf("co
 {LINEEND}    {col_nr = 0; line_nr++;                                /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, "\\n", "new line");      */ return EOL;}
 {INTEGER}    {col_nr += yyleng;      yylval.t_int=atoi(yytext);     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "int");          */ return INTEGER;}
 [[:blank:]]* {col_nr += yyleng;                                     /*printf("col %d, line %d, token %s, info: %s\n", col_nr, line_nr, yytext, "tab/space");    */ }
+#.*{LINEEND} {}
+
 {IDENTIFIER} {
         col_nr += yyleng; 
         yylval.t_str = new char[strlen(yytext+1)]; // copy yytext to yyval.str
