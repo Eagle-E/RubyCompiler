@@ -63,7 +63,6 @@ extern Program* program;
 Program* program = new Program();
  // CompoundStatement* rootStatement = program->getRootStatement(); //new CompoundStatement();
 CompoundStatement* rootStatement = new CompoundStatement();
-int i = 0;
 }
 
 %union
@@ -148,7 +147,7 @@ compstmt : stmt zeroOrMore_stmt zeroOrMore_t
 									//string s("\t\t");
 									//$stmt->print(s);
 									//i++;
-									if ($stmt != NULL)
+									if ($stmt != nullptr)
 										$zeroOrMore_stmt->prependStatement($stmt);
 									$$ = $zeroOrMore_stmt;
 									
@@ -166,7 +165,9 @@ zeroOrMore_stmt
 									//string s("\t\t");
 									//$stmt->print(s);
 									//i++;
-									$$->appendStatement($stmt);
+									if ($stmt != nullptr)
+										$1->appendStatement($stmt);
+									$$ = $1;
 								}
 	;
 
@@ -197,11 +198,11 @@ do  : t zeroOrMore_t
 stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
 		| DEF IDENTIFIER LPAREN zereOrOne_arglist RPAREN zeroOrMore_t compstmt END 
 			{
-				cout << "!!!" << $zereOrOne_arglist->numArgs() << endl;
 				string fname($IDENTIFIER);
 				FunctionStatement* fStmt = new FunctionStatement(fname, $zereOrOne_arglist, $compstmt);
 				FunctionTable& fTable = program->getStackAndTable().functionTable;
 				fTable.addNewItem(fname, $zereOrOne_arglist->numArgs(), fStmt);
+				$$ = nullptr;
 			}
 		| RETURN expr		
 			{
@@ -237,7 +238,7 @@ stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
 			{
 				$$ = new UntilStatement(new ConditionExpression($expr), $compstmt);
 			}
-		| CASE expr EOL WHEN expr then compstmt zeroOrMore_when zeroOrOne_else END 
+		| CASE expr zeroOrMore_t WHEN expr then compstmt zeroOrMore_when zeroOrOne_else END 
 			{
 				CaseStatement* caseStm = $zeroOrMore_when;
 				caseStm->setCaseExpression($2);

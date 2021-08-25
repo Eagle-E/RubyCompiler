@@ -169,7 +169,7 @@ extern Program* program;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 70 "parser.y"
+#line 69 "parser.y"
 
 	int t_int;
 	char* t_str;
