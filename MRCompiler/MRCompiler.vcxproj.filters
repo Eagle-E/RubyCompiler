@@ -257,6 +257,9 @@
     <ClInclude Include="WhileStatement.h">
       <Filter>Header Files\Parse Tree\Statements</Filter>
     </ClInclude>
+    <ClInclude Include="UntilStatement.h">
+      <Filter>Header Files\Parse Tree\Statements</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lexer.cpp">
@@ -428,6 +431,9 @@
       <Filter>Source Files\Parse Tree\Statements</Filter>
     </ClCompile>
     <ClCompile Include="WhileStatement.cpp">
+      <Filter>Source Files\Parse Tree\Statements</Filter>
+    </ClCompile>
+    <ClCompile Include="UntilStatement.cpp">
       <Filter>Source Files\Parse Tree\Statements</Filter>
     </ClCompile>
   </ItemGroup>

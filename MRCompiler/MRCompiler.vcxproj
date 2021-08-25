@@ -231,6 +231,7 @@
     <ClCompile Include="UnaryOperation.cpp" />
     <ClCompile Include="parser.cpp" />
     <ClCompile Include="UnaryOperationExpression.cpp" />
+    <ClCompile Include="UntilStatement.cpp" />
     <ClCompile Include="WhileStatement.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -290,6 +291,7 @@
     <ClInclude Include="UnaryNumericNegationExpression.h" />
     <ClInclude Include="UnaryOperation.h" />
     <ClInclude Include="UnaryOperationExpression.h" />
+    <ClInclude Include="UntilStatement.h" />
     <ClInclude Include="WhileStatement.h" />
   </ItemGroup>
   <ItemGroup>

@@ -40,6 +40,7 @@
 #include "ConditionExpression.h"
 #include "ElseIfStatementList.h"
 #include "WhileStatement.h"
+#include "UntilStatement.h"
 
 using std::cout;	using std::endl;
 using std::cerr;
@@ -201,7 +202,10 @@ stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
 			{
 				$$ = new WhileStatement(new ConditionExpression($expr), $compstmt);
 			}
-		| UNTIL expr do compstmt END {cout << "until" << endl;}
+		| UNTIL expr do compstmt END
+			{
+				$$ = new UntilStatement(new ConditionExpression($expr), $compstmt);
+			}
 		| CASE expr WHEN expr then compstmt zeroOrMore_when zeroOrOne_else END {cout << "case" << endl;}
 		| expr		{$$ = new ExpressionStatement($expr);}		
         ;
