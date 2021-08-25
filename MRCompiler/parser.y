@@ -47,6 +47,7 @@
 #include "StackAndTable.h"
 #include "FunctionTable.h"
 #include "CallExpression.h"
+#include "ReturnStatement.h"
 
 using std::cout;	using std::endl;
 using std::cerr;
@@ -202,7 +203,10 @@ stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
 				FunctionTable& fTable = program->getStackAndTable().functionTable;
 				fTable.addNewItem(fname, $zereOrOne_arglist->numArgs(), fStmt);
 			}
-		| RETURN expr		{cout << "return" << endl;}
+		| RETURN expr		
+			{
+				$$ = new ReturnStatement($expr);
+			}
 
 		| IF expr then compstmt zeroOrMore_elseif zeroOrOne_else END
 			{

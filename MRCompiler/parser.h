@@ -95,6 +95,7 @@ extern int yydebug;
 #include "StackAndTable.h"
 #include "FunctionTable.h"
 #include "CallExpression.h"
+#include "ReturnStatement.h"
 
 using std::cout;	using std::endl;
 using std::cerr;
@@ -105,7 +106,7 @@ void yyerror(const char* str);
 extern Program* program;
 //extern CompoundStatement* rootStatement;
 
-#line 109 "parser.h"
+#line 110 "parser.h"
 
 /* Token kinds.  */
 #ifndef YYTOKENTYPE
@@ -168,7 +169,7 @@ extern Program* program;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 69 "parser.y"
+#line 70 "parser.y"
 
 	int t_int;
 	char* t_str;
@@ -184,7 +185,7 @@ union YYSTYPE
 	//BinOp * t_binop;
 	//Program* t_program;
 
-#line 188 "parser.h"
+#line 189 "parser.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

@@ -55,6 +55,8 @@ void CompoundStatement::execute(StackAndTable* stackAndTable)
 	for (Statement* stmt : mStatements)
 	{
 		stmt->execute(stackAndTable);
+		if (Statement::returning())
+			return;
 	}
 }
 

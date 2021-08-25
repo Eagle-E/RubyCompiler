@@ -278,6 +278,9 @@
     <ClInclude Include="PrintStatement.h">
       <Filter>Header Files\Parse Tree\Statements</Filter>
     </ClInclude>
+    <ClInclude Include="ReturnStatement.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lexer.cpp">
@@ -468,6 +471,9 @@
     </ClCompile>
     <ClCompile Include="PrintStatement.cpp">
       <Filter>Source Files\Parse Tree\Statements</Filter>
+    </ClCompile>
+    <ClCompile Include="ReturnStatement.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

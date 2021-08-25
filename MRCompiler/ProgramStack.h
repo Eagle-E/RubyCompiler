@@ -35,9 +35,13 @@ public:
 	void setVariableValue(const string& idName, Literal* value);
 	Literal& getVariableValue(const string& idName, LookupType lookupType = LookupType::LOCAL);
 
+	void setReturnedValue(Literal* val);
+	Literal* getAndRemoveLastReturnedValue();
+
 private:
 	StackItem* getTopScope();
 	vector<StackItem*> mItems;
+	Literal* mLastReturnedVal;
 };
 
 #endif ProgramStack_h

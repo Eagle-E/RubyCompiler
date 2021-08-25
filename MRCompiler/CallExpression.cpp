@@ -55,8 +55,14 @@ Literal* CallExpression::eval(StackAndTable* stackAndTable)
 		// execute function
 		fStmt->execute(stackAndTable);
 
+		// reset return state of Statements (so statements don't keep returning in the future)
+		Statement::stopReturn();
+
 		// function terminated, remove its scope
 		stackAndTable->stack.popScope();
+
+		// return the result of the function
+		return stackAndTable->stack.getAndRemoveLastReturnedValue();
 	}
 }
 

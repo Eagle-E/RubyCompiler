@@ -39,7 +39,7 @@ void FunctionStatement::print(string& prepend)
 	string p2 = prepend + "\t";
 	cout << prepend << "[FUNCTION stmt]:" << endl
 		<< p2 << "<name>: " << mName << endl
-		<< p2 << "<args>: ";
+		<< p2 << "<args>: " << endl;
 
 	if (mArgs != nullptr)
 	{
@@ -51,6 +51,7 @@ void FunctionStatement::print(string& prepend)
 				cout << mArgs->argNameAt(i) << endl;
 		}
 	}
+
 
 	if (mBody != nullptr)
 	{

@@ -1,11 +1,8 @@
 
-def f(a, b, c)
+def f()
 
-	print(a)
-	print(b)
-	print(c)
-
+	return true
 end
 
 
-f(1, 2, 3)
+print(f())

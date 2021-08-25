@@ -4,6 +4,7 @@
 ProgramStack::ProgramStack()
 {
 	mItems.push_back(new StackItem());
+	mLastReturnedVal = nullptr;
 }
 
 ProgramStack::~ProgramStack()
@@ -81,6 +82,18 @@ Literal& ProgramStack::getVariableValue(const string& idName, LookupType lookupT
 
 	// item not found, we say it is undefined
 	throw IdentifierNotDefined("Identifier \"" + idName + "\" is not defined");
+}
+
+void ProgramStack::setReturnedValue(Literal* val)
+{
+	mLastReturnedVal = val;
+}
+
+Literal* ProgramStack::getAndRemoveLastReturnedValue()
+{
+	Literal* temp = mLastReturnedVal;
+	mLastReturnedVal = nullptr;
+	return temp;
 }
 
 StackItem* ProgramStack::getTopScope()
