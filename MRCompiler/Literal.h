@@ -17,6 +17,7 @@ public:
 	virtual Type getType() const;
 	virtual Literal* copy() const;
 	virtual bool equals(Literal* other) const;
+	virtual string toString() const;
 
 	// function for debugging
 	virtual void print(string prepend);

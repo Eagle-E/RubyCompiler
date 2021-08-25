@@ -11,6 +11,7 @@ class IdentifierExpression : public Expression
 public:
 	IdentifierExpression();
 	IdentifierExpression(char* idNameW);
+	IdentifierExpression(const string & idNameW);
 	~IdentifierExpression();
 	Literal* eval(StackAndTable* stackAndTable);
 

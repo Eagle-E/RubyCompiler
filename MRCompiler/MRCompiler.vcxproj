@@ -222,6 +222,7 @@
     <ClCompile Include="NotEqual.cpp" />
     <ClCompile Include="OperationExpression.cpp" />
     <ClCompile Include="Or.cpp" />
+    <ClCompile Include="PrintStatement.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="ProgramStack.cpp" />
     <ClCompile Include="StackItem.cpp" />
@@ -286,6 +287,7 @@
     <ClInclude Include="NotEqual.h" />
     <ClInclude Include="OperationExpression.h" />
     <ClInclude Include="Or.h" />
+    <ClInclude Include="PrintStatement.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="ProgramStack.h" />
     <ClInclude Include="StackAndTable.h" />

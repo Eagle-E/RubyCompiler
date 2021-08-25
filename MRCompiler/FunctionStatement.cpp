@@ -62,3 +62,21 @@ const ArgList& FunctionStatement::getArgList()
 {
 	return *mArgs;
 }
+
+void FunctionStatement::setArgList(ArgList* args)
+{
+	mArgs = args;
+}
+
+string FunctionStatement::getName()
+{
+	return mName;
+}
+
+int FunctionStatement::getNumArgs()
+{
+	if (mArgs == nullptr)
+		return 0;
+	else
+		return mArgs->numArgs();
+}

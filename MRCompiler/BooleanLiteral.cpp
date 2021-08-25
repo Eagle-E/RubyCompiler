@@ -51,6 +51,14 @@ bool BooleanLiteral::equals(Literal* other) const
 	}
 }
 
+string BooleanLiteral::toString() const
+{
+	if (mVal)
+		return "true";
+	else
+		return "false";
+}
+
 void BooleanLiteral::print(string prepend)
 {
 	//std::cout << prepend << "[Bool Literal]: ";

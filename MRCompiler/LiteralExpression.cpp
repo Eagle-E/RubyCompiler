@@ -24,7 +24,7 @@ Literal* LiteralExpression::getLiteral()
 Literal* LiteralExpression::eval(StackAndTable* stackAndTable)
 {
 	//return new Literal(*mLiteral);
-	return mLiteral;
+	return mLiteral->copy();
 }
 
 void LiteralExpression::print(string& prepend)

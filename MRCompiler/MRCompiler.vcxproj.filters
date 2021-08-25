@@ -275,6 +275,9 @@
     <ClInclude Include="CallExpression.h">
       <Filter>Header Files\Parse Tree\Expressions</Filter>
     </ClInclude>
+    <ClInclude Include="PrintStatement.h">
+      <Filter>Header Files\Parse Tree\Statements</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lexer.cpp">
@@ -462,6 +465,9 @@
     </ClCompile>
     <ClCompile Include="CallExpression.cpp">
       <Filter>Source Files\Parse Tree\Expressions</Filter>
+    </ClCompile>
+    <ClCompile Include="PrintStatement.cpp">
+      <Filter>Source Files\Parse Tree\Statements</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

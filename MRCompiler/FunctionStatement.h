@@ -38,8 +38,11 @@ public:
 	void execute(StackAndTable* stackAndTable);
 	void print(string& prepend);
 	const ArgList& getArgList();
+	void setArgList(ArgList* args);
+	string getName();
+	int getNumArgs();
 
-private:
+protected:
 	string mName;
 	ArgList* mArgs;
 	CompoundStatement* mBody;

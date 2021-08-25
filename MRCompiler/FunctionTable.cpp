@@ -1,10 +1,13 @@
 #include "FunctionTable.h"
 #include "FunctionStatement.h"
+#include "PrintStatement.h"
 #include <iostream>
 using std::cout; using std::endl;
 
 FunctionTable::FunctionTable()
 {
+	PrintStatement* printStmt = new PrintStatement();
+	addNewItem(printStmt->getName(), printStmt->getNumArgs(), printStmt);
 }
 
 FunctionTable::~FunctionTable()

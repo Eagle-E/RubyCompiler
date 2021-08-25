@@ -18,7 +18,7 @@ public:
 	Literal* copy() const;
 	void print(string prepend);
 	bool equals(Literal* other) const;
-
+	string toString() const;
 private:
 	int mVal;
 };

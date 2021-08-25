@@ -11,18 +11,22 @@ IdentifierExpression::IdentifierExpression(char* idName)
 	mName = string(idName);
 }
 
+IdentifierExpression::IdentifierExpression(const string& idNameW)
+	: mName(idNameW)
+{
+}
+
 IdentifierExpression::~IdentifierExpression()
 {
 }
 
 Literal* IdentifierExpression::eval(StackAndTable* stackAndTable)
 {
-	// TODO: test
 	Literal& result = stackAndTable->stack.getVariableValue(mName);
-	std::cout << "-> [ID expr]: " << mName << " = ";
-	result.print("");
-	std::cout << std::endl;
-	return &result;
+	//std::cout << "-> [ID expr]: " << mName << " = ";
+	//result.print("");
+	//std::cout << std::endl;
+	return result.copy();
 }
 
 const string & IdentifierExpression::getName() const

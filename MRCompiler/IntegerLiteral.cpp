@@ -56,3 +56,8 @@ bool IntegerLiteral::equals(Literal* other) const
 		return ival->val() == mVal;
 	}
 }
+
+string IntegerLiteral::toString() const
+{
+	return std::to_string(mVal);
+}

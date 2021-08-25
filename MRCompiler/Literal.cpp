@@ -23,6 +23,11 @@ bool Literal::equals(Literal* other) const
 	return other->getType() == Type::NIL;
 }
 
+string Literal::toString() const
+{
+	return string("nil");
+}
+
 void Literal::print(string prepend)
 {
 	std::cout << prepend << " [Literal (base)]" << std::endl;
