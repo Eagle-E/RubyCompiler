@@ -194,6 +194,7 @@
     <ClCompile Include="ConditionExpression.cpp" />
     <ClCompile Include="Div.cpp" />
     <ClCompile Include="DivideByZeroException.cpp" />
+    <ClCompile Include="ElseIfStatementList.cpp" />
     <ClCompile Include="Equal.cpp" />
     <ClCompile Include="Expression.cpp" />
     <ClCompile Include="ExpressionStatement.cpp" />
@@ -249,6 +250,7 @@
     <ClInclude Include="ConditionExpression.h" />
     <ClInclude Include="Div.h" />
     <ClInclude Include="DivideByZeroException.h" />
+    <ClInclude Include="ElseIfStatementList.h" />
     <ClInclude Include="Equal.h" />
     <ClInclude Include="FunctionTable.h" />
     <ClInclude Include="GreaterOrEqual.h" />

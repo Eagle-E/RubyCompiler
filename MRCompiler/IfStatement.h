@@ -6,6 +6,7 @@
 #include "CompoundStatement.h"
 #include <deque>
 #include "ConditionExpression.h"
+#include "ElseIfStatementList.h"
 
 using std::deque;
 
@@ -20,6 +21,7 @@ public:
 
 	void setIfStatement(ConditionExpression* condition, CompoundStatement* body);
 	void setElseBody(CompoundStatement* body);
+	void setElseIfs(ElseIfStatementList* elseIfStatements);
 
 	void execute(StackAndTable* stackAndTable);
 	void print(string& prepend);

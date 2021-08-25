@@ -251,6 +251,9 @@
     <ClInclude Include="ConditionExpression.h">
       <Filter>Header Files\Parse Tree\Expressions</Filter>
     </ClInclude>
+    <ClInclude Include="ElseIfStatementList.h">
+      <Filter>Header Files\Parse Tree\Statements</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lexer.cpp">
@@ -417,6 +420,9 @@
     </ClCompile>
     <ClCompile Include="ConditionExpression.cpp">
       <Filter>Source Files\Parse Tree\Expressions</Filter>
+    </ClCompile>
+    <ClCompile Include="ElseIfStatementList.cpp">
+      <Filter>Source Files\Parse Tree\Statements</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

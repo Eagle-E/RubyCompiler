@@ -38,7 +38,7 @@
 #include "AssignAnd.h"
 #include "IfStatement.h"
 #include "ConditionExpression.h"
-
+#include "ElseIfStatementList.h"
 
 using std::cout;	using std::endl;
 using std::cerr;
@@ -66,6 +66,7 @@ int i = 0;
 	CompoundStatement* t_cmp_statement;
 	Literal* t_literal;
 	AssignOp* t_assignop;
+	ElseIfStatementList* t_else_list;
 	//BinOp * t_binop;
 	//Program* t_program;
 };
@@ -94,6 +95,7 @@ int i = 0;
 %nterm <t_cmp_statement> compstmt zeroOrMore_stmt zeroOrOne_else
 %nterm <t_statement> stmt
 %nterm <t_expression> expr
+%nterm <t_else_list> zeroOrMore_elseif
 %nterm <t_literal> literal
 %nterm <t_assignop> assignop
  //%nterm <t_binop> binop
@@ -122,38 +124,33 @@ int i = 0;
 program : 
 		|
 		compstmt	{
-						//program->setRootStatement(rootStatement);
 						program->setRootStatement($1);
 					} 
 		;
 
 compstmt : stmt zeroOrMore_stmt zeroOrMore_t 
 								{
-									cout << "@@@ + " << i << endl;
-									string s("\t\t");
-									$stmt->print(s);
-									i++;
-									//rootStatement->prependStatement($stmt);
-									cout << "<before>" << endl;
+									//cout << "@@@ + " << i << endl;
+									//string s("\t\t");
+									//$stmt->print(s);
+									//i++;
 									$2->prependStatement($stmt);
 									$$ = $2;
-									cout << "<after>" << endl;
 									
 								}
 		 ;
 
 zeroOrMore_stmt 
 	: /* empty */	{ 
-						cout << "@@@ * " << i << endl; i++; 
+						//cout << "@@@ * " << i << endl; i++; 
 						$$ = new CompoundStatement();
 					}
 	| zeroOrMore_stmt zeroOrMore_t stmt	
 								{
-									cout << "@@@ - " << i << endl;
-									string s("\t\t");
-									$stmt->print(s);
-									i++;
-									//rootStatement->appendStatement($stmt);
+									//cout << "@@@ - " << i << endl;
+									//string s("\t\t");
+									//$stmt->print(s);
+									//i++;
 									$$->appendStatement($stmt);
 								}
 	;
@@ -168,13 +165,14 @@ zeroOrOne_t
 | t
 ;
 
-t : SEMICOLON { cout <<"[t]: " << ";" <<  endl;}
-  | EOL		  { cout <<"[t]: " << "EOL" <<  endl;}
+t : SEMICOLON 
+  | EOL		 
   ;
 
 then: t			{ cout <<"[then]: " << "<t>" <<  endl;}
-	| THEN		{ cout <<"[then]: " << "then" <<  endl;}
-	| t THEN	{ cout <<"[then]: " << "<t> then" <<  endl;}
+	//| THEN		{ cout <<"[then]: " << "then" <<  endl;}
+	//| t THEN		{ cout <<"[then]: " << "<t> then" <<  endl;}
+	| zeroOrMore_t THEN zeroOrMore_t	{ cout <<"[then]: " << "{t} then {t}" <<  endl;}
 	;
 do   : t | DO | t DO ;
 
@@ -182,13 +180,15 @@ stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
 		| DEF IDENTIFIER LPAREN zereOrOne_arglist RPAREN compstmt END {cout << "function def" << endl;}
 		| RETURN expr		{cout << "return" << endl;}
 
-		| IF expr then zeroOrOne_t compstmt zeroOrMore_elseif zeroOrOne_else END
+		| IF expr then compstmt zeroOrMore_elseif zeroOrOne_else END
 			{
 				IfStatement * ifStm = new IfStatement();
 				ifStm->setIfStatement(new ConditionExpression($expr), $compstmt);
 
 				if ($zeroOrOne_else != nullptr)
 					ifStm->setElseBody($zeroOrOne_else);
+
+				ifStm->setElseIfs($zeroOrMore_elseif);
 
 				$$ = ifStm;
 			}
@@ -252,16 +252,17 @@ zereOrOne_arglist
 	;
 
 zeroOrMore_elseif
-	:
+	:	{$$ = new ElseIfStatementList(); }
 	| zeroOrMore_elseif ELSIF expr then compstmt
 		{
-			
+			$1->appendElseIfStm(new ConditionExpression($expr), $compstmt);
+			$$ = $1;
 		}
 	;
 
 zeroOrOne_else
 	:				{$$ = nullptr; }
-	| ELSE zeroOrOne_t compstmt {$$ = $compstmt; }
+	| ELSE zeroOrMore_t compstmt {$$ = $compstmt; }
 	;
 
 zeroOrMore_when 

@@ -31,6 +31,16 @@ void IfStatement::setElseBody(CompoundStatement* body)
 	mElseBody = body;
 }
 
+void IfStatement::setElseIfs(ElseIfStatementList* elseIfStatements)
+{
+	while (! elseIfStatements->empty())
+	{
+		ElseStm estm = elseIfStatements->popFrontElseIfStm();
+		mConditions.push_back(estm.condition);
+		mBodies.push_back(estm.body);
+	}
+}
+
 void IfStatement::execute(StackAndTable* stackAndTable)
 {
 	if (mConditions.empty())
@@ -70,6 +80,7 @@ void IfStatement::print(string& prepend)
 	{
 		for (int i = 0; i < mConditions.size(); i++)
 		{
+			std::cout << prepend << "\t[elsif]: " << std::endl;
 			mConditions[i]->print(newprepend);
 			mBodies[i]->print(newprepend);
 		}

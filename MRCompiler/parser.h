@@ -86,7 +86,7 @@ extern int yydebug;
 #include "AssignAnd.h"
 #include "IfStatement.h"
 #include "ConditionExpression.h"
-
+#include "ElseIfStatementList.h"
 
 using std::cout;	using std::endl;
 using std::cerr;
@@ -169,10 +169,11 @@ union YYSTYPE
 	CompoundStatement* t_cmp_statement;
 	Literal* t_literal;
 	AssignOp* t_assignop;
+	ElseIfStatementList* t_else_list;
 	//BinOp * t_binop;
 	//Program* t_program;
 
-#line 176 "parser.h"
+#line 177 "parser.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
