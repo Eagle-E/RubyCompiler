@@ -189,6 +189,7 @@
     <ClCompile Include="BinOp.cpp" />
     <ClCompile Include="BinOpExpression.cpp" />
     <ClCompile Include="BooleanLiteral.cpp" />
+    <ClCompile Include="CaseStatement.cpp" />
     <ClCompile Include="CompileTask.cpp" />
     <ClCompile Include="CompoundStatement.cpp" />
     <ClCompile Include="ConditionExpression.cpp" />
@@ -250,6 +251,8 @@
     <ClInclude Include="BinOp.h" />
     <ClInclude Include="BinOpExpression.h" />
     <ClInclude Include="BooleanLiteral.h" />
+    <ClInclude Include="CaseExpression.h" />
+    <ClInclude Include="CaseStatement.h" />
     <ClInclude Include="ConditionExpression.h" />
     <ClInclude Include="Div.h" />
     <ClInclude Include="DivideByZeroException.h" />

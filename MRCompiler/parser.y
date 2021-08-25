@@ -42,6 +42,7 @@
 #include "WhileStatement.h"
 #include "UntilStatement.h"
 #include "UnlessStatement.h"
+#include "CaseStatement.h"
 
 using std::cout;	using std::endl;
 using std::cerr;
@@ -70,6 +71,7 @@ int i = 0;
 	Literal* t_literal;
 	AssignOp* t_assignop;
 	ElseIfStatementList* t_else_list;
+	CaseStatement* t_case_stm;
 	//BinOp * t_binop;
 	//Program* t_program;
 };
@@ -99,6 +101,7 @@ int i = 0;
 %nterm <t_statement> stmt
 %nterm <t_expression> expr
 %nterm <t_else_list> zeroOrMore_elseif
+%nterm <t_case_stm> zeroOrMore_when
 %nterm <t_literal> literal
 %nterm <t_assignop> assignop
  //%nterm <t_binop> binop
@@ -215,7 +218,17 @@ stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
 			{
 				$$ = new UntilStatement(new ConditionExpression($expr), $compstmt);
 			}
-		| CASE expr WHEN expr then compstmt zeroOrMore_when zeroOrOne_else END {cout << "case" << endl;}
+		| CASE expr EOL WHEN expr then compstmt zeroOrMore_when zeroOrOne_else END 
+			{
+				CaseStatement* caseStm = $zeroOrMore_when;
+				caseStm->setCaseExpression($2);
+				caseStm->prependCase($5, $7);
+
+				if ($zeroOrOne_else != nullptr)
+					caseStm->setElseBody($zeroOrOne_else);
+
+				$$ = caseStm;
+			}
 		| expr		{$$ = new ExpressionStatement($expr);}		
         ;
 
@@ -243,7 +256,7 @@ expr	: expr PLUS expr			{$$ = new BinOpExpression($1, $3, new Add());}
 									{
 										$$ = new AssignmentExpression(new IdentifierExpression($1), $3, $2);
 									}
-		| IDENTIFIER LPAREN zereOrOne_expressions RPAREN 
+		| IDENTIFIER LPAREN zeroOrOne_expressions RPAREN 
 									{
 										/*cout << "function call" << endl;*/
 									}
@@ -255,7 +268,7 @@ expressions
 	| expressions COMMA expr
 	;
 
-zereOrOne_expressions
+zeroOrOne_expressions
 	:   
 	| expressions
 	;
@@ -285,8 +298,12 @@ zeroOrOne_else
 	;
 
 zeroOrMore_when 
-	: 
+	:	{ $$ = new CaseStatement(); }
 	| zeroOrMore_when WHEN expr then compstmt
+		{ 
+			$1->appendCase($expr, $compstmt);
+			$$ = $1;
+		}
 	;
 
 literal

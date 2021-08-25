@@ -40,6 +40,17 @@ Literal* BooleanLiteral::copy() const
 	return new BooleanLiteral(mVal);
 }
 
+bool BooleanLiteral::equals(Literal* other) const
+{
+	if (other->getType() != Type::BOOL)
+		return false;
+	else
+	{
+		BooleanLiteral* bval = static_cast<BooleanLiteral*>(other);
+		return bval->val() == mVal;
+	}
+}
+
 void BooleanLiteral::print(string prepend)
 {
 	//std::cout << prepend << "[Bool Literal]: ";

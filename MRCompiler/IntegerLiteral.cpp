@@ -45,3 +45,14 @@ void IntegerLiteral::print(string prepend)
 	//std::cout << prepend << "[Int Literal]: " << std::to_string(mVal) << std::endl;
 	std::cout << std::to_string(mVal);
 }
+
+bool IntegerLiteral::equals(Literal* other) const
+{
+	if (other->getType() != Type::INT)
+		return false;
+	else
+	{
+		IntegerLiteral* ival = static_cast<IntegerLiteral*>(other);
+		return ival->val() == mVal;
+	}
+}

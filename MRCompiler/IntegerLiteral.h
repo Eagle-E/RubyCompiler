@@ -17,6 +17,7 @@ public:
 	Type getType() const;
 	Literal* copy() const;
 	void print(string prepend);
+	bool equals(Literal* other) const;
 
 private:
 	int mVal;

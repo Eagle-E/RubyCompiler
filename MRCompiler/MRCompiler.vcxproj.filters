@@ -263,6 +263,12 @@
     <ClInclude Include="UnlessStatement.h">
       <Filter>Header Files\Parse Tree\Statements</Filter>
     </ClInclude>
+    <ClInclude Include="CaseStatement.h">
+      <Filter>Header Files\Parse Tree\Statements</Filter>
+    </ClInclude>
+    <ClInclude Include="CaseExpression.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lexer.cpp">
@@ -440,6 +446,9 @@
       <Filter>Source Files\Parse Tree\Statements</Filter>
     </ClCompile>
     <ClCompile Include="UnlessStatement.cpp">
+      <Filter>Source Files\Parse Tree\Statements</Filter>
+    </ClCompile>
+    <ClCompile Include="CaseStatement.cpp">
       <Filter>Source Files\Parse Tree\Statements</Filter>
     </ClCompile>
   </ItemGroup>

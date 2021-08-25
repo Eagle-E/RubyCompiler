@@ -18,6 +18,11 @@ Literal* Literal::copy() const
 	return new Literal();
 }
 
+bool Literal::equals(Literal* other) const
+{
+	return other->getType() == Type::NIL;
+}
+
 void Literal::print(string prepend)
 {
 	std::cout << prepend << " [Literal (base)]" << std::endl;

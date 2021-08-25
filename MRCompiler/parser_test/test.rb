@@ -1,45 +1,13 @@
-unless true then
-	a = 10
-	a # = 99
+a = 9
+b = 0
+
+case a
+when 1*2
+	b=1
+when 3+3+3
+	b=3
 else
-	q = 999
-	q
+	b=9
 end
 
-
-unless false
-then
-
-	b = 10
-	b # = 99
-
-else
-
-	y = 999
-	y
-
-end
-
-
-unless true
-
-	a = 10
-	a # = 99
-else
-	q = 999
-	q
-end
-
-unless false ; q end
-#unless false
-#
-#
-#	b = 10
-#	b # = 99
-#
-#else
-#
-#	y = 999
-#	y
-#
-#end
+b
