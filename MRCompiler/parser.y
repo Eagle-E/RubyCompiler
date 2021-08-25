@@ -128,14 +128,14 @@ program :
 					} 
 		;
 
-compstmt : stmt zeroOrMore_stmt zeroOrMore_t 
+compstmt : zeroOrMore_t stmt zeroOrMore_stmt zeroOrMore_t 
 								{
 									//cout << "@@@ + " << i << endl;
 									//string s("\t\t");
 									//$stmt->print(s);
 									//i++;
-									$2->prependStatement($stmt);
-									$$ = $2;
+									$zeroOrMore_stmt->prependStatement($stmt);
+									$$ = $zeroOrMore_stmt;
 									
 								}
 		 ;
