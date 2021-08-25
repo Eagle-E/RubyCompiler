@@ -91,6 +91,10 @@ extern int yydebug;
 #include "UntilStatement.h"
 #include "UnlessStatement.h"
 #include "CaseStatement.h"
+#include "FunctionStatement.h"
+#include "StackAndTable.h"
+#include "FunctionTable.h"
+#include "CallExpression.h"
 
 using std::cout;	using std::endl;
 using std::cerr;
@@ -101,7 +105,7 @@ void yyerror(const char* str);
 extern Program* program;
 //extern CompoundStatement* rootStatement;
 
-#line 105 "parser.h"
+#line 109 "parser.h"
 
 /* Token kinds.  */
 #ifndef YYTOKENTYPE
@@ -164,7 +168,7 @@ extern Program* program;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 65 "parser.y"
+#line 69 "parser.y"
 
 	int t_int;
 	char* t_str;
@@ -175,10 +179,12 @@ union YYSTYPE
 	AssignOp* t_assignop;
 	ElseIfStatementList* t_else_list;
 	CaseStatement* t_case_stm;
+	ArgList* t_arg_list;
+	ExprList* t_expr_list;
 	//BinOp * t_binop;
 	//Program* t_program;
 
-#line 182 "parser.h"
+#line 188 "parser.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

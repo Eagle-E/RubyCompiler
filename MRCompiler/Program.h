@@ -11,6 +11,7 @@ public:
 	~Program();
 
 	CompoundStatement* getRootStatement();
+	StackAndTable& getStackAndTable();
 	void execute();
 	void setRootStatement(CompoundStatement* rootStmt);
 	void print();

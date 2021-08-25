@@ -1,4 +1,7 @@
 #include "FunctionTable.h"
+#include "FunctionStatement.h"
+#include <iostream>
+using std::cout; using std::endl;
 
 FunctionTable::FunctionTable()
 {
@@ -41,6 +44,20 @@ FunctionStatement* FunctionTable::getItem(const string& funcName, int numArgs)
 	}
 	
 	return nullptr;
+}
+
+void FunctionTable::print()
+{
+	cout << "FUNCTION TABLE:" << endl;
+	cout << "---------------" << endl;
+
+	string prepend("\t\t");
+
+	for (FunctionTableItem& item : mItems)
+	{
+		cout << " * " << item.functionName << ", " << item.numArgs << " args:" << endl;
+		item.funcStatement->print(prepend);
+	}
 }
 
 bool FunctionTable::contains(const string& funcName, int numArgs)

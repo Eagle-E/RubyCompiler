@@ -15,6 +15,11 @@ CompoundStatement* Program::getRootStatement()
 	return mRootStatement;
 }
 
+StackAndTable& Program::getStackAndTable()
+{
+	return mStackAndTable;
+}
+
 void Program::execute()
 {
 	// TODO: move function declaration statements to function stack

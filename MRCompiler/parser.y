@@ -43,6 +43,10 @@
 #include "UntilStatement.h"
 #include "UnlessStatement.h"
 #include "CaseStatement.h"
+#include "FunctionStatement.h"
+#include "StackAndTable.h"
+#include "FunctionTable.h"
+#include "CallExpression.h"
 
 using std::cout;	using std::endl;
 using std::cerr;
@@ -72,6 +76,8 @@ int i = 0;
 	AssignOp* t_assignop;
 	ElseIfStatementList* t_else_list;
 	CaseStatement* t_case_stm;
+	ArgList* t_arg_list;
+	ExprList* t_expr_list;
 	//BinOp * t_binop;
 	//Program* t_program;
 };
@@ -104,7 +110,8 @@ int i = 0;
 %nterm <t_case_stm> zeroOrMore_when
 %nterm <t_literal> literal
 %nterm <t_assignop> assignop
- //%nterm <t_binop> binop
+%nterm <t_arg_list> zereOrOne_arglist arglist
+%nterm <t_expr_list> zeroOrOne_expressions expressions
 
 %start program
 
@@ -140,7 +147,8 @@ compstmt : stmt zeroOrMore_stmt zeroOrMore_t
 									//string s("\t\t");
 									//$stmt->print(s);
 									//i++;
-									$zeroOrMore_stmt->prependStatement($stmt);
+									if ($stmt != NULL)
+										$zeroOrMore_stmt->prependStatement($stmt);
 									$$ = $zeroOrMore_stmt;
 									
 								}
@@ -186,7 +194,14 @@ do  : t zeroOrMore_t
 	;
 
 stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
-		| DEF IDENTIFIER LPAREN zereOrOne_arglist RPAREN compstmt END {cout << "function def" << endl;}
+		| DEF IDENTIFIER LPAREN zereOrOne_arglist RPAREN zeroOrMore_t compstmt END 
+			{
+				cout << "!!!" << $zereOrOne_arglist->numArgs() << endl;
+				string fname($IDENTIFIER);
+				FunctionStatement* fStmt = new FunctionStatement(fname, $zereOrOne_arglist, $compstmt);
+				FunctionTable& fTable = program->getStackAndTable().functionTable;
+				fTable.addNewItem(fname, $zereOrOne_arglist->numArgs(), fStmt);
+			}
 		| RETURN expr		{cout << "return" << endl;}
 
 		| IF expr then compstmt zeroOrMore_elseif zeroOrOne_else END
@@ -258,29 +273,45 @@ expr	: expr PLUS expr			{$$ = new BinOpExpression($1, $3, new Add());}
 									}
 		| IDENTIFIER LPAREN zeroOrOne_expressions RPAREN 
 									{
-										/*cout << "function call" << endl;*/
+										$$ = new CallExpression($1, $3);
 									}
 		| LPAREN expr RPAREN		{$$ = $2; }
         ;
 
 expressions
-	: expr
+	: expr		{	
+						ExprList* exprs = new ExprList(); 
+						exprs->appendExpr($expr);
+						$$ = exprs;
+				}
 	| expressions COMMA expr
+				{	
+						$1->appendExpr($expr);
+						$$ = $1;
+				}
 	;
 
 zeroOrOne_expressions
-	:   
-	| expressions
+	:				{$$ = new ExprList(); }
+	| expressions   {$$ = $1; }
 	;
-
+	
 arglist 
-	: IDENTIFIER
+	: IDENTIFIER	{	
+						ArgList* args = new ArgList(); 
+						args->appendArg(new IdentifierExpression($IDENTIFIER));
+						$$ = args;
+					}
 	| arglist COMMA IDENTIFIER
+					{	
+						$1->appendArg(new IdentifierExpression($IDENTIFIER));
+						$$ = $1;
+					}
 	;
 
 zereOrOne_arglist   
-	:   
-	| arglist
+	:			{$$ = new ArgList(); }
+	| arglist	{$$ = $arglist; }
 	;
 
 zeroOrMore_elseif

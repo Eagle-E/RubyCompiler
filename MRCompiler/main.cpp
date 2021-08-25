@@ -87,8 +87,9 @@ int compile(int argc, char* argv[])
 
 		try
 		{
-			cout << "----------------------------------------" << endl;
 			string s = "";
+			program->getStackAndTable().functionTable.print();
+			cout << "----------------------------------------" << endl;
 			program->print();
 			cout << "----------------------------------------" << endl;
 			program->execute();

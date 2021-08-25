@@ -34,6 +34,8 @@ public:
 	void removeItem(const string& funcName, int numArgs);
 	FunctionStatement* getItem(const string& funcName, int numArgs);
 
+	void print();
+
 private:
 	bool contains(const string& funcName, int numArgs);
 	vector<FunctionTableItem> mItems;

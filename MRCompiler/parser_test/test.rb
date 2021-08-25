@@ -1,13 +1,13 @@
-a = 9
-b = 0
 
-case a
-when 1*2
-	b=1
-when 3+3+3
-	b=3
-else
-	b=9
+def f(a, b, c)
+
+	a
+	b
+	c
+
 end
 
-b
+ab = 12
+ab
+
+f(1+0, (1+2)*2 ,3/1*9)

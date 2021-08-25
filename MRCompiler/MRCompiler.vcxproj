@@ -189,6 +189,7 @@
     <ClCompile Include="BinOp.cpp" />
     <ClCompile Include="BinOpExpression.cpp" />
     <ClCompile Include="BooleanLiteral.cpp" />
+    <ClCompile Include="CallExpression.cpp" />
     <ClCompile Include="CaseStatement.cpp" />
     <ClCompile Include="CompileTask.cpp" />
     <ClCompile Include="CompoundStatement.cpp" />
@@ -199,6 +200,7 @@
     <ClCompile Include="Equal.cpp" />
     <ClCompile Include="Expression.cpp" />
     <ClCompile Include="ExpressionStatement.cpp" />
+    <ClCompile Include="FunctionStatement.cpp" />
     <ClCompile Include="FunctionTable.cpp" />
     <ClCompile Include="GreaterOrEqual.cpp" />
     <ClCompile Include="GreaterThan.cpp" />
@@ -251,6 +253,7 @@
     <ClInclude Include="BinOp.h" />
     <ClInclude Include="BinOpExpression.h" />
     <ClInclude Include="BooleanLiteral.h" />
+    <ClInclude Include="CallExpression.h" />
     <ClInclude Include="CaseExpression.h" />
     <ClInclude Include="CaseStatement.h" />
     <ClInclude Include="ConditionExpression.h" />
@@ -258,6 +261,7 @@
     <ClInclude Include="DivideByZeroException.h" />
     <ClInclude Include="ElseIfStatementList.h" />
     <ClInclude Include="Equal.h" />
+    <ClInclude Include="FunctionStatement.h" />
     <ClInclude Include="FunctionTable.h" />
     <ClInclude Include="GreaterOrEqual.h" />
     <ClInclude Include="GreaterThan.h" />

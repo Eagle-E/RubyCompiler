@@ -269,6 +269,12 @@
     <ClInclude Include="CaseExpression.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FunctionStatement.h">
+      <Filter>Header Files\Parse Tree\Statements</Filter>
+    </ClInclude>
+    <ClInclude Include="CallExpression.h">
+      <Filter>Header Files\Parse Tree\Expressions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lexer.cpp">
@@ -450,6 +456,12 @@
     </ClCompile>
     <ClCompile Include="CaseStatement.cpp">
       <Filter>Source Files\Parse Tree\Statements</Filter>
+    </ClCompile>
+    <ClCompile Include="FunctionStatement.cpp">
+      <Filter>Source Files\Parse Tree\Statements</Filter>
+    </ClCompile>
+    <ClCompile Include="CallExpression.cpp">
+      <Filter>Source Files\Parse Tree\Expressions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
