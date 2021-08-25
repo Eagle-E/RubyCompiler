@@ -1,41 +1,45 @@
-if true then
+unless true then
 	a = 10
 	a # = 99
-end
-
-if true 
-then
-	a = 99999
-	a # = 99
-end
-
-a
-
-if false
-	b = 9
-	
-	
-elsif 0 > 10 then
-	b = -a
-	
-	c = -2
-	
-	d = -3
-	
-	
-elsif 0
-	b=-a;c=99;d=999
-	
-	
 else
-	b = a + 10
-	c = b + a
-	d = 2 * c
-	
-	
+	q = 999
+	q
 end
 
-b
-c
-d
-	
+
+unless false
+then
+
+	b = 10
+	b # = 99
+
+else
+
+	y = 999
+	y
+
+end
+
+
+unless true
+
+	a = 10
+	a # = 99
+else
+	q = 999
+	q
+end
+
+unless false ; q end
+#unless false
+#
+#
+#	b = 10
+#	b # = 99
+#
+#else
+#
+#	y = 999
+#	y
+#
+#end

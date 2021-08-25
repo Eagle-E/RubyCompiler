@@ -41,6 +41,7 @@
 #include "ElseIfStatementList.h"
 #include "WhileStatement.h"
 #include "UntilStatement.h"
+#include "UnlessStatement.h"
 
 using std::cout;	using std::endl;
 using std::cerr;
@@ -171,11 +172,12 @@ t : SEMICOLON
   | EOL		 
   ;
 
-then: t			
+then: t zeroOrMore_t	
 	| THEN zeroOrMore_t	
 	| t THEN zeroOrMore_t
 	;
-do  : t
+
+do  : t zeroOrMore_t
 	| DO zeroOrMore_t
 	| t DO zeroOrMore_t
 	;
@@ -196,7 +198,15 @@ stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
 
 				$$ = ifStm;
 			}
-		| UNLESS expr then compstmt zeroOrOne_else END {cout << "unless" << endl;}
+		| UNLESS expr then compstmt zeroOrOne_else END
+			{
+				UnlessStatement * unlessStm = new UnlessStatement(new ConditionExpression($expr), $compstmt);
+
+				if ($zeroOrOne_else != nullptr)
+					unlessStm->setElseBody($zeroOrOne_else);
+
+				$$ = unlessStm;
+			}
 		| WHILE expr do compstmt END 
 			{
 				$$ = new WhileStatement(new ConditionExpression($expr), $compstmt);
