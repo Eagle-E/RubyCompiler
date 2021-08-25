@@ -87,6 +87,7 @@ extern int yydebug;
 #include "IfStatement.h"
 #include "ConditionExpression.h"
 #include "ElseIfStatementList.h"
+#include "WhileStatement.h"
 
 using std::cout;	using std::endl;
 using std::cerr;
@@ -97,7 +98,7 @@ void yyerror(const char* str);
 extern Program* program;
 //extern CompoundStatement* rootStatement;
 
-#line 101 "parser.h"
+#line 102 "parser.h"
 
 /* Token kinds.  */
 #ifndef YYTOKENTYPE
@@ -160,7 +161,7 @@ extern Program* program;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 61 "parser.y"
+#line 62 "parser.y"
 
 	int t_int;
 	char* t_str;
@@ -173,7 +174,7 @@ union YYSTYPE
 	//BinOp * t_binop;
 	//Program* t_program;
 
-#line 177 "parser.h"
+#line 178 "parser.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

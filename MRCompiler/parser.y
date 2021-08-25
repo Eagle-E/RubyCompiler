@@ -39,6 +39,7 @@
 #include "IfStatement.h"
 #include "ConditionExpression.h"
 #include "ElseIfStatementList.h"
+#include "WhileStatement.h"
 
 using std::cout;	using std::endl;
 using std::cerr;
@@ -123,12 +124,12 @@ int i = 0;
 // vul aan met producties
 program : 
 		|
-		compstmt	{
-						program->setRootStatement($1);
+		zeroOrMore_t compstmt	{
+						program->setRootStatement($compstmt);
 					} 
 		;
 
-compstmt : zeroOrMore_t stmt zeroOrMore_stmt zeroOrMore_t 
+compstmt : stmt zeroOrMore_stmt zeroOrMore_t 
 								{
 									//cout << "@@@ + " << i << endl;
 									//string s("\t\t");
@@ -170,11 +171,14 @@ t : SEMICOLON
   ;
 
 then: t			{ cout <<"[then]: " << "<t>" <<  endl;}
-	//| THEN		{ cout <<"[then]: " << "then" <<  endl;}
-	//| t THEN		{ cout <<"[then]: " << "<t> then" <<  endl;}
-	| zeroOrMore_t THEN zeroOrMore_t	{ cout <<"[then]: " << "{t} then {t}" <<  endl;}
+	// | THEN		{ cout <<"[then]: " << "then" <<  endl;}
+	// | t THEN		{ cout <<"[then]: " << "<t> then" <<  endl;}
+	| zeroOrMore_t THEN zeroOrMore_t { cout <<"[then]: " << "{t} then {t}" <<  endl;}
 	;
-do   : t | DO | t DO ;
+do  : t { cout <<"[do]: " << "<t>" <<  endl;}
+	| DO zeroOrMore_t
+	| t DO zeroOrMore_t
+	;
 
 stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
 		| DEF IDENTIFIER LPAREN zereOrOne_arglist RPAREN compstmt END {cout << "function def" << endl;}
@@ -192,9 +196,11 @@ stmt    : UNDEF IDENTIFIER	{cout << "undef" << endl;}
 
 				$$ = ifStm;
 			}
-
 		| UNLESS expr then compstmt zeroOrOne_else END {cout << "unless" << endl;}
-		| WHILE expr do compstmt END {cout << "while" << endl;}
+		| WHILE expr do compstmt END 
+			{
+				$$ = new WhileStatement(new ConditionExpression($expr), $compstmt);
+			}
 		| UNTIL expr do compstmt END {cout << "until" << endl;}
 		| CASE expr WHEN expr then compstmt zeroOrMore_when zeroOrOne_else END {cout << "case" << endl;}
 		| expr		{$$ = new ExpressionStatement($expr);}		

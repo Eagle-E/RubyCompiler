@@ -1,37 +1,23 @@
 
+a = 0
 
-if true then
-	a = 10
-	a # = 99
+while a < 10 do
+
+
+
+	b = a < 10
+	b
+	a += 1
 end
 
-a
 
-if false
-	b = 9
-	
-	
-elsif 0 > 10 then
-	b = -a
-	
-	c = -2
-	
-	d = -3
-	
-	
-elsif 0
-	b=-a;c=99;d=999
-	
-	
-else
-	b = a + 10
-	c = b + a
-	d = 2 * c
-	
-	
-end
 
-b
-c
-d
-	
+
+
+#c = 0
+#while c<3
+#	p=0
+#	c +=1
+#
+#end
+
