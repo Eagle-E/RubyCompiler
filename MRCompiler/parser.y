@@ -171,12 +171,11 @@ t : SEMICOLON
   | EOL		 
   ;
 
-then: t			{ cout <<"[then]: " << "<t>" <<  endl;}
-	// | THEN		{ cout <<"[then]: " << "then" <<  endl;}
-	// | t THEN		{ cout <<"[then]: " << "<t> then" <<  endl;}
-	| zeroOrMore_t THEN zeroOrMore_t { cout <<"[then]: " << "{t} then {t}" <<  endl;}
+then: t			
+	| THEN zeroOrMore_t	
+	| t THEN zeroOrMore_t
 	;
-do  : t { cout <<"[do]: " << "<t>" <<  endl;}
+do  : t
 	| DO zeroOrMore_t
 	| t DO zeroOrMore_t
 	;
